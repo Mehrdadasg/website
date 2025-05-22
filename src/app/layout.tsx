@@ -2,7 +2,7 @@ import type { Metadata, Viewport } from "next";
 import "./globals.css";
 import localFont from "next/font/local";
 import ReactQueryProvider from "@/shared/providers/ReactQueryProvider";
-import Header from "@/shared/components/header";
+import Header from "@/features/components/header";
 
 export const metadata: Metadata = {
   title: {

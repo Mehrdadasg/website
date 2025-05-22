@@ -1,9 +1,11 @@
+"use client";
 import { Button } from "@/components/ui/button";
 import { Home } from "iconsax-react";
 import Image from "next/image";
 import Link from "next/link";
+import React from "react";
 
-function NotFoundPage(): React.ReactElement {
+function ErrorPage() {
   return (
     <main className="h-screen max-w-5xl mx-auto flex gap-20 pt-52">
       <section className="w-[55%]">
@@ -11,11 +13,11 @@ function NotFoundPage(): React.ReactElement {
           خطای 500
         </h2>
         <p className="text-5xl font-bold leading-20 my-5">
-          در حال ارتقا و تعمیرات ...
+          چیزی که دنبالش بودی، اینجا نیست!
         </p>
-        <p className="font-normal text-gray-500 text-lg leading-8">
-          یه چیزی اون پشت درست کار نمی کرد، داریم درستش می کنیم! <br />
-لطفا چند دقیقه دیگه سر بزن.
+        <p className="font-normal text-gray-500 text-lg">
+          احتمالا جاش عوض شده ولی اشکال نداره کلی چیزای جذاب و خوندنی دیگه برات
+          داریم.
         </p>
         <div className="flex gap-5 mt-10">
           <Button
@@ -33,7 +35,7 @@ function NotFoundPage(): React.ReactElement {
       </section>
       <section className="w-[40%]">
         <Image
-          src="/illustration/500.png"
+          src="/illustration/404.png"
           className="w-full h-auto"
           width={900}
           height={900}
@@ -44,4 +46,4 @@ function NotFoundPage(): React.ReactElement {
   );
 }
 
-export default NotFoundPage;
+export default ErrorPage;
