@@ -4,8 +4,8 @@ import Link from "next/link";
 import React, { useState } from "react";
 import { SearchNormal1 } from "iconsax-react";
 import { Button } from "@/components/ui/button";
-import NavbarSearch from "@/features/components/header/NavbarSearch";
-import NavbarMenu from "@/features/components/header/NavbarMenu";
+import NavbarMenu from "./components/NavbarMenu";
+import NavbarSearch from "./components/NavbarSearch";
 
 function Header() {
   const [searchBoxOpen, setSearchBoxOpen] = useState(false);

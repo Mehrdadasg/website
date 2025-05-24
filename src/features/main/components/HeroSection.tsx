@@ -1,4 +1,4 @@
-import AppDownload from "@/shared/components/main/AppDownload";
+import AppDownload from "@/shared/components/app-download";
 import Image from "next/image";
 import React from "react";
 
@@ -35,6 +35,7 @@ function HeroSection() {
             quality={100}
             alt="تصویر راهنمای بهداشت زنان"
             className="w-full h-auto"
+            priority
           />
         </section>
       </section>

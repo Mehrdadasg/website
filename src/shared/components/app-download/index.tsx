@@ -15,7 +15,7 @@ function AppDownload() {
               quality={100}
               width={340}
               height={80}
-              alt=""
+              alt="دانلود از گوگل پلی"
             />
           </Link>
         </Button>
@@ -27,7 +27,7 @@ function AppDownload() {
               quality={100}
               width={340}
               height={80}
-              alt=""
+              alt="دانلود از بازار"
             />
           </Link>
         </Button>
@@ -39,7 +39,7 @@ function AppDownload() {
               quality={100}
               width={340}
               height={80}
-              alt=""
+              alt="دانلود از مایکت"
             />
           </Link>
         </Button>
@@ -53,7 +53,7 @@ function AppDownload() {
               quality={100}
               width={520}
               height={80}
-              alt=""
+              alt="دانلود مستقیم اندروید"
             />
           </Link>
         </Button>
@@ -65,7 +65,7 @@ function AppDownload() {
               quality={100}
               width={520}
               height={80}
-              alt=""
+              alt="دانلود از اپ استور"
             />
           </Link>
         </Button>

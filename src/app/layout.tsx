@@ -2,7 +2,7 @@ import type { Metadata, Viewport } from "next";
 import "./globals.css";
 import localFont from "next/font/local";
 import ReactQueryProvider from "@/shared/providers/ReactQueryProvider";
-import Header from "@/features/components/header";
+import Header from "@/features/header";
 
 export const metadata: Metadata = {
   title: {
@@ -10,8 +10,8 @@ export const metadata: Metadata = {
     template: "%s | یک زن",
   },
   description:
-    "یک زن: راهنمای جامع بهداشت زنان از بلوغ تا بارداری و زایمان. اطلاعات کاربردی برای سلامت زنان را اینجا بخوانید!",
-  keywords: "بهداشت زنان, بارداری, زایمان, بلوغ, سلامت زنان, راهنمای زنان",
+    "یک زن: راهنمای جامع بهداشت زنان از بلوغ تا بارداری، زایمان و سلامت مادران. اطلاعات کاربردی، نکات مهم و محصولات ویژه برای زنان را اینجا بخوانید و تجربه کنید!",
+  keywords: "بهداشت زنان, بارداری, زایمان, بلوغ, سلامت زنان, راهنمای زنان, محصولات زنان",
   metadataBase: new URL("https://yeksan.com"),
   alternates: {
     canonical: "/",
@@ -27,7 +27,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "یک زن - راهنمای بهداشت زنان",
     description:
-      "یک زن: راهنمای جامع بهداشت زنان از بلوغ تا بارداری و زایمان",
+      "یک زن: راهنمای جامع بهداشت زنان از بلوغ تا بارداری، زایمان و سلامت مادران",
     siteName: "یک زن",
     type: "website",
     url: "/",
@@ -50,7 +50,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "یک زن - راهنمای بهداشت زنان",
     description:
-      "یک زن، راهنمای جامع بهداشت زنان از بلوغ تا بارداری و زایمان",
+      "یک زن، راهنمای جامع بهداشت زنان از بلوغ تا بارداری، زایمان و سلامت مادران",
     images: ["/og-img-large.png"],
     site: "@YekZan",
     creator: "@YekZanAuthor",
@@ -88,42 +88,48 @@ export const metadata: Metadata = {
 export const viewport: Viewport = {
   initialScale: 1,
   width: "device-width",
-  /**
-   * Leveraging 'resizes-content' provides the advantage of adjusting content
-   * layout for keyboard openings, ensuring a seamless mobile user experience.
-   */
   interactiveWidget: "resizes-content",
 };
 
 const iranSans = localFont({
   src: [
     {
-      path: "../assets/fonts/IRANSansX-Thin.woff2", // font-thin
+      path: "../assets/fonts/IRANSansXFaNum-Thin.woff2",
       weight: "100",
       style: "normal",
     },
     {
-      path: "../assets/fonts/IRANSansX-Regular.woff2", // font-normal
+      path: "../assets/fonts/IRANSansXFaNum-Light.woff2",
+      weight: "200",
+      style: "normal",
+    },
+    {
+      path: "../assets/fonts/IRANSansXFaNum-UltraLight.woff2",
+      weight: "300",
+      style: "normal",
+    },
+    {
+      path: "../assets/fonts/IRANSansXFaNum-Regular.woff2",
       weight: "400",
       style: "normal",
     },
     {
-      path: "../assets/fonts/IRANSansX-Medium.woff2", // font-medium
+      path: "../assets/fonts/IRANSansXFaNum-Medium.woff2",
       weight: "500",
       style: "normal",
     },
     {
-      path: "../assets/fonts/IRANSansX-DemiBold.woff2", // font-semibold
+      path: "../assets/fonts/IRANSansXFaNum-DemiBold.woff2",
       weight: "600",
       style: "normal",
     },
     {
-      path: "../assets/fonts/IRANSansX-Bold.woff2", // font-bold
+      path: "../assets/fonts/IRANSansXFaNum-Bold.woff2",
       weight: "700",
       style: "normal",
     },
     {
-      path: "../assets/fonts/IRANSansX-Black.woff2", // font-black
+      path: "../assets/fonts/IRANSansXFaNum-Black.woff2",
       weight: "900",
       style: "normal",
     },
@@ -137,12 +143,10 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang={"fa"} dir={"rtl"} >
-      <body
-        className={`${iranSans.className} antialiased`}
-      >
+    <html lang={"fa"} dir={"rtl"}>
+      <body className={`${iranSans.className} antialiased`}>
         <ReactQueryProvider>
-          <Header/>
+          <Header />
           {children}
         </ReactQueryProvider>
       </body>
