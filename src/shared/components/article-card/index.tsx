@@ -1,6 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import React from "react";
+import {Glass2} from '../../icons/Glass2';
 
 interface FeaturedArticleProps {
   imageSrc: string;
@@ -9,7 +10,7 @@ interface FeaturedArticleProps {
   description: string;
   linkHref: string;
   badgeText: string;
-  date: string;
+  time: string;
 }
 
 const ArticleCard: React.FC<FeaturedArticleProps> = ({
@@ -19,28 +20,33 @@ const ArticleCard: React.FC<FeaturedArticleProps> = ({
   description,
   linkHref,
   badgeText,
-  date,
+  time,
 }) => {
   return (
     <Link href={linkHref} className="block">
-      <article className="border rounded-lg shadow-md p-4 max-w-sm hover:shadow-lg transition-shadow">
+      <article className="">
         <Image
           src={imageSrc}
-          width={400}
-          height={250}
+          width={342}
+          height={240}
           alt={imageAlt}
-          className="rounded-t-lg object-cover w-full h-auto"
+          className="rounded-[12px] object-cover w-full h-[240px]"
         />
-        <div className="mt-4">
+        <section className="mt-4">
           <div className="flex justify-between items-center">
-            <h2 className="text-2xl font-bold hover:underline">{title}</h2>
-            <span className="bg-blue-500 text-white text-xs px-2 py-1 rounded-full">
+            <span className="text-lake-blue-600 bg-gray-100 text-[13px] p-2 font-semibold rounded-full">
               {badgeText}
             </span>
+          
+          <div className="flex items-center">
+            <p className="text-gray-400 text-xs font-normal">{time}</p>
+            <Glass2 height={8} width={23} />
           </div>
-          <p className="text-gray-600 mt-2 text-sm">{description}</p>
-          <p className="text-gray-400 text-xs mt-1">{date}</p>
-        </div>
+
+          </div>
+            <h2 className="text-lg font-semibold h-14 mt-3 line-clamp-2">{title}</h2>
+          <p className="text-gray-500 mt-2 text-sm line-clamp-2">{description}</p>
+        </section>
       </article>
     </Link>
   );

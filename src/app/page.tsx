@@ -1,7 +1,9 @@
+import AppSwiper from "@/features/main/components/AppSwiper";
 import BreastfeedingFeatures from "@/features/main/components/BreastfeedingFeatures";
 import CommentSwiper from "@/features/main/components/CommentSwiper";
 import DietPlan from "@/features/main/components/DietPlan";
 import HeroSection from "@/features/main/components/HeroSection";
+import LastedArticles from "@/features/main/components/LastedArticles";
 import OurFeatures from "@/features/main/components/OurFeatures";
 import PeriodFeatures from "@/features/main/components/PeriodFeatures";
 import PregnancyFeatures from "@/features/main/components/PregnancyFeatures";
@@ -18,6 +20,8 @@ export default function Home() {
       <CommentSwiper />
       <TherapyClinic />
       <DietPlan/>
+      <AppSwiper/>
+      <LastedArticles/>
     </main>
   );
 }
