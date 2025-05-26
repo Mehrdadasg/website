@@ -6,65 +6,82 @@ import Image from "next/image";
 import Link from "next/link";
 import React from "react";
 
+const articleItems = [
+    {
+      badgeText: "اقدام به بارداری",
+      time: "1 دقیقه مطالعه",
+      title: "روزه گرفتن در بارداری مجاز است؟",
+      imageAlt: "روزه گرفتن در بارداری مجاز است؟",
+      imageSrc: "/b1.png",
+      linkHref: "",
+      description:
+        "گاهی برخی از خانم‌ها که قصد بارداری دارند، با وجود داشتن رابطه جنسی متعدد، موفق به بارداری نمی‌شوند. گاهی نیز برخی از خانم‌ها، بارداری ناخواسته را تجربه می‌کنند",
+    },
+    {
+      badgeText: "اقدام به بارداری",
+      time: "1 دقیقه مطالعه",
+      title: "راه های تشخیص زمان شروع تخمک گذاری",
+      imageAlt: "روزه گرفتن در بارداری مجاز است؟",
+      imageSrc: "/b1.png",
+      linkHref: "",
+      description:
+        "گاهی برخی از خانم‌ها که قصد بارداری دارند، با وجود داشتن رابطه جنسی متعدد، موفق به بارداری نمی‌شوند. گاهی نیز برخی از خانم‌ها، بارداری ناخواسته را تجربه می‌کنند",
+    },
+    {
+      badgeText: "اقدام به بارداری",
+      time: "1 دقیقه مطالعه",
+      title: "روزه گرفتن در بارداری مجاز است؟",
+      imageAlt: "روزه گرفتن در بارداری مجاز است؟",
+      imageSrc: "/b1.png",
+      linkHref: "",
+      description:
+        "گاهی برخی از خانم‌ها که قصد بارداری دارند، با وجود داشتن رابطه جنسی متعدد، موفق به بارداری نمی‌شوند. گاهی نیز برخی از خانم‌ها، بارداری ناخواسته را تجربه می‌کنند",
+    },
+  ];
+
 function LastedArticles() {
+
   return (
-    <>
-      <SectionWrapper className="pt-5 pb-24">
-        <section className="flex justify-between items-center">
-          <div className="flex items-center gap-3">
-            <span className="flex size-[44px] bg-orange-50 rounded-full justify-center items-center">
-              <Image
-                src="/fire.png"
-                className="w-[19px] h-[23px]"
-                width={19}
-                height={23}
-                alt="آخرین های مجله"
-              />
-            </span>
-            <p className="text-2xl font-bold">آخرین های مجله</p>
-          </div>
-          <Button
-            variant="outline"
-            asChild
-            className="h-[48px] rounded-[50px] border-pink-500 text-pink-500"
-          >
-            <Link href="">
-              <span className="font-bold text-[13px]">یه سر به مجله بزن</span>
-              <ArrowLeft2 size={20} color="var(--color-pink-500)" />
-            </Link>
-          </Button>
-        </section>
-        <section className="grid grid-cols-3 gap-10 mt-10">
+    <SectionWrapper className="pt-5 pb-24">
+      <section className="flex justify-between items-center">
+        <div className="flex items-center gap-3">
+          <span className="flex size-[44px] bg-orange-50 rounded-full justify-center items-center">
+            <Image
+              src="/fire.png"
+              className="w-[19px] h-[23px]"
+              width={19}
+              height={23}
+              alt="آخرین های مجله"
+            />
+          </span>
+          <p className="text-2xl font-bold">آخرین های مجله</p>
+        </div>
+        <Button
+          variant="outline"
+          asChild
+          className="h-[48px] rounded-[50px] border-pink-500 text-pink-500"
+        >
+          <Link href="">
+            <span className="font-bold text-[13px]">یه سر به مجله بزن</span>
+            <ArrowLeft2 size={20} color="var(--color-pink-500)" />
+          </Link>
+        </Button>
+      </section>
+      <section className="grid grid-cols-3 gap-10 mt-10">
+        {articleItems.map((item, index) => (
           <ArticleCard
-            badgeText="اقدام به بارداری"
-            time="1 دقیقه مطالعه"
-            title="روزه گرفتن در بارداری مجاز است؟"
-            imageAlt="روزه گرفتن در بارداری مجاز است؟"
-            imageSrc="/b1.png"
-            linkHref=""
-            description="گاهی برخی از خانم‌ها که قصد بارداری دارند، با وجود داشتن رابطه جنسی متعدد، موفق به بارداری نمی‌شوند. گاهی نیز برخی از خانم‌ها، بارداری ناخواسته را تجربه می‌کنند"
+            key={index}
+            badgeText={item.badgeText}
+            time={item.time}
+            title={item.title}
+            imageAlt={item.imageAlt}
+            imageSrc={item.imageSrc}
+            linkHref={item.linkHref}
+            description={item.description}
           />
-           <ArticleCard
-            badgeText="اقدام به بارداری"
-            time="1 دقیقه مطالعه"
-            title="راه های تشخیص زمان شروع تخمک گذاریراه های تشخیص زمان شروع تخمک گذاری راه های تشخیص زمان شروع تخمک گذاریراه های تشخیص زمان شروع تخمک گذاری"
-            imageAlt="روزه گرفتن در بارداری مجاز است؟"
-            imageSrc="/b1.png"
-            linkHref=""
-            description="گاهی برخی از خانم‌ها که قصد بارداری دارند، با وجود داشتن رابطه جنسی متعدد، موفق به بارداری نمی‌شوند. گاهی نیز برخی از خانم‌ها، بارداری ناخواسته را تجربه می‌کنند"
-          />
-           <ArticleCard
-            badgeText="اقدام به بارداری"
-            time="1 دقیقه مطالعه"
-            title="روزه گرفتن در بارداری مجاز است؟"
-            imageAlt="روزه گرفتن در بارداری مجاز است؟"
-            imageSrc="/b1.png"
-            linkHref=""
-            description="گاهی برخی از خانم‌ها که قصد بارداری دارند، با وجود داشتن رابطه جنسی متعدد، موفق به بارداری نمی‌شوند. گاهی نیز برخی از خانم‌ها، بارداری ناخواسته را تجربه می‌کنند"
-          />
-        </section>
-      </SectionWrapper>
-    </>
+        ))}
+      </section>
+    </SectionWrapper>
   );
 }
 

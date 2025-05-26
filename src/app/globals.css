@@ -273,3 +273,16 @@ body {
   position: absolute;
   z-index: 1;
 }
+
+.accordion-trigger[data-state="open"] svg {
+  color: var(--color-pink-500);
+}
+
+.accordion-trigger[data-state="closed"] svg {
+  color: var(--color-gray-800);
+}
+
+.footer-header{
+  background: url('/footer-bg.png') no-repeat;
+  background-size: 100%;
+}

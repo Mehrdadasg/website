@@ -2,6 +2,7 @@ import AppSwiper from "@/features/main/components/AppSwiper";
 import BreastfeedingFeatures from "@/features/main/components/BreastfeedingFeatures";
 import CommentSwiper from "@/features/main/components/CommentSwiper";
 import DietPlan from "@/features/main/components/DietPlan";
+import FAQ from "@/features/main/components/FAQ";
 import HeroSection from "@/features/main/components/HeroSection";
 import LastedArticles from "@/features/main/components/LastedArticles";
 import OurFeatures from "@/features/main/components/OurFeatures";
@@ -22,6 +23,7 @@ export default function Home() {
       <DietPlan/>
       <AppSwiper/>
       <LastedArticles/>
+      <FAQ/>
     </main>
   );
 }

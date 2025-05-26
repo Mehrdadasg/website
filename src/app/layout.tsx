@@ -3,6 +3,7 @@ import "./globals.css";
 import localFont from "next/font/local";
 import ReactQueryProvider from "@/shared/providers/ReactQueryProvider";
 import Header from "@/features/header";
+import Footer from "@/features/footer";
 
 export const metadata: Metadata = {
   title: {
@@ -148,6 +149,7 @@ export default function RootLayout({
         <ReactQueryProvider>
           <Header />
           {children}
+          <Footer/>
         </ReactQueryProvider>
       </body>
     </html>

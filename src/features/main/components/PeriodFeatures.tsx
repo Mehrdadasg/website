@@ -3,7 +3,53 @@ import SectionWrapper from "@/shared/hoc/section-wrapper";
 import Image from "next/image";
 import React from "react";
 
+const cardItems = [
+    {
+      imageAlt: "تقویم قاعدگی",
+      title: "تقویم قاعدگی",
+      imageSrc: "/card/p1.png",
+      linkHref: "/",
+      description: "پیگیری دقیق چرخه پریود، تخمک‌گذاری و PMS",
+    },
+    {
+      imageAlt: "محاسبه روز تخمک گذاری",
+      title: "محاسبه روز تخمک گذاری",
+      imageSrc: "/card/p2.png",
+      linkHref: "/",
+      description: "روز تخمک گذاری خودت رو محاسبه کن",
+    },
+    {
+      imageAlt: "زمان اقدام به بارداری",
+      title: "زمان اقدام به بارداری",
+      imageSrc: "/card/p3.png",
+      linkHref: "/",
+      description: "بهترین زمان اقدام به بارداری خودت رو بدون",
+    },
+    {
+      imageAlt: "جلوگیری از بارداری",
+      title: "جلوگیری از بارداری",
+      imageSrc: "/card/p4.png",
+      linkHref: "/",
+      description: "بهترین روش جلوگیری از بارداری مناسبت رو بشناس",
+    },
+    {
+      imageAlt: "تست بارداری",
+      title: "تست بارداری",
+      imageSrc: "/card/p5.png",
+      linkHref: "/",
+      description: "از روی علائم بهت میگیم که بدونی بارداری با نه",
+    },
+    {
+      imageAlt: "تعیین جنسیت جنین",
+      title: "تعیین جنسیت جنین",
+      imageSrc: "/card/p6.png",
+      linkHref: "/",
+      description: "با توجه به زمان اقدام، بدون که جنسیت کوچولوت چیه",
+    },
+  ];
+
 function PeriodFeatures() {
+
   return (
     <SectionWrapper className="flex gap-[13%] py-24">
       <section className="w-[27%]">
@@ -24,48 +70,16 @@ function PeriodFeatures() {
         </p>
       </section>
       <section className="w-[60%] grid grid-cols-3 gap-10">
-        <Card
-          imageAlt="تقویم قاعدگی"
-          title="تقویم قاعدگی"
-          imageSrc="/card/p1.png"
-          linkHref="/"
-          description="پیگیری دقیق چرخه پریود، تخمک‌گذاری و PMS"
-        />
-        <Card
-          imageAlt="محاسبه روز تخمک گذاری"
-          title="محاسبه روز تخمک گذاری"
-          imageSrc="/card/p2.png"
-          linkHref="/"
-          description="روز تخمک گذاری خودت رو محاسبه کن"
-        />
-        <Card
-          imageAlt="زمان اقدام به بارداری "
-          title="زمان اقدام به بارداری "
-          imageSrc="/card/p3.png"
-          linkHref="/"
-          description="بهترین زمان اقدام به بارداری خودت رو بدون"
-        />
-        <Card
-          imageAlt="جلوگیری از بارداری"
-          title="جلوگیری از بارداری"
-          imageSrc="/card/p4.png"
-          linkHref="/"
-          description="بهترین روش جلوگیری از بارداری مناسبت رو بشناس"
-        />
-        <Card
-          imageAlt="تست بارداری"
-          title="تست بارداری"
-          imageSrc="/card/p5.png"
-          linkHref="/"
-          description="از روی علائم بهت میگیم که بدونی بارداری با نه"
-        />
-        <Card
-          imageAlt="تعیین جنسیت جنین"
-          title="تعیین جنسیت جنین"
-          imageSrc="/card/p6.png"
-          linkHref="/"
-          description="با توجه به زمان اقدام، بدون که جنسیت کوچولوت چیه"
-        />
+        {cardItems.map((item, index) => (
+          <Card
+            key={index}
+            imageAlt={item.imageAlt}
+            title={item.title}
+            imageSrc={item.imageSrc}
+            linkHref={item.linkHref}
+            description={item.description}
+          />
+        ))}
       </section>
     </SectionWrapper>
   );
