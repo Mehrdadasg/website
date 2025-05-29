@@ -42,10 +42,10 @@ const articleItems = [
 function LastedArticles() {
 
   return (
-    <SectionWrapper className="pt-5 pb-24">
+    <SectionWrapper className="pt-5 pb-24 px-3 md:px-0">
       <section className="flex justify-between items-center">
         <div className="flex items-center gap-3">
-          <span className="flex size-[44px] bg-orange-50 rounded-full justify-center items-center">
+          <span className="hidden sm:flex size-[44px] bg-orange-50 rounded-full justify-center items-center">
             <Image
               src="/fire.png"
               className="w-[19px] h-[23px]"
@@ -54,12 +54,12 @@ function LastedArticles() {
               alt="آخرین های مجله"
             />
           </span>
-          <p className="text-2xl font-bold">آخرین های مجله</p>
+          <p className="text-[22px] sm:text-2xl font-semibold sm:font-bold">آخرین های مجله</p>
         </div>
         <Button
           variant="outline"
           asChild
-          className="h-[48px] rounded-[50px] border-pink-500 text-pink-500"
+          className="hidden sm:flex h-[48px] rounded-[50px] border-pink-500 text-pink-500"
         >
           <Link href="">
             <span className="font-bold text-[13px]">یه سر به مجله بزن</span>
@@ -67,7 +67,7 @@ function LastedArticles() {
           </Link>
         </Button>
       </section>
-      <section className="grid grid-cols-3 gap-10 mt-10">
+      <section className="grid md:grid-cols-3 gap-10 mt-10">
         {articleItems.map((item, index) => (
           <ArticleCard
             key={index}
@@ -80,6 +80,18 @@ function LastedArticles() {
             description={item.description}
           />
         ))}
+      </section>
+      
+      <section className="flex justify-center pt-5">
+        <Button
+          variant="outline"
+          asChild
+          className="sm:hidden h-[48px] rounded-[50px] border-pink-500 text-pink-500 px-10"
+        >
+          <Link href="">
+            <span className="font-bold text-[13px]">یه سر به مجله بزن</span>
+          </Link>
+        </Button>
       </section>
     </SectionWrapper>
   );

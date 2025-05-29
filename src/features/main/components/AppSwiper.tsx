@@ -28,8 +28,8 @@ export default function AppSwiper() {
   const [activeIndex, setActiveIndex] = useState(0);
   const swiperRef = useRef<SwiperRef | null>(null);
 
-  const handleActiveIndex = (swiper: any) => {
-    setActiveIndex(swiper.activeIndex);
+  const handleActiveIndex = (index: number) => {
+    setActiveIndex(index);
   };
 
   const handleNextSlide = () => {
@@ -49,18 +49,20 @@ export default function AppSwiper() {
   };
 
   return (
-    <SectionWrapper className="flex bg-gray-100 rounded-4xl mt-32 mb-24">
-      <section className="w-2/5 text-center pr-16 flex flex-col justify-center">
-        <p className="text-4xl font-semibold text-pink-500 -mt-5">
+    <SectionWrapper className=" mt-32 mb-24 px-3 md:px-0 overflow-hidden">
+      <div className="md:flex bg-gray-100 rounded-[12px] md:rounded-4xl">
+      <section className="md:w-2/5 text-center md:pr-16 flex flex-col justify-center pt-10">
+        <p className="text-[22px] md:text-4xl text-center md:text-right font-bold md:font-semibold text-pink-500 md:-mt-5">
           با ما بیشتر آشـــنا شوید
         </p>
-        <h3 className="text-lg font-normal mt-8">
+        <h3 className="font-normal mt-5 md:mt-8 text-[13px] md:text-lg leading-8 text-center md:text-right">
           به دیدن بخش هایی از <mark className="bg-transparent">یک زن</mark>{" "}
           دعوتت می کنیم
         </h3>
       </section>
-      <section className="w-3/5 flex justify-center bg-pattern py-16">
-        <section className="relative w-[380px] px-[50px]">
+      <section className="md:w-3/5 flex justify-center bg-pattern py-10 md:py-16 relative">
+      <Image src="/pattern.png" width={410} height={410} className="absolute top-0 left-0 md:left-[23%] z-[1]" alt="pattern image"/>
+        <section className="relative w-[380px] px-[50px] z-10">
           <Swiper
             slidesPerView={1}
             spaceBetween={10}
@@ -75,7 +77,7 @@ export default function AppSwiper() {
             onSwiper={(swiper) => {
               swiperRef.current = { swiper } as SwiperRef;
             }}
-            onSlideChange={handleActiveIndex}
+            onSlideChange={({ activeIndex }) => handleActiveIndex(activeIndex)}
           >
             {fakeCarouselData?.map((swiper, index) => (
               <SwiperSlide key={index}>
@@ -84,7 +86,7 @@ export default function AppSwiper() {
                     src={swiper?.imageSrc}
                     alt={`نظرات شما ${index + 1}`}
                     width={276}
-                    height={475}
+                    height={477}
                     className="w-[276px] h-[475px] object-cover rounded-tr-[10px] rounded-tl-[10px]"
                   />
                 </div>
@@ -118,6 +120,7 @@ export default function AppSwiper() {
           </button>
         </section>
       </section>
+      </div>
     </SectionWrapper>
   );
 }

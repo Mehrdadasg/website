@@ -237,11 +237,17 @@ body {
 }
 
 .hero {
-  height: 875px;
+  height: max;
   width: 100%;
   background: url("/shape.png") no-repeat;
   background-size: 100% 100%;
   background-position: 0 -20px;
+}
+
+@media (min-width:768px) {
+  .hero{
+    height: 800px;
+  }
 }
 
 .swiper-pagination-bullet {
@@ -254,11 +260,11 @@ body {
   background-color: var(--color-pink-500);
 }
 
-.bg-pattern {
+/* .bg-pattern {
   background: url("/pattern.png") no-repeat;
   background-position: top left 50%;
   background-size: 400px 315px;
-}
+} */
 
 .overlay {
   position: relative;
@@ -274,15 +280,22 @@ body {
   z-index: 1;
 }
 
-.accordion-trigger[data-state="open"] svg {
-  color: var(--color-pink-500);
+.faq .accordion-trigger[data-state="open"] svg path {
+  stroke: var(--color-pink-500);
 }
 
-.accordion-trigger[data-state="closed"] svg {
-  color: var(--color-gray-800);
+.mobile-menu .accordion-trigger svg path {
+  stroke: #fff
 }
 
-.footer-header{
-  background: url('/footer-bg.png') no-repeat;
+.footer {
+  background: url("/footer-bg.png") no-repeat;
   background-size: 100%;
+}
+
+@media (max-width:767px) {
+  .footer{
+    background: url('/footer-mobile-bg.png') no-repeat;
+    background-size: 100% 100%;
+  }
 }

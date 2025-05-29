@@ -4,6 +4,7 @@ import localFont from "next/font/local";
 import ReactQueryProvider from "@/shared/providers/ReactQueryProvider";
 import Header from "@/features/header";
 import Footer from "@/features/footer";
+import FixedAppBar from "@/features/main/components/FixedAppBar";
 
 export const metadata: Metadata = {
   title: {
@@ -24,7 +25,6 @@ export const metadata: Metadata = {
     index: true,
     follow: true,
   },
-  viewport: "width=device-width, initial-scale=1",
   openGraph: {
     title: "یک زن - راهنمای بهداشت زنان",
     description:
@@ -150,6 +150,7 @@ export default function RootLayout({
           <Header />
           {children}
           <Footer/>
+          <FixedAppBar/>
         </ReactQueryProvider>
       </body>
     </html>

@@ -1,6 +1,4 @@
-import Card from "@/shared/components/card";
-import SectionWrapper from "@/shared/hoc/section-wrapper";
-import Image from "next/image";
+import Feature from "@/shared/components/feature";
 import React from "react";
 
 const cardItems = [
@@ -51,37 +49,19 @@ const cardItems = [
 function BreastfeedingFeatures() {
 
   return (
-    <SectionWrapper className="flex gap-[13%] py-24">
-      <section className="w-[27%]">
-        <h2 className="font-bold text-2xl">
-          در <mark className="text-pink-600 bg-white">دوران شیردهی</mark> برات
+    <Feature
+      cardItems={cardItems}
+      title={
+        <>
+             در <mark className="text-pink-600 bg-white">دوران شیردهی</mark> برات
           چی داریم؟
-        </h2>
-        <Image
-          src="/illustration/mom.png"
-          className="w-5/6 h-auto my-10"
-          width={1000}
-          height={1500}
-          alt="در دوران قاعدگی برات چی داریم؟"
-        />
-        <p className="text-gray-500">
-          با تقویم قاعدگی یک زن حواسمون به پریود و PMS و تخمک گذاریت هست و کلی
-          اطلاعات در مورد تغییراتش بهت میدیم
-        </p>
-      </section>
-      <section className="w-[60%] grid grid-cols-3 gap-10">
-        {cardItems.map((item, index) => (
-          <Card
-            key={index}
-            imageAlt={item.imageAlt}
-            title={item.title}
-            imageSrc={item.imageSrc}
-            linkHref={item.linkHref}
-            description={item.description}
-          />
-        ))}
-      </section>
-    </SectionWrapper>
+        </>
+      }
+      description="چطور بین استراحت و مراقبت از نی‌نی تعادل برقرار کنی؟ اینجاییم که کمکت کنیم!"
+      imageAlt="در دوران شیردهی برات چی داریم؟"
+      imageSrc="/illustration/mom.png"
+      mobileTwoRows
+    />
   );
 }
 
