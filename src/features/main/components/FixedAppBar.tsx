@@ -5,7 +5,7 @@ import React from "react";
 
 function FixedAppBar() {
   return (
-    <section className="flex md:hidden z-10 bg-pink-500 p-3 fixed bottom-0 right-0 left-0 items-center justify-between mt-2">
+    <section className="flex md:hidden z-10 bg-pink-500 py-3 px-5 fixed bottom-0 right-0 left-0 items-center justify-between mt-2">
       <div>
         <p className="text-[10px] text-gray-100 mb-1">یک قدم تا تغییر مثبت!</p>
         <p className="text-[13px] text-gray-50">همین حالا نصب کن</p>

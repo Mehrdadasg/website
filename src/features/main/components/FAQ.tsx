@@ -29,7 +29,7 @@ const faqItems = [
 
 function FAQ() {
   return (
-    <section className="max-w-4xl mx-auto pt-14 pb-20 px-3 md:px-0 faq">
+    <section className="max-w-4xl mx-auto pt-14 pb-20 px-5 xl:px-0 faq">
       <p className="font-semibold text-[22px] md:text-4xl mb-5 md:mb-10">سوالات پر تکرار</p>
       <Accordion type="single" collapsible={true} className="space-y-3">
         {faqItems.map((item) => (

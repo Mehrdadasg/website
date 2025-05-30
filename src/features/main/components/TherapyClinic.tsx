@@ -31,15 +31,15 @@ const specialties = [
 function TherapyClinic() {
 
   return (
-    <SectionWrapper className="my-24 px-3 md:px-0">
-      <div className='md:flex py-8 px-5 md:p-16 bg-lake-blue-50 rounded-[12px] md:rounded-4xl'>
-      <section className="md:w-1/2 pt-3">
-        <h2 className="text-[22px] md:text-4xl text-center md:text-right font-bold md:font-semibold text-lake-blue-500">کلینیـــک مشـــاوره</h2>
-        <h3 className="my-5 md:my-12 text-[13px] md:text-base leading-8 text-center md:text-right">
+    <SectionWrapper className="my-24 px-5 lg:px-10 xl:px-0">
+      <div className='lg:flex py-8 px-5 lg:px-16 lg:py-16 bg-lake-blue-50 rounded-[12px] lg:rounded-4xl'>
+      <section className="lg:w-1/2 pt-3">
+        <h2 className="text-[22px] md:text-4xl text-center lg:text-right font-bold md:font-semibold text-lake-blue-500">کلینیـــک مشـــاوره</h2>
+        <h3 className="my-5 lg:my-12 text-[13px] md:text-base leading-8 text-center lg:text-right">
           <mark className='bg-transparent'>تیم متخصصین یک زن </mark><br />
           آماده مشاوره و پاسخ به هر گونه سوالات توست
         </h3>
-        <ol className="hidden md:grid grid-cols-2 md:grid-cols-3 gap-5">
+        <ol className="hidden lg:grid grid-cols-2 md:grid-cols-3 gap-5">
           {specialties.map((item, index) => (
             <li key={index} className="flex gap-2 items-center">
               <TickCircle
@@ -52,7 +52,7 @@ function TherapyClinic() {
           ))}
         </ol>
       </section>
-      <section className="md:w-1/2">
+      <section className="lg:w-1/2">
         <ol className="flex flex-wrap my-8 justify-center md:justify-baseline gap-2">
           {doctors.map((doctor, index) => (
             <li key={index}>
@@ -68,7 +68,7 @@ function TherapyClinic() {
             </li>
           ))}
         </ol>
-        <ol className="grid md:hidden grid-cols-2 md:grid-cols-3 gap-5">
+        <ol className="grid lg:hidden grid-cols-2 md:grid-cols-3 gap-5">
           {specialties.map((item, index) => (
             <li key={index} className="flex gap-2 items-center">
               <TickCircle

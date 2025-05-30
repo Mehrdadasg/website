@@ -20,16 +20,16 @@ const dietItems = [
 
 function DietPlan() {
   return (
-    <SectionWrapper className="my-24 py-10 px-3 md:px-0 md:py-14">
-      <div className="md:flex py-8 px-5 md:p-16 bg-green-50 rounded-[12px] md:rounded-4xl">
-        <section className="md:w-1/2">
-          <h2 className="text-[22px] md:text-4xl text-center md:text-right font-bold md:font-semibold text-green-500">
+    <SectionWrapper className="my-24 py-10 px-5 lg:px-10 xl:px-0 md:py-14">
+      <div className="lg:flex py-8 px-5 lg:p-16 bg-green-50 rounded-[12px] lg:rounded-4xl">
+        <section className="lg:w-1/2">
+          <h2 className="text-[22px] lg:text-4xl text-center lg:text-right font-bold lg:font-semibold text-green-500">
             برنامه رژیم غذایـــی
           </h2>
-          <h3 className="text-[13px] md:text-base leading-8 text-center md:text-right my-5 md:my-12">
+          <h3 className="text-[13px] md:text-base leading-8 text-center lg:text-right my-5 lg:my-12">
             دنیایی از برنامه های رژیم غذایی متنوع اختصاصی
           </h3>
-          <ol className="hidden md:grid grid-cols-2 gap-5">
+          <ol className="hidden lg:grid grid-cols-2 gap-5">
             {dietItems.map((item, index) => (
               <li key={index} className="flex gap-2 items-center">
                 <TickCircle
@@ -44,7 +44,7 @@ function DietPlan() {
             ))}
           </ol>
         </section>
-        <section className="md:w-1/2 flex flex-col md:flex-row justify-center items-center">
+        <section className="lg:w-1/2 flex flex-col lg:flex-row justify-center items-center">
           <Image
             src="/breakfast.png"
             width={374}
@@ -53,7 +53,7 @@ function DietPlan() {
             quality={100}
           />
 
-          <ol className="grid md:hidden grid-cols-2 gap-3 mt-5">
+          <ol className="grid lg:hidden grid-cols-2 md:grid-cols-3 lg:grid-cols-2 gap-3 mt-5">
             {dietItems.map((item, index) => (
               <li key={index} className="flex gap-2 items-center">
                 <TickCircle

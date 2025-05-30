@@ -237,16 +237,17 @@ body {
 }
 
 .hero {
-  height: max;
   width: 100%;
   background: url("/shape.png") no-repeat;
   background-size: 100% 100%;
   background-position: 0 -20px;
 }
 
-@media (min-width:768px) {
-  .hero{
-    height: 800px;
+@media (max-width: 767px) {
+  .hero {
+    background: url("/mobile-shape.png") no-repeat;
+    background-size: 110% 100%;
+    background-position: -20px -20px;
   }
 }
 
@@ -285,7 +286,7 @@ body {
 }
 
 .mobile-menu .accordion-trigger svg path {
-  stroke: #fff
+  stroke: #fff;
 }
 
 .footer {
@@ -293,9 +294,9 @@ body {
   background-size: 100%;
 }
 
-@media (max-width:767px) {
-  .footer{
-    background: url('/footer-mobile-bg.png') no-repeat;
+@media (max-width: 767px) {
+  .footer {
+    background: url("/footer-mobile-bg.png") no-repeat;
     background-size: 100% 100%;
   }
 }

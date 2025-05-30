@@ -51,7 +51,7 @@ const ArticleCard: React.FC<FeaturedArticleProps> = ({
             {description}
           </p>
         </section>
-        <section>
+        <section className="md:hidden">
           <div className="flex items-center gap-1 mt-3">
             <h2 className="text-[13px] font-bold flex-grow line-clamp-1">
               {title}

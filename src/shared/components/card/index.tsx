@@ -37,7 +37,7 @@ const Card: React.FC<CardProps> = ({
           className={`${imageClass ?? ""}`}
         />
         <div className="mt-4">
-          <h3 className={`font-bold ${titleClass ?? ""}`}>{title}</h3>
+          <h3 className={`font-bold truncate line-clamp-1 ${titleClass ?? ""}`}>{title}</h3>
           <p className={`text-[13px] text-gray-500 mt-2 ${descriptionClass ?? ""}`}>{description}</p>
         </div>
       </article>

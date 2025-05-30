@@ -42,7 +42,7 @@ const articleItems = [
 function LastedArticles() {
 
   return (
-    <SectionWrapper className="pt-5 pb-24 px-3 md:px-0">
+    <SectionWrapper className="pt-5 pb-24 px-5 lg:px-10 xl:px-0">
       <section className="flex justify-between items-center">
         <div className="flex items-center gap-3">
           <span className="hidden sm:flex size-[44px] bg-orange-50 rounded-full justify-center items-center">

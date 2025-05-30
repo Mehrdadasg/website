@@ -19,16 +19,16 @@ function DesktopFooterItem() {
   const firstColumn = navItems?.slice(0, 6);
   const secondColumn = navItems?.slice(6);
   return (
-    <section className="hidden md:w-2/3 px-[10%] md:flex gap-5">
+    <section className="hidden md:w-2/3 xl:px-[10%] md:flex gap-5">
       <section className="md:w-3/4">
         <h2>
-          <mark className="bg-transparent text-gray-50 text-lg font-semibold">
+          <mark className="bg-transparent text-gray-50 md:text-base lg:text-lg font-semibold">
             اپلیکیشن یک زن
           </mark>
         </h2>
 
-        <nav className="text-gray-50 text-sm mt-8">
-          <div className="grid grid-cols-2">
+        <nav className="text-gray-50 text-sm mt-8 text-[13px] lg:text-[14px] xl:text-base">
+          <div className="grid grid-cols-2 gap-3">
             <ul className="space-y-3">
               {firstColumn.map((item, index) => (
                 <li key={index}>
@@ -47,9 +47,9 @@ function DesktopFooterItem() {
         </nav>
       </section>
       <section className="md:w-1/4">
-        <p className="text-lg text-gray-50 font-semibold">کمپانی</p>
+        <p className="md:text-base lg:text-lg text-gray-50 font-semibold">کمپانی</p>
         <nav>
-          <ul className="text-gray-50 text-sm mt-8 space-y-3">
+          <ul className="text-gray-50 text-sm mt-8 space-y-3 text-[13px] lg:text-[14px] xl:text-base">
             <li>
               <Link href="/">درباره ما</Link>
             </li>

@@ -1,31 +1,24 @@
 import Link from "next/link";
 import React from "react";
 
-function NavbarMenu() {
+type MenuItems={
+  Title:string
+  Url:string
+}
+
+type Props={
+  menuItems:MenuItems[]
+}
+
+function NavbarMenu({menuItems}:Props) {
   return (
-    <nav className="grow hidden md:flex justify-center" aria-label="ناوبری اصلی">
-      <ul className="flex gap-10 items-center">
-        <li>
+    <nav className="grow hidden lg:flex justify-center" aria-label="ناوبری اصلی">
+      <ul className="flex gap-5 xl:gap-10 items-center">
+        {menuItems?.map((menu)=> <li key={menu?.Title}>
           <Link href="/" className=" ">
-            صفحه اصلی
+            {menu?.Title}
           </Link>
-        </li>
-        <li>
-          <Link href="/">مجله یک زن</Link>
-        </li>
-        <li>
-          <Link href="/clinic" className=" ">
-            کلینیک مشاوره
-          </Link>
-        </li>
-        <li>
-          <Link href="/">اپلیکیشن یک زن</Link>
-        </li>
-        <li>
-          <Link href="/gentleman" className=" ">
-            جنتلمن
-          </Link>
-        </li>
+        </li>)}
       </ul>
     </nav>
   );

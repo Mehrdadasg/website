@@ -48,7 +48,7 @@ export default function CommentSwiper() {
   };
 
   return (
-    <section className="w-full max-w-[1350px] px-20 mx-auto pt-5 pb-10 relative overflow-hidden">
+    <section className="w-full max-w-[1350px] px-5 sm:px-5 lg:px-28 2xl:px-20 mx-auto pt-5 pb-10 relative overflow-hidden">
       <Swiper
         slidesPerView={1}
         spaceBetween={10}
@@ -56,8 +56,12 @@ export default function CommentSwiper() {
           clickable: true,
         }}
         breakpoints={{
-          640: {
+          420: {
             slidesPerView: 2,
+            spaceBetween: 20,
+          },
+          650: {
+            slidesPerView: 3,
             spaceBetween: 20,
           },
           768: {
@@ -65,6 +69,10 @@ export default function CommentSwiper() {
             spaceBetween: 20,
           },
           1024: {
+            slidesPerView: 3,
+            spaceBetween: 20,
+          },
+          1200: {
             slidesPerView: 4,
             spaceBetween: 20,
           },
@@ -93,7 +101,7 @@ export default function CommentSwiper() {
       </Swiper>
       <button
         type="button"
-        className={`absolute justify-center items-center left-0 size-[52px] rounded-full top-1/2 z-10 hidden -translate-y-1/2 bg-pink-500 p-0 text-white hover:bg-pink-600 lg:flex ${
+        className={`absolute justify-center items-center left-10 2xl:left-0 size-[52px] rounded-full top-1/2 z-10 hidden -translate-y-1/2 bg-pink-500 p-0 text-white hover:bg-pink-600 lg:flex ${
           activeIndex >= fakeCarouselData.length - 1
             ? "opacity-50 pointer-events-none"
             : ""
@@ -105,7 +113,7 @@ export default function CommentSwiper() {
       </button>
       <button
         type="button"
-        className={`absolute justify-center items-center rounded-full right-0 size-[52px] top-1/2 z-10 hidden -translate-y-1/2 bg-pink-500 p-0 text-white hover:bg-pink-600 lg:flex ${
+        className={`absolute justify-center items-center rounded-full right-10 2xl:right-0 size-[52px] top-1/2 z-10 hidden -translate-y-1/2 bg-pink-500 p-0 text-white hover:bg-pink-600 lg:flex ${
           activeIndex === 0 ? "opacity-50 pointer-events-none" : ""
         }`}
         onClick={handlePrevSlide}
