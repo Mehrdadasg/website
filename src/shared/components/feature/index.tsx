@@ -1,5 +1,4 @@
 import Card from "@/shared/components/card";
-import SectionWrapper from "@/shared/hoc/section-wrapper";
 import { FeaturesItem } from "@/shared/types/type";
 import Image from "next/image";
 import React from "react";
@@ -28,10 +27,8 @@ function Feature({
     ? cardItems.slice(Math.ceil(cardItems.length / 2))
     : [];
 
-  console.log("cardItems", cardItems);
-
   return (
-    <SectionWrapper className="md:flex gap-[13%] md:gap-[5%] xl:gap-[13%] py-10 md:py-24 px-5 lg:px-10 xl:px-0">
+    <section className="md:flex gap-[13%] md:gap-[5%] xl:gap-[13%] py-10 md:py-24 px-5 lg:px-10 xl:px-0">
       <section className="md:w-[30%] lg:w-[27%] flex md:block flex-col items-center md:sticky top-32 h-max">
         <h2 className="font-bold order-2 md:order-1 text-[20px] md:text-2xl xl:text-[32px] mb-3 text-center md:text-right">
           {title}
@@ -53,28 +50,22 @@ function Feature({
         {mobileTwoRows ? (
           <div className="flex flex-col gap-5">
             <div className="flex gap-5 overflow-x-auto pb-5">
-              {firstRowCards.map((item, index) => (
+              {firstRowCards.map((item) => (
                 <Card
-                  key={`first-${index}`}
-                  imageAlt={item.Title}
-                  title={item.Title}
-                  imageSrc={item.ImageUrl}
+                  key={`first-${item?.Id}`}
                   linkHref="/"
-                  description={item.Text}
                   cardClass="w-[140px] flex-shrink-0"
+                  cardItems={item}
                 />
               ))}
             </div>
             {secondRowCards.length > 0 && (
               <div className="flex gap-5 overflow-x-auto mt-5 pb-5">
-                {secondRowCards.map((item, index) => (
+                {secondRowCards.map((item) => (
                   <Card
-                    key={`second-${index}`}
-                    imageAlt={item.Title}
-                    title={item.Title}
-                    imageSrc={item.ImageUrl}
+                    key={`second-${item?.Id}`}
                     linkHref="/"
-                    description={item.Text}
+                    cardItems={item}
                     cardClass="w-[140px] flex-shrink-0"
                   />
                 ))}
@@ -83,14 +74,11 @@ function Feature({
           </div>
         ) : (
           <div className="flex md:grid grid-cols-3 gap-5 lg:gap-10">
-            {cardItems.map((item, index) => (
+            {cardItems.map((item) => (
               <Card
-                key={index}
-                imageAlt={item.Title}
-                title={item.Title}
-                imageSrc={item.ImageUrl}
+                key={item?.Id}
                 linkHref="/"
-                description={item.Text}
+                cardItems={item}
                 cardClass="w-[140px] md:w-full flex-shrink-0"
               />
             ))}
@@ -99,20 +87,17 @@ function Feature({
       </section>
       <section className="flex-1 hidden md:block">
         <div className="hidden md:grid grid-cols-3 gap-5 lg:gap-10">
-          {cardItems.map((item, index) => (
+          {cardItems.map((item) => (
             <Card
-              key={index}
-              imageAlt={item.Title}
-              title={item.Title}
-              imageSrc={item.ImageUrl}
+              key={item?.Id}
               linkHref="/"
-              description={item.Text}
+              cardItems={item}
               cardClass="w-[140px] md:w-full flex-shrink-0"
             />
           ))}
         </div>
       </section>
-    </SectionWrapper>
+    </section>
   );
 }
 

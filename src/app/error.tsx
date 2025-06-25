@@ -1,41 +1,35 @@
 "use client";
-import { Button } from "@/components/ui/button";
+import LinkCM from "@/shared/components/link";
 import { Home } from "iconsax-react";
 import Image from "next/image";
-import Link from "next/link";
 import React from "react";
 
 function ErrorPage() {
   return (
-    <main className="h-screen max-w-5xl mx-auto flex gap-20 pt-52">
-      <section className="w-[55%]">
-        <h2 className="rounded-[50px] bg-orange-50 text-orange-500 w-max py-2 px-4 text-lg">
+    <main className="md:h-screen max-w-5xl mx-auto flex flex-wrap md:flex-nowrap px-5 gap-20 pt-36 md:pt-44 lg:pt-52">
+      <section className="w-full md:w-[55%] text-center md:text-right">
+        <h2 className="rounded-[50px] bg-pink-50 text-pink-500 w-max mx-auto md:mx-0 py-2 px-4 text-lg">
           خطای 500
         </h2>
-        <p className="text-5xl font-bold leading-20 my-5">
-          چیزی که دنبالش بودی، اینجا نیست!
+        <p className="text-[22px] md:text-2xl lg:text-5xl font-bold lg:leading-20 my-5">
+          در حال ارتقا و تعمیرات ...
         </p>
-        <p className="font-normal text-gray-500 text-lg">
-          احتمالا جاش عوض شده ولی اشکال نداره کلی چیزای جذاب و خوندنی دیگه برات
-          داریم.
+        <p className="font-normal text-gray-500 text-[13px] md:text-base lg:text-lg leading-8">
+           <br />یه چیزی اون پشت درست کار نمی کرد، داریم درستش می کنیم!
+لطفا چند دقیقه دیگه سر بزن.
         </p>
-        <div className="flex gap-5 mt-10">
-          <Button
-            asChild
-            type="button"
-            variant="default"
-            className="bg-pink-500 p-5 rounded-[50px] text-[13px]"
-          >
-            <Link href="">
+        <div className="flex justify-center md:justify-start gap-5 mt-10">
+
+            <LinkCM href="/"
+            >
               <Home size={20} color="#fff" />
               صفحه اصلی
-            </Link>
-          </Button>
+            </LinkCM>
         </div>
       </section>
-      <section className="w-[40%]">
+      <section className="mx-auto md:w-[40%] pb-20 md:pb-0">
         <Image
-          src="/illustration/404.png"
+          src="/illustration/500.png"
           className="w-full h-auto"
           width={900}
           height={900}

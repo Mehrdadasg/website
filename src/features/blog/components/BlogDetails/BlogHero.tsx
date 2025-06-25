@@ -1,0 +1,92 @@
+import Breadcrumb from "@/shared/components/breadcrumb";
+import ShareBox from "@/shared/components/share-box";
+import { CalendarEdit, Eye, Timer1 } from "iconsax-react";
+import Image from "next/image";
+import Link from "next/link";
+import React from "react";
+
+type BlogHeroProps = {
+  Id: number;
+  Title: string;
+  ImageUrl: string;
+  CategoryTitle: string;
+  ReadTime: string;
+  Slug: string;
+  PublishDate: string;
+  AuthorName: string;
+  AuthorAvatar: string;
+  AuthorSlug: string;
+  VisitedCount: number;
+};
+
+function BlogHero({ blogHeroData }: {blogHeroData:BlogHeroProps}) {
+  const breadcrumbItems = [
+    { label: "خانه", href: "/" },
+    { label: "مجله", href: "/blog" },
+    { label: blogHeroData?.CategoryTitle },
+  ];
+  return (
+    <section className="flex gap-5 flex-col sm:flex-row">
+      <section className="md:w-1/2">
+        <Breadcrumb
+          items={breadcrumbItems}
+          separator="/"
+          linkClassName="text-lake-blue-600 text-xs"
+          textClassName="text-lake-blue-600 text-xs"
+          seperatorClassName="text-gray-200"
+        />
+        <h1 className="text-[22px] lg:text-4xl xl:text-5xl xl:leading-[80px] my-5">
+          <b>{blogHeroData?.Title}</b>
+        </h1>
+        <div className="bg-gray-100 rounded-[25px] flex gap-1 items-center w-max py-2 px-3">
+          <Timer1 size={20} color="var(--color-gray-400)" />
+          <span className="text-xs text-gray-600"><b>{blogHeroData?.ReadTime}</b></span>
+          <span className="text-xs text-gray-600">مطالعه</span>
+        </div>
+        <section className="hidden md:flex gap-3 lg:gap-5 text-xs lg:text-sm text-gray-600 my-8">
+          <div className="flex items-center gap-2">
+            <Link href={`/blog/${blogHeroData?.Slug}/${blogHeroData?.AuthorSlug}`}>
+              <Image
+                src={blogHeroData?.AuthorAvatar}
+                className="rounded-full size-[52px]"
+                width={52}
+                height={52}
+                alt="نویسنده بلاگ"
+              />
+            </Link>
+            <p>
+              نویسنده: <Link href={`/blog/${blogHeroData?.Slug}/${blogHeroData?.AuthorSlug}`}>{blogHeroData?.AuthorName}</Link>
+            </p>
+          </div>
+          <div className="flex gap-2 items-center">
+            <CalendarEdit size={20} color="var(--color-gray-400)" />
+            {blogHeroData?.PublishDate}
+          </div>
+          <div className="flex gap-2 items-center">
+            <Eye size={20} color="var(--color-gray-400)" />
+            {blogHeroData?.VisitedCount} بازدید
+          </div>
+        </section>
+        <ShareBox
+          commentCount={37}
+          starCount={527}
+          title={blogHeroData?.Title}
+          url={`https://yekzan.com/blog/${blogHeroData?.Slug}`}
+          text={blogHeroData?.Title}
+        />
+      </section>
+      <section className="md:w-1/2">
+        <Image
+          src={blogHeroData?.ImageUrl}
+          alt=""
+          className="w-full h-auto"
+          width={618}
+          height={432}
+          priority
+        />
+      </section>
+    </section>
+  );
+}
+
+export default BlogHero;

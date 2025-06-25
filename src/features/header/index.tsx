@@ -8,15 +8,15 @@ import { ssrHeader } from "../apiHandlers/serverHandlers/ssrHeader";
 
 async function Header() {
   const queryClient = new QueryClient();
-  await ssrHeader(queryClient);
+  const {headerData}=await ssrHeader(queryClient);
   
   return (
     <HydrationBoundary state={dehydrate(queryClient)}>
       <header
-        className="fixed w-full px-5 lg:px-10 xl:px-16 top-4 z-50"
+        className="fixed w-full px-3 sm:px-5 lg:px-10 xl:px-14 top-2 md:top-2 z-50"
         role="banner"
       >
-        <MainHeader/>
+        <MainHeader headerData={headerData}/>
       </header>
     </HydrationBoundary>
   );

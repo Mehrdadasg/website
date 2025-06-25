@@ -7,11 +7,10 @@ import React from "react";
 async function HeroSection() {
   const queryClient = new QueryClient();
   const { heroData } = await ssrHeroData(queryClient);
-  console.log("heroData", heroData);
 
   return (
-    <section className="hero h-max md:h-[750px] lg:h-[775px] 2xl:h-[800px] pt-52 lg:pt-40 xl:pt-44 -mt-[80px] md:mt-0">
-      <section className="px-5 lg:px-10 xl:px-0 max-w-6xl mx-auto md:flex lg:gap-5 xl:gap-20 h-full">
+    <section className="hero h-max md:h-[750px] lg:h-[775px] 2xl:h-[800px] pt-44 md:pt-52 lg:pt-40 xl:pt-44 -mt-[80px] md:mt-0">
+      <section className="px-3 sm:px-5 lg:px-10 xl:px-0 max-w-6xl mx-auto md:flex lg:gap-5 xl:gap-20 h-full">
         <section className="md:w-1/2">
           <p className="text-center md:text-right text-2xl font-light text-pink-500">
             اولین اپلیکیشن

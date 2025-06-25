@@ -114,6 +114,9 @@
   --color-skin-800: #573224;
   --color-skin-900: #2b1912;
   --color-skin-950: #160c09;
+
+  --shadow-sm:0 5px;
+  --shadow-md: rgba(17, 17, 26, 0.1) 0px 4px 16px, rgba(17, 17, 26, 0.05) 0px 8px 32px;
 }
 
 @theme inline {
@@ -251,6 +254,13 @@ body {
   }
 }
 
+.contact{
+  width: 100%;
+  background: url("/shape2.png") no-repeat;
+  background-size: 100% 100%;
+  background-position: 0 -20px;
+}
+
 .swiper-pagination-bullet {
   background-color: var(--color-gray-200);
   width: 10px !important;
@@ -290,13 +300,87 @@ body {
 }
 
 .footer {
-  background: url("/footer-bg.png") no-repeat;
+  background-image: url("/footer-bg.png");
+  background-repeat: no-repeat;
   background-size: 100%;
 }
 
 @media (max-width: 767px) {
   .footer {
-    background: url("/footer-mobile-bg.png") no-repeat;
+    background-image: url("/footer-mobile-bg.png");
+    background-repeat: no-repeat;
     background-size: 100% 100%;
   }
 }
+
+.loader {
+  width: 30px;
+  aspect-ratio: 1;
+  border-radius: 50%;
+  background: radial-gradient(farthest-side, #fff 94%, #0000) top/8px 8px
+      no-repeat,
+    conic-gradient(#0000 30%, #fff);
+  -webkit-mask: radial-gradient(farthest-side, #0000 calc(100% - 5px), #000 0);
+  animation: l13 1s infinite linear;
+  display: block;
+}
+@keyframes l13 {
+  100% {
+    transform: rotate(1turn);
+  }
+}
+
+.ripple {
+  position: absolute;
+  border-radius: 50%;
+  transform: scale(0);
+  animation: ripple 600ms linear;
+  pointer-events: none;
+}
+
+@keyframes ripple {
+  to {
+    transform: scale(4);
+    opacity: 0;
+  }
+}
+
+.blog-content * {
+  font-family: inherit !important;
+}
+
+.blog-content h2 {
+  font-size: 24px !important;
+  font-weight: bold !important;
+}
+
+.blog-content a {
+  color: var(--color-lake-blue-600) !important;
+}
+
+.leaf{
+  position: relative;
+}
+
+.leaf::before{
+  position: absolute;
+  content: "";
+  right:0px;
+  top:0;
+  background: url('/r-leaf.png') no-repeat;
+  background-size: cover;
+  width: 39px;
+  height: 80px;
+}
+
+.leaf::after{
+  position: absolute;
+  content: "";
+  left:0px;
+  top:0;
+  background: url('/l-leaf.png') no-repeat;
+  background-size: cover;
+  width: 39px;
+  height: 80px;
+}
+

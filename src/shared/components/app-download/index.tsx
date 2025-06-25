@@ -1,87 +1,65 @@
-import { Button } from "@/components/ui/button";
+import { ssrAppDownload } from "@/features/apiHandlers/serverHandlers/ssrAppDownload";
+import { QueryClient } from "@tanstack/react-query";
 import Image from "next/image";
 import Link from "next/link";
 import React from "react";
 
-function AppDownload() {
+type AppType = {
+  Id: number;
+  ImageUrl: string;
+  ImageAlt: string;
+  Url: string;
+};
+
+async function AppDownload() {
+  const queryClient = new QueryClient();
+  const { appData } = await ssrAppDownload(queryClient);
+
   return (
     <>
-      <section className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-2 xl:grid-cols-3 gap-3">
-        <Button asChild className="w-full rounded-[50px] p-0">
-          <Link href="" className="h-10 !bg-[#202937]">
+      <section className="grid grid-cols-2 md:grid-cols-2 gap-3 mt-20">
+        {appData?.map((app: AppType) => 
+          <Link
+            key={app?.Id}
+            href={app?.Url}
+            className="h-10 !bg-[#202937] w-full rounded-[50px] p-0 flex justify-center"
+          >
             <Image
-              src="/googlePlay.png"
+              src={app?.ImageUrl}
               className="rounded-[50px] w-auto h-full object-cover"
               quality={100}
               width={340}
               height={80}
-              alt="دانلود از گوگل پلی"
+              alt={app?.ImageAlt}
             />
           </Link>
-        </Button>
-        <Button asChild className="w-full rounded-[50px] p-0">
-          <Link href="" className="h-10 !bg-[#202937]">
-            <Image
-              src="/bazar.png"
-              className="rounded-[50px] w-auto h-full object-cover"
-              quality={100}
-              width={340}
-              height={80}
-              alt="دانلود از بازار"
-            />
-          </Link>
-        </Button>
-        <Button asChild className="w-full rounded-[50px] p-0">
-          <Link href="" className="h-10 !bg-[#202937]">
-            <Image
-              src="/maiket.png"
-              className="rounded-[50px] w-auto h-full object-cover"
-              quality={100}
-              width={340}
-              height={80}
-              alt="دانلود از مایکت"
-            />
-          </Link>
-        </Button>
-        <Button asChild className="sm:hidden md:flex xl:hidden w-full rounded-[50px] p-0">
-          <Link href="" className="h-10 !bg-[#202937]">
-            <Image
-              src="/appStore.png"
-              className="rounded-[50px] w-auto h-full object-cover"
-              quality={100}
-              width={520}
-              height={80}
-              alt="دانلود از اپ استور"
-            />
-          </Link>
-        </Button>
+        )}
       </section>
-      <section className="sm:grid md:block xl:grid grid-cols-2 gap-3 mt-4">
-        <Button asChild className="w-full rounded-[50px] p-0">
-          <Link href="" className="h-10 !bg-[#202937]">
-            <Image
-              src="/android.png"
-              className="rounded-[50px] w-auto h-full object-cover"
-              quality={100}
-              width={520}
-              height={80}
-              alt="دانلود مستقیم اندروید"
-            />
-          </Link>
-        </Button>
-        <Button asChild className="hidden sm:flex md:hidden xl:flex w-full rounded-[50px] p-0">
-          <Link href="" className="h-10 !bg-[#202937]">
-            <Image
-              src="/appStore.png"
-              className="rounded-[50px] w-auto h-full object-cover"
-              quality={100}
-              width={520}
-              height={80}
-              alt="دانلود از اپ استور"
-            />
-          </Link>
-        </Button>
-      </section>
+      {/* <section className="sm:grid md:block xl:grid grid-cols-2 gap-3 mt-4">
+        <Link href="" className="h-10 !bg-[#202937] w-full rounded-[50px] p-0">
+          <Image
+            src="/android.png"
+            className="rounded-[50px] w-auto h-full object-cover"
+            quality={100}
+            width={520}
+            height={80}
+            alt="دانلود مستقیم اندروید"
+          />
+        </Link>
+        <Link
+          href=""
+          className="h-10 !bg-[#202937] hidden sm:flex md:hidden xl:flex w-full rounded-[50px] p-0"
+        >
+          <Image
+            src="/appStore.png"
+            className="rounded-[50px] w-auto h-full object-cover"
+            quality={100}
+            width={520}
+            height={80}
+            alt="دانلود از اپ استور"
+          />
+        </Link>
+      </section> */}
     </>
   );
 }

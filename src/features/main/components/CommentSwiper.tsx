@@ -8,22 +8,17 @@ import { ArrowLeft2, ArrowRight2 } from "iconsax-react";
 import "swiper/css";
 import "swiper/css/pagination";
 
-const fakeCarouselData = [
-  { imageSrc: "/carousel/s1.png" },
-  { imageSrc: "/carousel/s2.png" },
-  { imageSrc: "/carousel/s3.png" },
-  { imageSrc: "/carousel/s1.png" },
-  { imageSrc: "/carousel/s2.png" },
-  { imageSrc: "/carousel/s3.png" },
-  { imageSrc: "/carousel/s1.png" },
-  { imageSrc: "/carousel/s2.png" },
-  { imageSrc: "/carousel/s3.png" },
-  { imageSrc: "/carousel/s1.png" },
-  { imageSrc: "/carousel/s2.png" },
-  { imageSrc: "/carousel/s3.png" },
-];
+type TestimonialsItem = {
+  ImageUrl: string;
+  ImageAlt: string;
+  Id:number
+};
 
-export default function CommentSwiper() {
+type TestimonialsType={
+  testimonialsData:TestimonialsItem[]
+}
+
+export default function CommentSwiper({testimonialsData}:TestimonialsType) {
   const [activeIndex, setActiveIndex] = useState(0);
   const swiperRef = useRef<SwiperRef | null>(null);
 
@@ -48,7 +43,7 @@ export default function CommentSwiper() {
   };
 
   return (
-    <section className="w-full max-w-[1350px] px-5 sm:px-5 lg:px-28 2xl:px-20 mx-auto pt-5 pb-10 relative overflow-hidden">
+    <>
       <Swiper
         slidesPerView={1}
         spaceBetween={10}
@@ -85,13 +80,13 @@ export default function CommentSwiper() {
         onSwiper={(swiper) => {
           swiperRef.current = { swiper } as SwiperRef;
         }}
-                onSlideChange={({ activeIndex }) => handleActiveIndex(activeIndex)}
+        onSlideChange={({ activeIndex }) => handleActiveIndex(activeIndex)}
       >
-        {fakeCarouselData?.map((swiper, index) => (
-          <SwiperSlide key={index}>
+        {testimonialsData?.map((swiper) => (
+          <SwiperSlide key={swiper?.Id}>
             <Image
-              src={swiper?.imageSrc}
-              alt={`نظرات شما ${index + 1}`}
+              src={swiper?.ImageUrl}
+              alt={swiper?.ImageAlt}
               width={420}
               height={932}
               className="w-full h-auto"
@@ -102,7 +97,7 @@ export default function CommentSwiper() {
       <button
         type="button"
         className={`absolute justify-center items-center left-10 2xl:left-0 size-[52px] rounded-full top-1/2 z-10 hidden -translate-y-1/2 bg-pink-500 p-0 text-white hover:bg-pink-600 lg:flex ${
-          activeIndex >= fakeCarouselData.length - 1
+          activeIndex >= testimonialsData?.length - 1
             ? "opacity-50 pointer-events-none"
             : ""
         }`}
@@ -121,6 +116,6 @@ export default function CommentSwiper() {
       >
         <ArrowRight2 size={25} color="#fff" />
       </button>
-    </section>
+    </>
   );
 }
