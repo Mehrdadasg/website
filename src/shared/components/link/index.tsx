@@ -50,7 +50,7 @@ function LinkCM({
     default: "bg-white border-gray-200 text-gray-900",
     blue:
       variant === "contained"
-        ? "bg-blue-500 text-white hover:bg-blue-600 border-blue-500"
+        ? "bg-lake-blue-500 text-white hover:bg-lake-blue-600 border-blue-500"
         : variant === "outline"
         ? "text-blue-500 bg-white border-blue-500"
         : variant === "text"

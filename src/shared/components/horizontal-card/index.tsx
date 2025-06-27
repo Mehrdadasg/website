@@ -19,7 +19,7 @@ const HorizontalCard: React.FC<FeaturedArticleProps> = ({article}) => {
           alt={article?.Title ??"تصویر پست"}
           className={`rounded-[12px] object-cover h-[71px] sm:h-[88px] w-[102px] sm:w-32 `}
         />
-        <section>
+        <section className="flex-1">
           <div className="flex items-center gap-1 mt-3">
             <h2 className={`text-[13px] font-bold flex-grow line-clamp-2`}>
               {article?.Title}

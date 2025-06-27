@@ -384,3 +384,6 @@ body {
   height: 80px;
 }
 
+[id] {
+  scroll-margin-top: 150px;
+}

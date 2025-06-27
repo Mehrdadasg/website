@@ -110,12 +110,18 @@ export interface BlogSource {
   Url: string;
 }
 
+export interface BlogHeading {
+  Title: string;
+  Id: string;
+}
+
 export interface BlogDetails {
   Content: BlogContent;
   Next: BlogPost;
   Prev: BlogPost;
   Seo: Seo;
   Sources: BlogSource[];
+  Headings: BlogHeading[];
 }
 
 export interface CommentItem {
@@ -128,12 +134,12 @@ export interface Comment {
   Avatar: string;
   Id: number;
   Text: string;
-  Childs:CommentItem[]
+  Childs: CommentItem[];
 }
 
 export type CommentListResponse = {
-  Data: Comment[],
-  Message:string | null
+  Data: Comment[];
+  Message: string | null;
 };
 
 export type FormProps = {
@@ -147,4 +153,37 @@ export interface AddComment {
   Name: string;
   Text: string;
   Email: string;
+}
+
+export interface AddMessage {
+  Name: string;
+  Text: string;
+  Email: string;
+}
+
+export interface ExpertType {
+  Id: number;
+  Title: string;
+  SubTitle: string;
+  CategoryId: number;
+  Avatar: string;
+  Slug: string;
+}
+
+export interface ExpertContent {
+  Id: number;
+  Title: string;
+  SubTitle: string;
+  Text: string;
+  Phone: string;
+  Address: string;
+  Instagram: string;
+  ImageUrl: string;
+  MedicalNumber: string;
+  Skills: string;
+}
+
+export interface ExpertInfo {
+  Content: ExpertContent;
+  Seo: Seo;
 }
