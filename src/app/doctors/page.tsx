@@ -12,7 +12,7 @@ import Link from "next/link";
 import React from "react";
 
 interface DoctorsPageProps {
-  searchParams: Promise<{ categoryId?: string; }>;
+  searchParams: Promise<{ categoryId?: string }>;
 }
 
 async function DoctorsPage({ searchParams }: DoctorsPageProps) {
@@ -27,10 +27,15 @@ async function DoctorsPage({ searchParams }: DoctorsPageProps) {
     { label: "تماس با ما" },
   ];
 
-  const categoryId = resolvedCategoryId?.categoryId ? parseInt(resolvedCategoryId?.categoryId) : 0;
-  const doctorsList = categoryId === 0
-    ? expertList
-    : expertList?.filter((doctor: ExpertType) => doctor.CategoryId === categoryId) || [];
+  const categoryId = resolvedCategoryId?.categoryId
+    ? parseInt(resolvedCategoryId?.categoryId)
+    : 0;
+  const doctorsList =
+    categoryId === 0
+      ? expertList
+      : expertList?.filter(
+          (doctor: ExpertType) => doctor.CategoryId === categoryId
+        ) || [];
 
   return (
     <>
@@ -54,40 +59,62 @@ async function DoctorsPage({ searchParams }: DoctorsPageProps) {
             {expertPageData?.Content?.HtmlContent}
           </p>
 
-          <Categories expertCategories={expertCategories} selectedCategoryId={categoryId} />          
+          <Categories
+            expertCategories={expertCategories}
+            selectedCategoryId={categoryId}
+          />
         </section>
       </section>
-      <section className="grid sm:grid-cols-3 md:grid-cols-4 gap-10 mt-20 max-w-5xl mx-auto pb-20">
-        {doctorsList?.length > 0 ? doctorsList?.map((d:ExpertType)=><section key={d?.Id} className="flex sm:flex-col sm:justify-center items-center gap-2 px-3 sm:px-5 md:px-7 w-full md:w-max">
-          <Image
-            src={d?.Avatar || "/user2.png"}
-            alt={d?.Title}
-            width={150}
-            height={150}
-            className="rounded-full size-[90px] sm:size-[150px] object-cover"
-          />
-          <div className="flex items-center flex-1 justify-between sm:block sm:w-full">
-            <div className="sm:text-center">
-              <h4 className="font-semibold sm:mt-5 md:text-center">
-                {d?.Title}
-              </h4>
-              <p className="text-gray-500 text-xs mt-2 md:text-center truncate max-w-44">
-                {d?.SubTitle}
-              </p>
-            </div>
-            <LinkCM
-              href={`/doctors/${d?.Slug}`}
-              variant="outline"
-              color="blue"
-              className="mt-5 !hidden sm:!flex"
+      <section className={`grid ${doctorsList?.length > 0 ? "sm:grid-cols-3 md:grid-cols-4":""} gap-10 mt-20 max-w-5xl mx-auto pb-20`}>
+        {doctorsList?.length > 0 ? (
+          doctorsList?.map((d: ExpertType) => (
+            <section
+              key={d?.Id}
+              className="flex sm:flex-col sm:justify-center items-center gap-2 px-3 sm:px-5 md:px-7 w-full md:w-max"
             >
-              مشاهده پروفایل
-            </LinkCM>
-            <Link href="" className="sm:hidden">
-              <ArrowLeft2 color="var(--color-lake-blue-500)" size={24} />
-            </Link>
-          </div>
-        </section>):<p>یافت نشد</p>}
+              <Image
+                src={d?.Avatar || "/user2.png"}
+                alt={d?.Title}
+                width={150}
+                height={150}
+                className="rounded-full size-[90px] sm:size-[150px] object-cover"
+              />
+              <div className="flex items-center flex-1 justify-between sm:block sm:w-full">
+                <div className="sm:text-center">
+                  <h4 className="font-semibold sm:mt-5 md:text-center">
+                    {d?.Title}
+                  </h4>
+                  <p className="text-gray-500 text-xs mt-2 md:text-center truncate max-w-44">
+                    {d?.SubTitle}
+                  </p>
+                </div>
+                <LinkCM
+                  href={`/doctors/${d?.Slug}`}
+                  variant="outline"
+                  color="blue"
+                  className="mt-5 !hidden sm:!flex"
+                >
+                  مشاهده پروفایل
+                </LinkCM>
+                <Link href="" className="sm:hidden">
+                  <ArrowLeft2 color="var(--color-lake-blue-500)" size={24} />
+                </Link>
+              </div>
+            </section>
+          ))
+        ) : (
+          <section className="flex justify-center items-center flex-col ">
+            <Image
+              src="/illustration/404.png"
+              width={200}
+              height={200}
+              alt="یافت نشد"
+            />
+            <p className="text-sm pb-3">
+              هیچ نتیجه‌ای یافت نشد
+            </p>
+          </section>
+        )}
       </section>
     </>
   );

@@ -1,9 +1,11 @@
 "use client";
 import Button from "@/shared/components/button";
-import { FormProps } from "@/shared/types/type";
-import { Sms, User } from "iconsax-react";
-import React from "react";
+import { ContactFormProps } from "@/shared/types/type";
+import { Call, Sms, User } from "iconsax-react";
+import React, { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
+import { useAddMessage } from "../apiHandlers/clientHandlers/useAddMessage";
+import toast from "react-hot-toast";
 
 type Props = {};
 
@@ -11,10 +13,39 @@ function ContactForm({}: Props) {
   const {
     register,
     handleSubmit,
-    formState: { isLoading, isValid, errors },
-  } = useForm<FormProps>({
+    formState: { isValid, errors },
+    reset,
+    setValue,
+  } = useForm<ContactFormProps>({
     mode: "onChange",
   });
+  const { mutateAsync: addCommentFunc } = useAddMessage();
+  const [saveInformation, setSaveInformation] = useState(false);
+
+  useEffect(() => {
+    const savedName = localStorage.getItem("commentName");
+    const savedPhone = localStorage.getItem("commentPhone");
+    if (savedName) setValue("name", savedName);
+    if (savedPhone) setValue("phone", savedPhone);
+  }, [setValue]);
+
+  const handleCommentSubmit = async (values: ContactFormProps) => {
+    try {
+      const response = await addCommentFunc({
+        Phone: values.phone,
+        Name: values.name,
+        Text: values.comment,
+      });
+      if (response?.Message?.Status === "Success") {
+        toast.success(response?.Message?.Text);
+        reset();
+        if (saveInformation) {
+          localStorage.setItem("commentName", values.name);
+          localStorage.setItem("commentPhone", values.phone);
+        }
+      }
+    } catch (error) {}
+  };
 
   return (
     <section className="md:shadow-sm shadow-gray-200 md:border border-gray-200 rounded-[12px] md:px-10 md:py-16 mt-10 max-w-[40rem] md:max-w-4xl mx-auto ">
@@ -24,7 +55,7 @@ function ContactForm({}: Props) {
       <p className="text-gray-500 text-lg mt-5">
         از طریق فرم زیر می تونی پیامت رو به ما برسونی .
       </p>
-      <form className="mt-10">
+      <form className="mt-10" onSubmit={handleSubmit(handleCommentSubmit)}>
         <section className="mt-4 flex flex-col sm:flex-row gap-5">
           <section className="sm:w-1/2">
             <section
@@ -54,25 +85,25 @@ function ContactForm({}: Props) {
           <section className="sm:w-1/2">
             <section
               className={`flex items-center border ${
-                errors?.email
+                errors?.phone
                   ? "border-red-400 bg-red-50"
                   : "border-gray-200 bg-gray-100"
               } rounded-[25px] px-4 gap-2`}
             >
-              <Sms color="var(--color-gray-500)" size={20} />
+              <Call color="var(--color-gray-500)" size={20} />
               <input
                 type="text"
-                placeholder="ایمیل"
+                placeholder="شماره همراه"
                 id=""
                 className="w-full py-3 bg-transparent border-0 focus:border-0 focus:outline-0"
-                {...register("email", {
-                  required: "لطفا ایمیل خود را وارد کنید",
+                {...register("phone", {
+                  required: "لطفا شماره همراه خود را وارد کنید",
                 })}
               />
             </section>
-            {errors?.email && (
+            {errors?.phone && (
               <p className="text-red-500 text-xs mt-1 pr-2">
-                {errors?.email?.message}
+                {errors?.phone?.message}
               </p>
             )}
           </section>
@@ -113,6 +144,7 @@ function ContactForm({}: Props) {
         <Button
           type="submit"
           className="text-[13px] font-bold w-full cursor-pointer"
+          isValid={isValid}
         >
           ارسال نظر
         </Button>

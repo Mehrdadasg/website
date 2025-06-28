@@ -1,6 +1,7 @@
 "use client";
 import React from "react";
 import Link from "next/link";
+import LinkCM from "@/shared/components/link";
 
 type ExpertCategoriesType = {
   Id: number;
@@ -16,20 +17,24 @@ function Categories({ expertCategories, selectedCategoryId }: Props) {
   return (
     <section className="overflow-x-auto pb-5">
       <section className="flex gap-10 mt-14 w-max">
-        <Link
+        <LinkCM
           href="?categoryId=0"
-          className={`text-sm font-semibold ${selectedCategoryId === 0 ? "text-blue-700 border-b-2 border-blue-700" : "text-blue-500"} cursor-pointer w-28 block text-center py-2`}
+          variant={selectedCategoryId === 0 ? "contained" : "text"}
+          color="blue"
+          className={`${selectedCategoryId===0? "":"!bg-transparent !border-transparent" } w-28 text-sm`}
         >
           همه
-        </Link>
+        </LinkCM>
         {expertCategories?.map((c: ExpertCategoriesType) => (
-          <Link
+          <LinkCM
             key={c?.Id}
             href={`?categoryId=${c?.Id}`}
-            className={`text-sm font-semibold ${selectedCategoryId === c?.Id ? "text-blue-700 border-b-2 border-blue-700" : "text-blue-500"} cursor-pointer w-28 block text-center py-2`}
+            variant={selectedCategoryId === c?.Id ? "contained" : "text"}
+            color="blue"
+            className={`${selectedCategoryId===c?.Id ? "":"!bg-transparent !border-transparent" } w-32 text-sm`}
           >
             {c?.Title}
-          </Link>
+          </LinkCM>
         ))}
       </section>
     </section>

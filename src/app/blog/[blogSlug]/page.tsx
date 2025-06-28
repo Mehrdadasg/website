@@ -19,7 +19,7 @@ async function BlogDetails({
   const { blog } = await ssrBlog({ queryClient, slug: blogSlug });
 
   return (
-    <main className="w-full px-5 xl:px-0 max-w-7xl 2xl:max-w-[1366px] mx-auto py-24 md:py-40">
+    <main className="w-full px-5 xl:px-0 max-w-7xl 2xl:max-w-[1366px] mx-auto py-24 md:py-28 lg:py-36 xl:py-40">
       <BlogHero blogHeroData={blog?.Content} />
       <BlogContent blog={blog} />
       <RelatedBlog slug={blogSlug} />

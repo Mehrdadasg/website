@@ -5,6 +5,7 @@ import ReactQueryProvider from "@/shared/providers/ReactQueryProvider";
 import Header from "@/features/header";
 import Footer from "@/features/footer";
 import FixedAppBar from "@/features/main/components/FixedAppBar";
+import { Toaster } from "react-hot-toast";
 
 export const metadata: Metadata = {
   title: {
@@ -152,6 +153,7 @@ export default function RootLayout({
           <Footer/>
           <FixedAppBar/>
         </ReactQueryProvider>
+        <Toaster position="top-center" toastOptions={{ style: { fontFamily: `${iranSans.className}`, direction: "rtl" } }} />
       </body>
     </html>
   );

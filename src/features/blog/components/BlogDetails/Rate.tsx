@@ -1,6 +1,8 @@
 "use client";
+import { useAddRate } from "@/features/apiHandlers/clientHandlers/useAddRate";
 import Image from "next/image";
 import React, { useState } from "react";
+import toast from "react-hot-toast";
 
 const rateList = [
   {
@@ -30,11 +32,22 @@ const rateList = [
   },
 ];
 
-function Rate() {
-  const [rate, setRate] = useState(0);
+function Rate({slug}:{slug:string}) {
+  const [rate, setRate] = useState<number | null>(0);
+  const {mutateAsync:addRateFunc} =useAddRate();
 
   const handleRate = async (id: number) => {
-    setRate(id);
+    if (rate === id) {
+      setRate(null);
+    } else {
+      setRate(id);
+      try {
+        const response = await addRateFunc({Slug:slug})
+        toast.success(response?.Message?.Text)        
+      } catch (error) {
+        console.error("خطا:", error);
+      }
+    }
   };
 
   return (

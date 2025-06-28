@@ -352,6 +352,7 @@ body {
 .blog-content h2 {
   font-size: 24px !important;
   font-weight: bold !important;
+  margin: 20px 0 !important;
 }
 
 .blog-content a {
@@ -386,4 +387,8 @@ body {
 
 [id] {
   scroll-margin-top: 150px;
+}
+
+.ltr{
+  direction: ltr;
 }

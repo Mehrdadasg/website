@@ -46,9 +46,10 @@ interface AccordionItemProps {
   id: string;
   title: string;
   children: React.ReactNode;
+  accordionItemClass?:string
 }
 
-const AccordionItem: React.FC<AccordionItemProps> = ({ id, title, children }) => {
+const AccordionItem: React.FC<AccordionItemProps> = ({ id, title, children,accordionItemClass }) => {
   const context = useContext(AccordionContext);
   if (!context) throw new Error('AccordionItem must be used within an Accordion');
   const { openItems, toggleItem } = context;
@@ -60,7 +61,7 @@ const AccordionItem: React.FC<AccordionItemProps> = ({ id, title, children }) =>
         <button
           type="button"
           onClick={() => toggleItem(id)}
-          className={`flex w-full items-center justify-between cursor-pointer p-4 text-left font-semibold text-gray-800 bg-gray-50 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-blue-500 ${
+          className={`flex w-full ${accordionItemClass ?? ""} items-center justify-between cursor-pointer p-4 text-left font-semibold text-gray-800 bg-gray-50 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-blue-500 ${
             isOpen ? 'text-pink-500' : ''
           }`}
           aria-expanded={isOpen}
@@ -84,9 +85,10 @@ const AccordionItem: React.FC<AccordionItemProps> = ({ id, title, children }) =>
 
 interface AccordionContentProps {
   children: React.ReactNode;
+  accordionContextClass?:string
 }
 
-const AccordionContent: React.FC<AccordionContentProps> = ({ children }) => {
+const AccordionContent: React.FC<AccordionContentProps> = ({ children,accordionContextClass }) => {
   return (
     <motion.div
       initial={{ height: 0, opacity: 0 }}
@@ -95,7 +97,7 @@ const AccordionContent: React.FC<AccordionContentProps> = ({ children }) => {
       transition={{ duration: 0.3, ease: [0.4, 0, 0.2, 1] }}
       className="overflow-hidden will-change-transform"
     >
-      <div className="p-4 text-gray-600 bg-white">{children}</div>
+      <div className={`p-4 text-gray-600 bg-white ${accordionContextClass ??""}`}>{children}</div>
     </motion.div>
   );
 };

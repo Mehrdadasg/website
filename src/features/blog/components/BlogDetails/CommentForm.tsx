@@ -4,8 +4,9 @@ import Button from "@/shared/components/button";
 import { FormProps } from "@/shared/types/type";
 import { Edit2, Sms, User } from "iconsax-react";
 import { useParams } from "next/navigation";
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { useForm } from "react-hook-form";
+import toast from "react-hot-toast";
 
 function CommentForm() {
   const { blogSlug } = useParams();
@@ -13,10 +14,20 @@ function CommentForm() {
     register,
     handleSubmit,
     formState: { isValid, errors },
+    reset,
+    setValue,
   } = useForm<FormProps>({
     mode: "onChange",
   });
   const { mutateAsync: addCommentFunc } = useAddComment();
+  const [saveInformation, setSaveInformation] = useState(false);
+
+  useEffect(() => {
+    const savedName = localStorage.getItem("commentName");
+    const savedEmail = localStorage.getItem("commentEmail");
+    if (savedName) setValue("name", savedName);
+    if (savedEmail) setValue("email", savedEmail);
+  }, [setValue]);
 
   const handleCommentSubmit = async (values: FormProps) => {
     try {
@@ -26,7 +37,14 @@ function CommentForm() {
         Text: values.comment,
         Slug: blogSlug as string,
       });
-      console.log("rrrrrsssssssssssssss", response);
+      if (response?.Message?.Status === "Success") {
+        toast.success(response?.Message?.Text);
+        reset();
+        if (saveInformation) {
+          localStorage.setItem("commentName", values.name);
+          localStorage.setItem("commentEmail", values.email);
+        }
+      }
     } catch (error) {}
   };
 
@@ -109,6 +127,8 @@ function CommentForm() {
           name=""
           className="size-5 accent-pink-500"
           id="remember"
+          checked={saveInformation}
+          onChange={(e) => setSaveInformation(e.target.checked)}
         />
         <label htmlFor="remember" className="text-xs text-gray-700">
           ذخیره نام و ایمیل برای دفعات بعد

@@ -148,6 +148,12 @@ export type FormProps = {
   email: string;
 };
 
+export type ContactFormProps = {
+  comment: string;
+  name: string;
+  phone: string;
+};
+
 export interface AddComment {
   Slug: string;
   Name: string;
@@ -158,7 +164,7 @@ export interface AddComment {
 export interface AddMessage {
   Name: string;
   Text: string;
-  Email: string;
+  Phone: string;
 }
 
 export interface ExpertType {
@@ -186,4 +192,12 @@ export interface ExpertContent {
 export interface ExpertInfo {
   Content: ExpertContent;
   Seo: Seo;
+}
+
+export interface Member {
+  Title: string;
+  SubTitle: string;
+  ImageUrl: string;
+  Github: string | null;
+  Linkedin: string | null;
 }

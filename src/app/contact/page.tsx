@@ -1,10 +1,15 @@
+import { ssrContact } from "@/features/apiHandlers/serverHandlers/ssrContact";
 import ContactForm from "@/features/contact/ContactForm";
 import FAQ from "@/features/main/components/FAQ";
 import Breadcrumb from "@/shared/components/breadcrumb";
+import { QueryClient } from "@tanstack/react-query";
 import Image from "next/image";
 import React from "react";
 
-function Contact() {
+async function Contact() {
+  const queryClient = new QueryClient();
+  const {contactData} = await ssrContact(queryClient);
+
   const breadcrumbItems = [
     { label: "خانه", href: "/" },
     { label: "تماس با ما" },
@@ -24,17 +29,15 @@ function Contact() {
                 seperatorClassName="text-gray-200"
               />
               <p className="md:text-right mt-10 mb-8 text-[38px] md:text-5xl">
-                <b>تماس با ما</b>
+                <b>{contactData?.Content?.Title}</b>
               </p>
               <p className="text-lg text-gray-600">
-                یه نگاه به سوالات پرتکرار بنداز، اگر هنوز چیزی برات مبهم بود یا
-                خواستی باهامون در ارتباط باشی، از طریق فرم زیر با ما در ارتباط
-                باش.
+                {contactData?.Content?.Text}
               </p>
             </section>
             <section className="md:w-1/2 mt-5 md:mt-0 flex justify-center items-start xl:pr-10">
               <Image
-                src="/illustration/contact.png"
+                src={contactData?.Content?.ImageUrl??"/illustration/contact.png"}
                 width={433}
                 height={433}
                 quality={100}

@@ -4,9 +4,9 @@ export async function addMessage(data: AddMessage) {
   const formData = new FormData();
   formData.append('Name', data.Name);
   formData.append('Text', data.Text);
-  formData.append('Phone', data.Email);
+  formData.append('Phone', data.Phone);
 
-  const response = await fetch(`${process.env.BASE_URL}/content/CommentAdd`, {
+  const response = await fetch(`${process.env.BASE_URL}/content/ContactAdd`, {
     method: 'POST',
     body: formData,
   });
