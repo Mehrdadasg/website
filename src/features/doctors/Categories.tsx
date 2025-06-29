@@ -1,6 +1,5 @@
 "use client";
 import React from "react";
-import Link from "next/link";
 import LinkCM from "@/shared/components/link";
 
 type ExpertCategoriesType = {

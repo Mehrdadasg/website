@@ -1,7 +1,7 @@
 "use client";
 
 import Share2 from "@/shared/icons/Share2";
-import { Message2, Messages3, Star1 } from "iconsax-react";
+import { Messages3, Star1 } from "iconsax-react";
 
 type Props = {
   title: string;

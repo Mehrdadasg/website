@@ -45,7 +45,9 @@ function CommentForm() {
           localStorage.setItem("commentEmail", values.email);
         }
       }
-    } catch (error) {}
+    } catch (error) {
+      console.log(error);
+    }
   };
 
   return (

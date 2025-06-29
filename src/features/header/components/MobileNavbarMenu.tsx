@@ -1,6 +1,6 @@
 import { ArrowLeft2 } from 'iconsax-react'
 import Link from 'next/link'
-import React, { SetStateAction } from 'react'
+import React from 'react'
 
 type MenuItems={
   Title:string

@@ -1,4 +1,3 @@
-import { getBlog } from "@/service/getBlog";
 import { getExpert } from "@/service/getExpert";
 import { QueryClient } from "@tanstack/react-query";
 

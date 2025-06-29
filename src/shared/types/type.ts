@@ -29,6 +29,7 @@ export type BlogListHeaderType = {
   page: number;
   category?: string | null;
   searchKey?: string | null;
+  authorSlug?:string|null
 };
 
 export type Blog = Article & {

@@ -1,4 +1,4 @@
-import { AddComment, AddMessage } from "@/shared/types/type";
+import { AddMessage } from "@/shared/types/type";
 
 export async function addMessage(data: AddMessage) {
   const formData = new FormData();

@@ -1,15 +1,13 @@
 "use client";
 import Button from "@/shared/components/button";
 import { ContactFormProps } from "@/shared/types/type";
-import { Call, Sms, User } from "iconsax-react";
+import { Call, User } from "iconsax-react";
 import React, { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
 import { useAddMessage } from "../apiHandlers/clientHandlers/useAddMessage";
 import toast from "react-hot-toast";
 
-type Props = {};
-
-function ContactForm({}: Props) {
+function ContactForm() {
   const {
     register,
     handleSubmit,
@@ -44,7 +42,9 @@ function ContactForm({}: Props) {
           localStorage.setItem("commentPhone", values.phone);
         }
       }
-    } catch (error) {}
+    } catch (error) {
+      console.log(error);
+    }
   };
 
   return (
@@ -136,6 +136,8 @@ function ContactForm({}: Props) {
             name=""
             className="size-5 accent-pink-500"
             id="remember"
+            checked={saveInformation}
+            onChange={(e) => setSaveInformation(e.target.checked)}
           />
           <label htmlFor="remember" className="text-xs text-gray-700">
             ذخیره نام و ایمیل برای دفعات بعد

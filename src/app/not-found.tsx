@@ -1,7 +1,6 @@
 import LinkCM from "@/shared/components/link";
 import { Book1 } from "iconsax-react";
 import Image from "next/image";
-import Link from "next/link";
 
 function NotFoundPage(): React.ReactElement {
   return (

@@ -1,6 +1,5 @@
 import LinkCM from "@/shared/components/link";
 import { ArrowCircleDown2 } from "iconsax-react";
-import Link from "next/link";
 import React from "react";
 
 function FixedAppBar() {

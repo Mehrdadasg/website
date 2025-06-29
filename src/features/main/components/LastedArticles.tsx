@@ -40,7 +40,6 @@ async function LastedArticles() {
         {lastedArticles?.Items.map((article: Article) => (
           <ArticleCard
             key={article?.Id}
-            linkHref="/"
             article={article}
           />
         ))}

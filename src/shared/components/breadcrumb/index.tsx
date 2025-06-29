@@ -30,7 +30,7 @@ const Breadcrumb: React.FC<BreadcrumbProps> = ({
     >
       <ol className="flex items-center space-x-2">
         {items?.map((item, index) => (
-          <React.Fragment key={index}>
+          <li key={index}>
             {item?.href ? (
               <Link
                 href={item?.href}
@@ -47,7 +47,7 @@ const Breadcrumb: React.FC<BreadcrumbProps> = ({
             {index < items?.length - 1 && (
               <span className={`breadcrumb-separator mx-2 ${seperatorClassName}`}>{separator}</span>
             )}
-          </React.Fragment>
+          </li>
         ))}
       </ol>
     </nav>

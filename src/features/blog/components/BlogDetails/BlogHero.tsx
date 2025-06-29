@@ -78,7 +78,7 @@ function BlogHero({ blogHeroData }: {blogHeroData:BlogHeroProps}) {
       <section className="md:w-1/2">
         <Image
           src={blogHeroData?.ImageUrl}
-          alt=""
+          alt={blogHeroData?.Title}
           className="w-full h-auto"
           width={618}
           height={432}

@@ -1,18 +1,17 @@
 "use client";
 import { useBlogList } from "@/features/apiHandlers/clientHandlers/useBlogList";
 import { useRecommendedList } from "@/features/apiHandlers/clientHandlers/useRecommendedList";
-import { ssrBlogList } from "@/features/apiHandlers/serverHandlers/ssrBlogList";
 import ArticleCard from "@/shared/components/article-card";
 import { Pagination } from "@/shared/components/pagination";
 import { Article, Blog } from "@/shared/types/type";
 import { Add, SearchNormal1 } from "iconsax-react";
 import Image from "next/image";
 import { useRouter, useSearchParams } from "next/navigation";
-import { useEffect, useRef, useState } from "react";
+import { Suspense, useEffect, useRef, useState } from "react";
 
 const pageSize = 10;
 
-export default function SearchPage() {
+function SearchContent() {
   const router = useRouter();
   const resolvedCurrentPage = useSearchParams().get("page");
   const currentPage = Number(resolvedCurrentPage) || 1;
@@ -184,5 +183,13 @@ export default function SearchPage() {
         </section>
       )}
     </main>
+  );
+}
+
+export default function SearchPage() {
+  return (
+    <Suspense fallback={<div>در حال بارگذاری...</div>}>
+      <SearchContent />
+    </Suspense>
   );
 }

@@ -6,13 +6,14 @@ type BlogList = {
   queryClient: QueryClient;
   page: number;
   category?: string;
-  searchKey?:string
+  searchKey?:string;
+  authorSlug?:string
 };
 
-export const ssrBlogList = async ({ queryClient, page, category,searchKey }: BlogList) => {    
+export const ssrBlogList = async ({ queryClient, page, category,searchKey,authorSlug }: BlogList) => {    
   const { Data } = await queryClient.fetchQuery<BlogListResponse>({
     queryKey: ["/content/list"],
-    queryFn: () => getBlogList({ page, category,searchKey }),
+    queryFn: () => getBlogList({ page, category,searchKey,authorSlug }),
   });
   return { blogList: Data };
 };

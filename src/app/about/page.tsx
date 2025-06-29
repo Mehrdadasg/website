@@ -1,4 +1,5 @@
 import { ssrAbout } from "@/features/apiHandlers/serverHandlers/ssrAbout";
+import { getPageSeo } from "@/service/getPageSeo";
 import Breadcrumb from "@/shared/components/breadcrumb";
 import LinkCM from "@/shared/components/link";
 import Github from "@/shared/icons/Github";
@@ -8,6 +9,101 @@ import { QueryClient } from "@tanstack/react-query";
 import Image from "next/image";
 import React from "react";
 
+export async function generateMetadata() {
+  try {
+    const { Data } = await getPageSeo("about");
+    return {
+      title: {
+        default: Data.MetaTitle || "یک زن - راهنمای بهداشت زنان، بارداری و زایمان",
+        template: "%s | یک زن",
+      },
+      description: Data.MetaDescription || "یک زن: راهنمای جامع بهداشت زنان از بلوغ تا بارداری، زایمان و سلامت مادران. اطلاعات کاربردی، نکات مهم و محصولات ویژه برای زنان را اینجا بخوانید و تجربه کنید!",
+      keywords: "بهداشت زنان, بارداری, زایمان, بلوغ, سلامت زنان, راهنمای زنان, محصولات زنان",
+      metadataBase: new URL(Data.OgUrl || "https://yeksan.com"),
+      alternates: {
+        canonical: Data.CanonicalUrl || "/",
+        languages: {
+          "fa-IR": "/fa-IR",
+        },
+      },
+      robots: {
+        index: true,
+        follow: true,
+      },
+      openGraph: {
+        title: Data.OgTitle || "یک زن - راهنمای بهداشت زنان",
+        description: Data.OgDescription || "یک زن: راهنمای جامع بهداشت زنان از بلوغ تا بارداری، زایمان و سلامت مادران",
+        siteName: "یک زن",
+        type: "website",
+        url: Data.OgUrl || "/",
+        images: [
+          {
+            url: Data.OgImageUrl || "/og-img-large.png",
+            width: 1200,
+            height: 630,
+            alt: Data.OgTitle || "یک زن، راهنمای بهداشت زنان",
+          },
+          {
+            url: "/og-img-small.png",
+            width: 600,
+            height: 315,
+            alt: Data.OgTitle || "یک زن، راهنمای بهداشت زنان",
+          },
+        ],
+      },
+      twitter: {
+        card: "summary_large_image",
+        title: Data.OgTitle || "یک زن - راهنمای بهداشت زنان",
+        description: Data.OgDescription || "یک زن، راهنمای جامع بهداشت زنان از بلوغ تا بارداری، زایمان و سلامت مادران",
+        images: [Data.OgImageUrl || "/og-img-large.png"],
+        site: "@YekZan",
+        creator: "@YekZanAuthor",
+      },
+      icons: {
+        icon: [
+          { url: "/favicon.ico" },
+          { url: "/favicon-32x32.png", sizes: "32x32" },
+          { url: "/favicon-16x16.png", sizes: "16x16" },
+        ],
+        apple: "/apple-touch-icon.png",
+      },
+      other: {
+        "theme-color": "#ffffff",
+        "msapplication-TileImage": "/ms-icon.png",
+        ...(Data.JsonLd
+          ? { "application/ld+json": JSON.stringify(Data.JsonLd) }
+          : {
+              "application/ld+json": JSON.stringify({
+                "@context": "https://schema.org",
+                "@type": "Website",
+                "name": "یک زن",
+                "url": "https://yeksan.com",
+                "description": "یک زن، راهنمای جامع بهداشت زنان از بلوغ تا بارداری و زایمان",
+                "inLanguage": "fa-IR",
+                "publisher": {
+                  "@type": "Organization",
+                  "name": "یک زن",
+                  "logo": {
+                    "@type": "ImageObject",
+                    "url": "https://yeksan.com/logo.png",
+                  },
+                },
+              }),
+            }),
+      },
+    };
+  } catch (error) {
+    console.error("Error fetching SEO data:", error);
+    return {
+      title: {
+        default: "یک زن - راهنمای بهداشت زنان، بارداری و زایمان",
+        template: "%s | یک زن",
+      },
+      description: "یک زن: راهنمای جامع بهداشت زنان از بلوغ تا بارداری، زایمان و سلامت مادران. اطلاعات کاربردی، نکات مهم و محصولات ویژه برای زنان.",
+    };
+  }
+}
+
 async function About() {
   const queryClient = new QueryClient();
   const { aboutData } = await ssrAbout(queryClient);
@@ -16,8 +112,6 @@ async function About() {
     { label: "خانه", href: "/" },
     { label: "درباره ما" },
   ];
-
-  console.log(aboutData);
 
   return (
     <>
@@ -109,17 +203,17 @@ async function About() {
                 className="rounded-full size-[90px] md:size-[150px] object-cover"
               />
               <div>
-                <h4 className="font-semibold mt-5 md:text-center">
+                <h3 className="font-semibold mt-5 md:text-center">
                   {m?.Title}
-                </h4>
+                </h3>
                 <p className="text-gray-500 text-xs mt-2 md:text-center ltr">
                   {m?.Title}
                 </p>
                 <div className="mt-3 flex justify-center gap-5">
-                  <LinkCM href={m?.Linkedin ?? "#"} size="icon" color={m?.Linkedin ? "blue" : "default"} className={m?.Linkedin ? "pointer-events-auto":"pointer-events-none"}>
+                  <LinkCM href={m?.Linkedin ?? "#"} size="icon" aria-label="likedin" color={m?.Linkedin ? "blue" : "default"} className={m?.Linkedin ? "pointer-events-auto":"pointer-events-none"}>
                     <Linkedin fill={m?.Linkedin ? "white" : "#D1D5DB"}/>
                   </LinkCM>
-                  <LinkCM href={m?.Linkedin ?? "#"} size="icon" color={m?.Github ? "blue" : "default"} className={m?.Github ? "pointer-events-auto":"pointer-events-none"}>
+                  <LinkCM href={m?.Linkedin ?? "#"} size="icon" aria-label="github" color={m?.Github ? "blue" : "default"} className={m?.Github ? "pointer-events-auto":"pointer-events-none"}>
                     <Github fill={m?.Github ? "white" : "#D1D5DB"} />
                   </LinkCM>
                 </div>

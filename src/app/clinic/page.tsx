@@ -89,7 +89,7 @@ async function DoctorsPage({ searchParams }: DoctorsPageProps) {
                   </p>
                 </div>
                 <LinkCM
-                  href={`/doctors/${d?.Slug}`}
+                  href={`/clinic/${d?.Slug}`}
                   variant="outline"
                   color="blue"
                   className="mt-5 !hidden sm:!flex"
