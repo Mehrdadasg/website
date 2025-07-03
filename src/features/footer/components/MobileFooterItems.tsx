@@ -24,14 +24,6 @@ const footerMenu = [
       { id: 11, href: "", label: "محاسبه زمان تخمک گذاری" },
     ],
   },
-  {
-    id: 2,
-    label: "کمپانی",
-    links: [
-      { href: "", label: "درباره ما" },
-      { href: "", label: "تماس با ما" },
-    ],
-  },
 ];
 
 function MobileFooterItems() {
@@ -39,15 +31,10 @@ function MobileFooterItems() {
     <section className="md:hidden mobile-menu">
       <Accordion multiple={false}>
         {footerMenu.map((item) => (
-
-            <AccordionItem
-              key={item.id}
-              id={`${item.id}`}
-              title={item.label}
-            >
-              <AccordionContent>
+          <AccordionItem key={item.id} id={`${item.id}`} title={item.label}>
+            <AccordionContent>
               <nav>
-                <ul className="text-gray-50 text-sm mt-2 space-y-3">
+                <ul className="text-skin-800 text-sm mt-2 space-y-3">
                   {item?.links?.map((link) => (
                     <li key={link.label}>
                       <Link href={link?.href}>{link?.label}</Link>
@@ -56,8 +43,7 @@ function MobileFooterItems() {
                 </ul>
               </nav>
             </AccordionContent>
-            </AccordionItem>
-
+          </AccordionItem>
         ))}
       </Accordion>
     </section>

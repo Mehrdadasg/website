@@ -14,11 +14,15 @@ export async function generateMetadata() {
     const { Data } = await getPageSeo("about");
     return {
       title: {
-        default: Data.MetaTitle || "یک زن - راهنمای بهداشت زنان، بارداری و زایمان",
+        default:
+          Data.MetaTitle || "یک زن - راهنمای بهداشت زنان، بارداری و زایمان",
         template: "%s | یک زن",
       },
-      description: Data.MetaDescription || "یک زن: راهنمای جامع بهداشت زنان از بلوغ تا بارداری، زایمان و سلامت مادران. اطلاعات کاربردی، نکات مهم و محصولات ویژه برای زنان را اینجا بخوانید و تجربه کنید!",
-      keywords: "بهداشت زنان, بارداری, زایمان, بلوغ, سلامت زنان, راهنمای زنان, محصولات زنان",
+      description:
+        Data.MetaDescription ||
+        "یک زن: راهنمای جامع بهداشت زنان از بلوغ تا بارداری، زایمان و سلامت مادران. اطلاعات کاربردی، نکات مهم و محصولات ویژه برای زنان را اینجا بخوانید و تجربه کنید!",
+      keywords:
+        "بهداشت زنان, بارداری, زایمان, بلوغ, سلامت زنان, راهنمای زنان, محصولات زنان",
       metadataBase: new URL(Data.OgUrl || "https://yeksan.com"),
       alternates: {
         canonical: Data.CanonicalUrl || "/",
@@ -32,7 +36,9 @@ export async function generateMetadata() {
       },
       openGraph: {
         title: Data.OgTitle || "یک زن - راهنمای بهداشت زنان",
-        description: Data.OgDescription || "یک زن: راهنمای جامع بهداشت زنان از بلوغ تا بارداری، زایمان و سلامت مادران",
+        description:
+          Data.OgDescription ||
+          "یک زن: راهنمای جامع بهداشت زنان از بلوغ تا بارداری، زایمان و سلامت مادران",
         siteName: "یک زن",
         type: "website",
         url: Data.OgUrl || "/",
@@ -54,7 +60,9 @@ export async function generateMetadata() {
       twitter: {
         card: "summary_large_image",
         title: Data.OgTitle || "یک زن - راهنمای بهداشت زنان",
-        description: Data.OgDescription || "یک زن، راهنمای جامع بهداشت زنان از بلوغ تا بارداری، زایمان و سلامت مادران",
+        description:
+          Data.OgDescription ||
+          "یک زن، راهنمای جامع بهداشت زنان از بلوغ تا بارداری، زایمان و سلامت مادران",
         images: [Data.OgImageUrl || "/og-img-large.png"],
         site: "@YekZan",
         creator: "@YekZanAuthor",
@@ -76,16 +84,17 @@ export async function generateMetadata() {
               "application/ld+json": JSON.stringify({
                 "@context": "https://schema.org",
                 "@type": "Website",
-                "name": "یک زن",
-                "url": "https://yeksan.com",
-                "description": "یک زن، راهنمای جامع بهداشت زنان از بلوغ تا بارداری و زایمان",
-                "inLanguage": "fa-IR",
-                "publisher": {
+                name: "یک زن",
+                url: "https://yeksan.com",
+                description:
+                  "یک زن، راهنمای جامع بهداشت زنان از بلوغ تا بارداری و زایمان",
+                inLanguage: "fa-IR",
+                publisher: {
                   "@type": "Organization",
-                  "name": "یک زن",
-                  "logo": {
+                  name: "یک زن",
+                  logo: {
                     "@type": "ImageObject",
-                    "url": "https://yeksan.com/logo.png",
+                    url: "https://yeksan.com/logo.png",
                   },
                 },
               }),
@@ -99,7 +108,8 @@ export async function generateMetadata() {
         default: "یک زن - راهنمای بهداشت زنان، بارداری و زایمان",
         template: "%s | یک زن",
       },
-      description: "یک زن: راهنمای جامع بهداشت زنان از بلوغ تا بارداری، زایمان و سلامت مادران. اطلاعات کاربردی، نکات مهم و محصولات ویژه برای زنان.",
+      description:
+        "یک زن: راهنمای جامع بهداشت زنان از بلوغ تا بارداری، زایمان و سلامت مادران. اطلاعات کاربردی، نکات مهم و محصولات ویژه برای زنان.",
     };
   }
 }
@@ -193,27 +203,67 @@ async function About() {
           {aboutData?.TeamContent?.Members?.map((m: Member, index: number) => (
             <section
               key={index}
-              className="flex md:flex-col md:justify-center items-center gap-2 px-7 w-full md:w-max"
+              className="flex sm:flex-col sm:justify-center items-center gap-2 sm:px-7 w-full sm:w-max"
             >
               <Image
                 src={m?.ImageUrl ?? "/user2.png"}
                 alt={m?.Title ?? "تصویر کاربر"}
                 width={150}
                 height={150}
-                className="rounded-full size-[90px] md:size-[150px] object-cover"
+                className="rounded-full size-[90px] sm:size-[150px] object-cover"
               />
-              <div>
-                <h3 className="font-semibold mt-5 md:text-center">
-                  {m?.Title}
-                </h3>
-                <p className="text-gray-500 text-xs mt-2 md:text-center ltr">
-                  {m?.Title}
-                </p>
-                <div className="mt-3 flex justify-center gap-5">
-                  <LinkCM href={m?.Linkedin ?? "#"} size="icon" aria-label="likedin" color={m?.Linkedin ? "blue" : "default"} className={m?.Linkedin ? "pointer-events-auto":"pointer-events-none"}>
-                    <Linkedin fill={m?.Linkedin ? "white" : "#D1D5DB"}/>
+              <div className="flex-1 flex sm:flex-col">
+                <div className="flex-1">
+                  <h3 className="font-semibold mt-5 sm:text-center">
+                    {m?.Title}
+                  </h3>
+                  <p className="text-gray-500 text-xs mt-2 sm:text-center sm:ltr">
+                    {m?.Title}
+                  </p>
+                </div>
+                <div className="mt-3 flex flex-col sm:flex-row justify-center gap-3 sm:gap-5">
+                  <LinkCM
+                    href={m?.Linkedin ?? "#"}
+                    size="icon"
+                    aria-label="likedin"
+                    color={m?.Linkedin ? "blue" : "default"}
+                    className={`!hidden sm:!flex ${m?.Linkedin
+                        ? "pointer-events-auto"
+                        : "pointer-events-none"}`}
+                  >
+                    <Linkedin fill={m?.Linkedin ? "white" : "#D1D5DB"} />
                   </LinkCM>
-                  <LinkCM href={m?.Linkedin ?? "#"} size="icon" aria-label="github" color={m?.Github ? "blue" : "default"} className={m?.Github ? "pointer-events-auto":"pointer-events-none"}>
+                  <LinkCM
+                    href={m?.Linkedin ?? "#"}
+                    size="sm-icon"
+                    aria-label="likedin"
+                    color={m?.Linkedin ? "blue" : "default"}
+                    className={`sm:!hidden ${m?.Linkedin
+                        ? "pointer-events-auto"
+                        : "pointer-events-none"}`}
+                  >
+                    <Linkedin fill={m?.Linkedin ? "white" : "#D1D5DB"} />
+                  </LinkCM>
+                  <LinkCM
+                    href={m?.Linkedin ?? "#"}
+                    size="icon"
+                    aria-label="github"
+                    color={m?.Github ? "blue" : "default"}
+                    className={`!hidden sm:!flex ${m?.Github
+                        ? "pointer-events-auto"
+                        : "pointer-events-none"}`}
+                  >
+                    <Github fill={m?.Github ? "white" : "#D1D5DB"} />
+                  </LinkCM>
+                  <LinkCM
+                    href={m?.Linkedin ?? "#"}
+                    size="sm-icon"
+                    aria-label="github"
+                    color={m?.Github ? "blue" : "default"}
+                    className={`sm:!hidden ${m?.Github
+                        ? "pointer-events-auto"
+                        : "pointer-events-none"}`}
+                  >
                     <Github fill={m?.Github ? "white" : "#D1D5DB"} />
                   </LinkCM>
                 </div>

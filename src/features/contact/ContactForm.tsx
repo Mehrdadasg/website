@@ -48,7 +48,7 @@ function ContactForm() {
   };
 
   return (
-    <section className="md:shadow-sm shadow-gray-200 md:border border-gray-200 rounded-[12px] md:px-10 md:py-16 mt-10 max-w-[40rem] md:max-w-4xl mx-auto ">
+    <section className="md:shadow-sm shadow-gray-200 md:border border-gray-200 rounded-[12px] px-5 md:px-10 md:py-16 mt-10 max-w-[40rem] md:max-w-4xl mx-auto ">
       <p className="text-4xl">
         <b>تماس با ما</b>
       </p>

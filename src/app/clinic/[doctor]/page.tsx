@@ -145,7 +145,7 @@ async function DoctorInfo({
   ];
   return (
     <>
-      <section className="bg-gray-100 h-max pt-40 sm:pt-36 -mt-[80px] md:mt-0 pb-28">
+      <section className="bg-gray-100 h-max pt-40 sm:pt-36 -mt-[80px] md:mt-0 pb-28 px-5 md:px-0">
         <section className="max-w-[1200px] mx-auto ">
           <Breadcrumb
             items={breadcrumbItems}
@@ -165,9 +165,9 @@ async function DoctorInfo({
               />
             </section>
             <section className="flex-1 px-5 xl:px-14 md:pt-28 pb-14">
-              <div className="sm:flex justify-between items-center">
-                <div>
-                  <h1 className="text-5xl">
+              <div className="flex flex-col sm:flex-row justify-between items-center">
+                <div className="text-center sm:text-right">
+                  <h1 className="text-2xl xl:text-5xl">
                     <b>{expert?.Content?.Title}</b>
                   </h1>
                   <p className="text-gray-500 text-lg mt-5">

@@ -7,15 +7,16 @@ import { ssrFooter } from "../apiHandlers/serverHandlers/ssrFooter";
 import MobileFooterItems from "./components/MobileFooterItems";
 
 const social = [
-  { img: "/social/x.png", url: "", title: "x" },
-  { img: "/social/telegram.png", url: "", title: "telegram" },
-  { img: "/social/instagram.png", url: "", title: "instagram" },
-  { img: "/social/youtub.png", url: "", title: "youtub" },
+  { img: "/social/x2.png", url: "", title: "x" },
+  { img: "/social/telegram2.png", url: "", title: "telegram" },
+  { img: "/social/instagram2.png", url: "", title: "instagram" },
+  { img: "/social/youtube2.png", url: "", title: "youtub" },
 ];
 
 async function Footer() {
-  const queryClient=new QueryClient();
-  const {footer} = await ssrFooter(queryClient);
+  const queryClient = new QueryClient();
+  const { footer } = await ssrFooter(queryClient);
+
   return (
     <footer className="mt-auto">
       <section className="md:hidden px-5 pb-5 md:px-0">
@@ -27,9 +28,8 @@ async function Footer() {
         />
         <p className="text-gray-900 mt-8 text-[13px]">{footer?.Text}</p>
       </section>
-
       <section className="footer h-[130px] w-full"></section>
-      <section className="bg-pink-500 pb-16 md:pb-3 px-3 md:px-5 lg:px-10 xl:px-12 pt-8 -mt-[100px] md:-mt-[115px] lg:-mt-[110px] xl:-mt-[100px]">
+      <section className="bg-skin-50 pb-16 md:pb-3 px-3 md:px-5 lg:px-10 xl:px-12 pt-8 -mt-[100px] md:-mt-[115px] lg:-mt-[110px] xl:-mt-[100px]">
         <section className="flex md:gap-5">
           <section className="hidden md:block w-1/3">
             <Image
@@ -38,23 +38,23 @@ async function Footer() {
               height={32}
               alt="یک زن"
             />
-            <p className="text-gray-100 mt-5 lg:mt-8 md:text-[13px] lg:text-[14px] xl:text-base leading-6 xl:leading-8">
+            <p className="text-skin-800 mt-5 lg:mt-8 md:text-[13px] lg:text-[14px] xl:text-base leading-6 xl:leading-8">
               {footer?.Text}
             </p>
           </section>
-          <DesktopFooterItem menuItems={footer?.MenuItems} />
+          <DesktopFooterItem  />
         </section>
         <MobileFooterItems />
-        <div className="w-full h-0.5 bg-pink-400 mt-10 mb-5"></div>
+        <div className="w-full h-0.5 bg-skin-100 mt-10 mb-5"></div>
         <section className="flex flex-col-reverse gap-5 md:flex-row justify-between items-center py-3">
-          <p className="text-[10px] md:text-sm text-gray-50">
+          <p className="text-[10px] md:text-sm text-skin-400">
             کپی رایت © 1397 - 1404 متعلق به{" "}
-            <mark className="bg-transparent text-gray-50">
+            <mark className="bg-transparent text-skin-500">
               <Link href="/">اپلیکیشن یک زن</Link>
             </mark>
           </p>
-          <nav>
-            <ul className="flex gap-5">
+          <nav className="flex items-center w-full sm:w-max sm:gap-10">
+            <ul className="flex gap-5 flex-1 justify-center">
               {social?.map((item) => (
                 <li key={item.title}>
                   <Link
@@ -72,6 +72,9 @@ async function Footer() {
                 </li>
               ))}
             </ul>
+            <Link href="" className="md:hidden">
+              <Image src="/enamad.png" width={100} height={150} alt="enamad" />
+            </Link>
           </nav>
         </section>
       </section>

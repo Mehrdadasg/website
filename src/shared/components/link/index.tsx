@@ -15,7 +15,7 @@ type LinkProps = {
     | "light-warning";
   variant?: "text" | "contained" | "outline" | "link";
   href: string;
-  size?: "icon" | "md" | "sm" | "lg";
+  size?: "icon" | "sm-icon" | "md" | "sm" | "lg";
 } & AnchorHTMLAttributes<HTMLAnchorElement>;
 
 function LinkCM({
@@ -68,12 +68,13 @@ function LinkCM({
 
   const sizeClasses = {
     icon: "size-[52px]",
+    "sm-icon": "size-8",
     sm: "h-9",
     md: "h-12",
     lg: "h-[52px]",
   };
 
-  const btnClass = `flex justify-center border items-center gap-2 px-3 rounded-[50px] ${variantClasses[color]} ${sizeClasses[size]} ${className}`;
+  const btnClass = `flex justify-center border items-center gap-2 ${size === "sm-icon" ? "p-2":"px-3"} rounded-[50px] ${variantClasses[color]} ${sizeClasses[size]} ${className}`;
 
   return (
     <Link href={href} className={btnClass} {...rest}>

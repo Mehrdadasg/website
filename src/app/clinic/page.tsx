@@ -24,7 +24,7 @@ async function DoctorsPage({ searchParams }: DoctorsPageProps) {
 
   const breadcrumbItems = [
     { label: "خانه", href: "/" },
-    { label: "تماس با ما" },
+    { label: "متخصصین یک زن" },
   ];
 
   const categoryId = resolvedCategoryId?.categoryId
@@ -96,7 +96,7 @@ async function DoctorsPage({ searchParams }: DoctorsPageProps) {
                 >
                   مشاهده پروفایل
                 </LinkCM>
-                <Link href="" className="sm:hidden">
+                <Link href={`/clinic/${d?.Slug}`} className="sm:hidden">
                   <ArrowLeft2 color="var(--color-lake-blue-500)" size={24} />
                 </Link>
               </div>
