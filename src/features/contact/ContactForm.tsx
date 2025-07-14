@@ -47,6 +47,17 @@ function ContactForm() {
     }
   };
 
+  const handleFocus = (e: React.FocusEvent<HTMLInputElement>) => {
+    const element = e.target;
+    const rect = element.getBoundingClientRect();
+    setTimeout(() => {
+      window.scrollTo({
+        top: rect.top + window.scrollY - 100,
+        behavior: "smooth",
+      });
+    }, 500);
+  };
+
   return (
     <section className="md:shadow-sm shadow-gray-200 md:border border-gray-200 rounded-[12px] px-5 md:px-10 md:py-16 mt-10 max-w-[40rem] md:max-w-4xl mx-auto ">
       <p className="text-4xl">
@@ -70,6 +81,7 @@ function ContactForm() {
                 type="text"
                 placeholder="نام"
                 id=""
+                onFocus={handleFocus}
                 className="w-full py-3 bg-transparent border-0 focus:border-0 focus:outline-0"
                 {...register("name", {
                   required: "لطفا نام خود را وارد کنید",
@@ -95,6 +107,7 @@ function ContactForm() {
                 type="text"
                 placeholder="شماره همراه"
                 id=""
+                onFocus={handleFocus}
                 className="w-full py-3 bg-transparent border-0 focus:border-0 focus:outline-0"
                 {...register("phone", {
                   required: "لطفا شماره همراه خود را وارد کنید",

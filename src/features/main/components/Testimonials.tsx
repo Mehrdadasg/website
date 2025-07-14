@@ -8,7 +8,7 @@ async function Testimonials() {
     const queryClient = new QueryClient();
     const {testimonialsData} = await ssrTestimonials(queryClient);
   return (
-    <section className="px-5 sm:px-5 lg:px-28 2xl:px-20 pt-5 pb-10 relative overflow-hidden">
+    <section className="px-5 sm:px-5 lg:px-28 2xl:px-20 pt-5 pb-5 sm:pb-10 relative overflow-hidden">
       <h2 className="font-semibold text-2xl md:text-4xl flex gap-1 justify-center">
         محبتـــهای شما به
         <Image

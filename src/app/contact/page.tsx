@@ -113,7 +113,7 @@ async function Contact() {
 
   return (
     <section className="pb-24">
-      <section className="contact h-max md:h-[750px] lg:h-[775px] 2xl:h-[800px] pt-44 md:pt-52 lg:pt-40 xl:pt-44 -mt-[80px] md:mt-0">
+      <section className="contact h-max md:h-[750px] lg:h-[775px] 2xl:h-[800px] pt-36 sm:pt-44 md:pt-52 lg:pt-40 xl:pt-44 -mt-[80px] md:mt-0">
         <section className="px-3 sm:px-5 lg:px-10 xl:px-0 max-w-[1200px] mx-auto h-full">
           <section className=" md:flex lg:gap-5 xl:gap-10 h-full">
             <section className="md:w-1/2 pt-8 md:pt-16">
@@ -124,7 +124,7 @@ async function Contact() {
                 textClassName="text-gray-400 text-xs font-bold"
                 seperatorClassName="text-gray-200"
               />
-              <p className="md:text-right mt-10 mb-8 text-[38px] md:text-5xl">
+              <p className="md:text-right mt-5 sm:mt-10 mb-8 text-[38px] md:text-5xl">
                 <b>{contactData?.Content?.Title}</b>
               </p>
               <p className="text-lg text-gray-600">

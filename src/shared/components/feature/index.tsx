@@ -28,7 +28,7 @@ function Feature({
     : [];
 
   return (
-    <section className="md:flex gap-[13%] md:gap-[5%] xl:gap-[13%] py-10 md:py-24 px-5 lg:px-10 xl:px-0">
+    <section className="md:flex gap-[13%] md:gap-[5%] xl:gap-[13%] py-5 md:py-24 px-5 lg:px-10 xl:px-0">
       <section className="md:w-[30%] lg:w-[27%] flex md:block flex-col items-center md:sticky top-32 h-max">
         <h2 className="font-bold order-2 md:order-1 text-[20px] md:text-2xl xl:text-[32px] mb-3 text-center md:text-right">
           {title}

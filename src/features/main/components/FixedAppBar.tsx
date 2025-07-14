@@ -16,7 +16,7 @@ function FixedAppBar() {
         color="white"
         >
           <ArrowCircleDown2 size={25} color="var(--color-pink-500)" />
-          دریافت یک زن
+          دریافت  اپلیکیشن یک زن
         </LinkCM>
     </section>
   );

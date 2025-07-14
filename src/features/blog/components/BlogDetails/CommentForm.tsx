@@ -50,8 +50,22 @@ function CommentForm() {
     }
   };
 
+const handleFocus = (e: React.FocusEvent<HTMLInputElement>) => {
+  const element = e.target;
+  const rect = element.getBoundingClientRect();
+  setTimeout(() => {
+    window.scrollTo({
+      top: rect.top + window.scrollY - 100,
+      behavior: "smooth",
+    });
+  }, 500);
+};
+
   return (
-    <form className="mt-10" onSubmit={handleSubmit(handleCommentSubmit)}>
+    <form
+      className="mt-10 scrollable-container"
+      onSubmit={handleSubmit(handleCommentSubmit)}
+    >
       <section
         className={`flex items-center border ${
           errors?.comment
@@ -63,6 +77,7 @@ function CommentForm() {
         <input
           type="text"
           placeholder="نظر"
+          onFocus={handleFocus}
           id=""
           className="w-full bg-transparent border-0 focus:border-0 focus:outline-0 py-3"
           {...register("comment", { required: "لطفا نظر خود را وارد کنید" })}
@@ -87,6 +102,7 @@ function CommentForm() {
               type="text"
               placeholder="نام"
               id=""
+              onFocus={handleFocus}
               className="w-full bg-transparent border-0 py-3 focus:border-0 focus:outline-0"
               {...register("name", { required: "لطفا نام خود را وارد کنید" })}
             />
@@ -110,6 +126,7 @@ function CommentForm() {
               type="text"
               placeholder="ایمیل"
               id=""
+              onFocus={handleFocus}
               className="w-full bg-transparent py-3 border-0 focus:border-0 focus:outline-0"
               {...register("email", {
                 required: "لطفا ایمیل خود را وارد کنید",

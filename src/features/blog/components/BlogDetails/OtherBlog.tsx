@@ -25,7 +25,7 @@ async function OtherBlog({slug}: {slug:string}) {
         </p>
       </section>
       <section className="grid sm:grid-cols-3 mt-10 gap-10">
-        {recommended?.map((post:Article)=><ArticleCard key={post?.Id} article={post} view="horizontal" />)}
+        {recommended?.map((post:Article)=><ArticleCard seoTag="h3" key={post?.Id} article={post} view="horizontal" />)}
       </section>
     </>
   );

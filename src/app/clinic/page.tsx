@@ -65,42 +65,80 @@ async function DoctorsPage({ searchParams }: DoctorsPageProps) {
           />
         </section>
       </section>
-      <section className={`grid ${doctorsList?.length > 0 ? "sm:grid-cols-3 md:grid-cols-4":""} gap-10 mt-20 max-w-5xl mx-auto pb-20`}>
+      <section
+        className={`grid ${
+          doctorsList?.length > 0 ? "sm:grid-cols-3 md:grid-cols-4" : ""
+        } gap-10 mt-20 max-w-5xl mx-auto pb-20`}
+      >
         {doctorsList?.length > 0 ? (
           doctorsList?.map((d: ExpertType) => (
-            <section
-              key={d?.Id}
-              className="flex sm:flex-col sm:justify-center items-center gap-2 px-3 sm:px-5 md:px-7 w-full md:w-max"
-            >
-              <Image
-                src={d?.Avatar || "/user2.png"}
-                alt={d?.Title}
-                width={150}
-                height={150}
-                className="rounded-full size-[90px] sm:size-[150px] object-cover"
-              />
-              <div className="flex items-center flex-1 justify-between sm:block sm:w-full">
-                <div className="sm:text-center">
-                  <h4 className="font-semibold sm:mt-5 md:text-center">
-                    {d?.Title}
-                  </h4>
-                  <p className="text-gray-500 text-xs mt-2 md:text-center truncate max-w-44">
-                    {d?.SubTitle}
-                  </p>
+            <>
+              <section
+                key={d?.Id}
+                className="hidden sm:flex flex-col sm:justify-center items-center gap-2 px-3 sm:px-5 md:px-7 w-full md:w-max"
+              >
+                <Image
+                  src={d?.Avatar || "/user2.png"}
+                  alt={d?.Title}
+                  width={150}
+                  height={150}
+                  className="rounded-full size-[90px] sm:size-[150px] object-cover"
+                />
+                <div className="flex items-center flex-1 justify-between sm:block sm:w-full">
+                  <div className="sm:text-center">
+                    <h4 className="font-semibold sm:mt-5 md:text-center">
+                      {d?.Title}
+                    </h4>
+                    <p className="text-gray-500 text-xs mt-2 md:text-center truncate max-w-44">
+                      {d?.SubTitle}
+                    </p>
+                  </div>
+                  <LinkCM
+                    href={`/clinic/${d?.Slug}`}
+                    variant="outline"
+                    color="blue"
+                    className="mt-5 !hidden sm:!flex"
+                  >
+                    مشاهده پروفایل
+                  </LinkCM>
+                  <Link href={`/clinic/${d?.Slug}`} className="sm:hidden">
+                    <ArrowLeft2 color="var(--color-lake-blue-500)" size={24} />
+                  </Link>
                 </div>
-                <LinkCM
-                  href={`/clinic/${d?.Slug}`}
-                  variant="outline"
-                  color="blue"
-                  className="mt-5 !hidden sm:!flex"
-                >
-                  مشاهده پروفایل
-                </LinkCM>
-                <Link href={`/clinic/${d?.Slug}`} className="sm:hidden">
+              </section>
+              <Link
+                href={`/clinic/${d?.Slug}`}
+                key={d?.Id}
+                className="flex sm:hidden items-center gap-2 px-3 w-full"
+              >
+                <Image
+                  src={d?.Avatar || "/user2.png"}
+                  alt={d?.Title}
+                  width={150}
+                  height={150}
+                  className="rounded-full size-[90px] sm:size-[150px] object-cover"
+                />
+                <div className="flex items-center flex-1 justify-between sm:block sm:w-full">
+                  <div className="sm:text-center">
+                    <h4 className="font-semibold sm:mt-5 md:text-center">
+                      {d?.Title}
+                    </h4>
+                    <p className="text-gray-500 text-xs mt-2 md:text-center truncate max-w-44">
+                      {d?.SubTitle}
+                    </p>
+                  </div>
+                  <LinkCM
+                    href={`/clinic/${d?.Slug}`}
+                    variant="outline"
+                    color="blue"
+                    className="mt-5 !hidden sm:!flex"
+                  >
+                    مشاهده پروفایل
+                  </LinkCM>
                   <ArrowLeft2 color="var(--color-lake-blue-500)" size={24} />
-                </Link>
-              </div>
-            </section>
+                </div>
+              </Link>
+            </>
           ))
         ) : (
           <section className="flex justify-center items-center flex-col ">
@@ -110,9 +148,7 @@ async function DoctorsPage({ searchParams }: DoctorsPageProps) {
               height={200}
               alt="یافت نشد"
             />
-            <p className="text-sm pb-3">
-              هیچ نتیجه‌ای یافت نشد
-            </p>
+            <p className="text-sm pb-3">هیچ نتیجه‌ای یافت نشد</p>
           </section>
         )}
       </section>

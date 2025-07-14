@@ -7,7 +7,6 @@ import { ssrFooter } from "../apiHandlers/serverHandlers/ssrFooter";
 import MobileFooterItems from "./components/MobileFooterItems";
 
 const social = [
-  { img: "/social/x2.png", url: "", title: "x" },
   { img: "/social/telegram2.png", url: "", title: "telegram" },
   { img: "/social/instagram2.png", url: "", title: "instagram" },
   { img: "/social/youtube2.png", url: "", title: "youtub" },
@@ -26,7 +25,7 @@ async function Footer() {
           height={32}
           alt="یک زن"
         />
-        <p className="text-gray-900 mt-8 text-[13px]">{footer?.Text}</p>
+        <p className="text-gray-900 mt-8 text-[13px] leading-7">{footer?.Text}</p>
       </section>
       <section className="footer h-[130px] w-full"></section>
       <section className="bg-skin-50 pb-16 md:pb-3 px-3 md:px-5 lg:px-10 xl:px-12 pt-8 -mt-[100px] md:-mt-[115px] lg:-mt-[110px] xl:-mt-[100px]">
@@ -60,6 +59,7 @@ async function Footer() {
                   <Link
                     href={item.url}
                     className="flex justify-center items-center size-5"
+                    title={item.title}
                   >
                     <Image
                       className="max-w-5 max-h-5"

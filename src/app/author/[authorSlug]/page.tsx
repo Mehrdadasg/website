@@ -149,17 +149,17 @@ async function Author({
         seperatorClassName="text-gray-200"
       />
       <section className="flex gap-10 items-center my-10">
-        <section className="size-60 rounded-full">
+        <section className="size-[110px] md:size-60 rounded-full">
           <Image
             src={author?.Content?.MainImageUrl ?? "/user2.png"}
-            className="size-full rounded-full object-cover"
+            className="size-[110px] md:size-60 rounded-full object-cover"
             alt={author?.Content?.MainImageUrl ?? "تصویر نویسنده"}
             width={240}
             height={240}
           />
         </section>
         <section>
-          <h1 className="text-5xl">
+          <h1 className="text-[22px] xl:text-5xl">
             <b>{author?.Content?.Title}</b>
           </h1>
           <h2 className="text-lg mt-5">کارشناس تغذیه</h2>

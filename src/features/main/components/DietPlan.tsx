@@ -13,7 +13,7 @@ async function DietPlan() {
   const queryClient = new QueryClient();
   const { dietPlan } = await ssrDietPlan(queryClient);
   return (
-    <section className="my-24 py-10 px-5 lg:px-10 xl:px-0 md:py-14">
+    <section className="my-5 sm:my-24 py-10 px-5 lg:px-10 xl:px-0 md:py-14">
       <div className="lg:flex py-8 px-5 lg:p-16 bg-green-50 rounded-[12px] lg:rounded-4xl">
         <section className="lg:w-1/2">
           <h2 className="text-[22px] lg:text-4xl text-center lg:text-right font-bold lg:font-semibold text-green-500">

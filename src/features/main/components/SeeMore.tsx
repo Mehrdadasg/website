@@ -8,7 +8,7 @@ async function SeeMore() {
     const queryClient=new QueryClient();
     const {seeMoreData} =await ssrSeeMore(queryClient);
   return (
-    <section className="mt-32 mb-24 px-5 lg:px-10 xl:px-0 overflow-hidden">
+    <section className="mt-5 sm:mt-32 mb-5 sm:mb-24 px-5 lg:px-10 xl:px-0 overflow-hidden">
       <div className="sm:flex bg-gray-100 rounded-[12px] md:rounded-4xl">
         <section className="sm:w-2/5 text-center md:pr-16 flex flex-col justify-center pt-10">
           <p className="text-[20px] md:text-2xl lg:text-4xl text-center md:text-right font-bold md:font-semibold text-pink-500 md:-mt-5">

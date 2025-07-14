@@ -15,12 +15,12 @@ type Props = {
 function Categories({ expertCategories, selectedCategoryId }: Props) {
   return (
     <section className="overflow-x-auto pb-5">
-      <section className="flex gap-10 mt-14 w-max">
+      <section className="flex sm:gap-3 mt-14 w-max">
         <LinkCM
           href="?categoryId=0"
           variant={selectedCategoryId === 0 ? "contained" : "text"}
           color="blue"
-          className={`${selectedCategoryId===0? "":"!bg-transparent !border-transparent" } w-28 text-sm`}
+          className={`${selectedCategoryId===0? "":"!bg-transparent !border-transparent" } w-24 text-sm`}
         >
           همه
         </LinkCM>
@@ -30,7 +30,7 @@ function Categories({ expertCategories, selectedCategoryId }: Props) {
             href={`?categoryId=${c?.Id}`}
             variant={selectedCategoryId === c?.Id ? "contained" : "text"}
             color="blue"
-            className={`${selectedCategoryId===c?.Id ? "":"!bg-transparent !border-transparent" } w-32 text-sm`}
+            className={`${selectedCategoryId===c?.Id ? "":"!bg-transparent !border-transparent" } w-max px-5 text-sm`}
           >
             {c?.Title}
           </LinkCM>

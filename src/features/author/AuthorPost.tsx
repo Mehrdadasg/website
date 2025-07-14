@@ -33,7 +33,7 @@ async function AuthorPost({ slug, currentPage }: Props) {
     <>
       <section className="grid sm:grid-cols-2 lg:grid-cols-3 gap-10 mt-10">
         {blogList?.Items?.map((article: Article) => (
-          <ArticleCard key={article.Id} article={article} />
+          <ArticleCard view="horizontal" key={article.Id} article={article} />
         ))}
       </section>
 

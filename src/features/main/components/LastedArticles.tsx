@@ -1,5 +1,6 @@
 import { ssrLastedArticles } from "@/features/apiHandlers/serverHandlers/ssrLastedArticles";
 import ArticleCard from "@/shared/components/article-card";
+import LinkCM from "@/shared/components/link";
 import { Article } from "@/shared/types/type";
 import { QueryClient } from "@tanstack/react-query";
 import { ArrowLeft2 } from "iconsax-react";
@@ -11,7 +12,7 @@ async function LastedArticles() {
   const queryClient = new QueryClient();
   const { lastedArticles } = await ssrLastedArticles(queryClient);
   return (
-    <section className="pt-5 pb-24 px-5 lg:px-10 xl:px-0">
+    <section className="pt-5 pb-5 sm:pb-24 px-5 lg:px-10 xl:px-0">
       <section className="flex justify-between items-center">
         <div className="flex items-center gap-3">
           <span className="hidden sm:flex size-[44px] bg-orange-50 rounded-full justify-center items-center">
@@ -46,14 +47,15 @@ async function LastedArticles() {
       </section>
 
       <section className="flex justify-center pt-5">
-        <Link
-          href=""
+        <LinkCM
+          href="/blog"
+          variant="outline"
           className="sm:hidden h-[48px] rounded-[50px] border-pink-500 text-pink-500 px-10"
         >
           <span className="font-bold text-[13px]">
             {lastedArticles?.SeeMoreText}
           </span>
-        </Link>
+        </LinkCM>
       </section>
     </section>
   );

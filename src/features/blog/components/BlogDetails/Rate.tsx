@@ -51,7 +51,7 @@ function Rate({slug}:{slug:string}) {
   };
 
   return (
-    <section className="grid grid-cols-5 gap-2 my-10">
+    <section className="grid grid-cols-5 gap-2 my-10" id="rate-section">
       {rateList?.map((r) => (
         <label
           key={r?.Id}

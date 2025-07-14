@@ -55,7 +55,7 @@ function BlogHero({ blogHeroData }: {blogHeroData:BlogHeroProps}) {
               />
             </Link>
             <p>
-              نویسنده: <Link href={`/blog/${blogHeroData?.Slug}/${blogHeroData?.AuthorSlug}`}>{blogHeroData?.AuthorName}</Link>
+              نویسنده: <Link href={`/author/${blogHeroData?.AuthorSlug}`}>{blogHeroData?.AuthorName}</Link>
             </p>
           </div>
           <div className="flex gap-2 items-center">

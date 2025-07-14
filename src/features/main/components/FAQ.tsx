@@ -17,14 +17,14 @@ async function FAQ() {
   const queryClient = new QueryClient();
   const { faq } = await ssrFAQ(queryClient);
   return (
-    <section className="max-w-[40rem] md:max-w-4xl mx-auto pt-14 pb-20 px-5 lg:px-10 xl:px-0 faq">
+    <section className="max-w-[40rem] md:max-w-4xl mx-auto pt-10 sm:pt-14 pb-16 sm:pb-20 px-5 lg:px-10 xl:px-0 faq">
       <p className="font-semibold text-[22px] md:text-4xl mb-5 md:mb-10">
         سوالات پر تکرار
       </p>
       <Accordion multiple={false}>
         {faq.map((item: FaqItemType) => (
           <AccordionItem key={item?.Id} id={`${item?.Id}`} title={item.Title}>
-            <AccordionContent>{item.Text}</AccordionContent>
+            <AccordionContent accordionContextClass="leading-7">{item.Text}</AccordionContent>
           </AccordionItem>
         ))}
       </Accordion>

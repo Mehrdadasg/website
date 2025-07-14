@@ -20,7 +20,7 @@ async function RelatedBlog({ slug }: { slug: string }) {
         </p>
       </div>
       <section className="grid sm:grid-cols-3 mt-10 gap-10">
-        {relatedList?.map((post:Article)=><ArticleCard key={post?.Id} article={post}/>)}
+        {relatedList?.map((post:Article)=><ArticleCard seoTag="h3" key={post?.Id} article={post}/>)}
       </section>
     </>
   );

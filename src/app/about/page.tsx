@@ -135,14 +135,14 @@ async function About() {
         />
         <section className=" md:flex lg:gap-5 xl:gap-10 h-full md:mt-10">
           <section className="md:w-1/2 pt-8 md:pt-10">
-            <h2 className="bg-lake-blue-50 text-lake-blue-600 py-1 px-5 text-[13px] md:text-lg rounded-[50px] w-max">
+            {/* <h2 className="bg-lake-blue-50 text-lake-blue-600 py-1 px-5 text-[13px] md:text-lg rounded-[50px] w-max">
               {aboutData?.Content?.SubTitle}
-            </h2>
-            <p className="md:text-right mt-10 mb-8 text-[38px] md:text-5xl xl:text-[64px]">
+            </h2> */}
+            <p className="md:text-right mt-5 sm:mt-10 mb-8 text-[38px] md:text-5xl xl:text-[64px]">
               <b>پرطرفــــدار تریــــــــــــن</b>
             </p>
             <p className="md:text-right mt-2 mb-10 md:mb-16 text-[38px] md:text-5xl xl:text-5xl text-pink-500">
-              <b>اپلیکیشن سلامت زنان ایرونی</b>
+              <b>اپلیکیشن سلامت زنان ایرانی</b>
             </p>
             <h2 className="md:text-right text-[13px] md:text-base xl:text-lg text-gray-600">
               {aboutData?.Content?.Text}
@@ -188,7 +188,7 @@ async function About() {
           <p className="text-skin-600 sm:text-xs lg:text-base">شروع فعالیت</p>
         </section>
       </section>
-      <section className="pb-32 px-5">
+      {/*<section className="pb-32 px-5">
         <p className="text-[22px] md:text-4xl xl:text-5xl sm:text-center">
           <b>
             <mark className="bg-transparent">
@@ -199,7 +199,7 @@ async function About() {
         <p className="text-lg sm:text-center mt-5 text-gray-600 max-w-[588px] mx-auto">
           {aboutData?.TeamContent?.Text}
         </p>
-        <section className="flex justify-center gap-10 mt-20 max-w-5xl mx-auto flex-wrap">
+         <section className="flex justify-center gap-10 mt-20 max-w-5xl mx-auto flex-wrap">
           {aboutData?.TeamContent?.Members?.map((m: Member, index: number) => (
             <section
               key={index}
@@ -270,8 +270,8 @@ async function About() {
               </div>
             </section>
           ))}
-        </section>
-      </section>
+        </section> 
+      </section>*/}
     </>
   );
 }

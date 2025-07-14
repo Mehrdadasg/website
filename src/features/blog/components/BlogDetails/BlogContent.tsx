@@ -48,7 +48,7 @@ function BlogContent({ blog }: { blog: BlogDetails }) {
                 </span>
               </span>
             </div>
-            <HorizontalCard article={blog?.Prev} />
+            <HorizontalCard seoTag="h3" article={blog?.Prev} />
           </section>
           <section className="lg:w-1/2 mt-10 md:mt-0">
             <div className="h-[1px] w-full bg-gray-200 flex items-center md:justify-end mb-7">
@@ -59,7 +59,7 @@ function BlogContent({ blog }: { blog: BlogDetails }) {
                 <ArrowLeft color="var(--color-lake-blue-500)" size={20} />
               </span>
             </div>
-            <HorizontalCard article={blog?.Next} />
+            <HorizontalCard seoTag="h3" article={blog?.Next} />
           </section>
         </section>
       </section>
