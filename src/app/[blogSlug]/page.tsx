@@ -151,7 +151,7 @@ async function BlogDetails({
         url: "https://yekzan.com/logo.png",
       },
     },
-    datePublished: Data?.JsonLd?.publisher.datePublished,
+    datePublished: Data?.JsonLd?.datePublished,
     mainEntityOfPage: `https://yekzan.com/articles/${blogSlug}`,
   };
 
