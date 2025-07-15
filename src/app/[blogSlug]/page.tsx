@@ -130,17 +130,18 @@ async function BlogDetails({
   if (!blogSlug) notFound();
   const queryClient = new QueryClient();
   const { blog } = await ssrBlog({ queryClient, slug: blogSlug });
+  const { Data } = await getBlogSeo(blogSlug);
 
   //JSON-LD
   const jsonLdData = {
     "@context": "https://schema.org",
     "@type": "Article",
-    headline: blog?.Content?.Title,
-    description: blog?.Content?.ShortDescription,
-    image: blog?.Content?.Image,
+    headline: Data?.JsonLd?.headline,
+    description: Data?.JsonLd?.description,
+    image: Data?.JsonLd?.image,
     author: {
       "@type": "Person",
-      name: blog?.Content?.Author || "یک زن",
+      name: Data?.JsonLd?.author?.name || "یک زن",
     },
     publisher: {
       "@type": "Organization",
@@ -150,10 +151,10 @@ async function BlogDetails({
         url: "https://yekzan.com/logo.png",
       },
     },
-    datePublished: blog?.Content?.PublishedDate,
+    datePublished: Data?.JsonLd?.publisher.datePublished,
     mainEntityOfPage: `https://yekzan.com/articles/${blogSlug}`,
   };
-  
+
   return (
     <>
       <JsonLd json={jsonLdData} />
