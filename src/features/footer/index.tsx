@@ -5,12 +5,8 @@ import DesktopFooterItem from "./components/DesktopFooterItem";
 import { QueryClient } from "@tanstack/react-query";
 import { ssrFooter } from "../apiHandlers/serverHandlers/ssrFooter";
 import MobileFooterItems from "./components/MobileFooterItems";
-
-const social = [
-  { img: "/social/telegram2.png", url: "", title: "telegram" },
-  { img: "/social/instagram2.png", url: "", title: "instagram" },
-  { img: "/social/youtube2.png", url: "", title: "youtub" },
-];
+import EnamadBadge from "./components/Enamad";
+import Social from "./components/Social";
 
 async function Footer() {
   const queryClient = new QueryClient();
@@ -41,7 +37,7 @@ async function Footer() {
               {footer?.Text}
             </p>
           </section>
-          <DesktopFooterItem  />
+          <DesktopFooterItem link={footer?.EnamadUrl} img={footer?.EnamadImageUrl} />
         </section>
         <MobileFooterItems />
         <div className="w-full h-0.5 bg-skin-100 mt-10 mb-5"></div>
@@ -53,28 +49,10 @@ async function Footer() {
             </mark>
           </p>
           <nav className="flex items-center w-full sm:w-max sm:gap-10">
-            <ul className="flex gap-5 flex-1 justify-center">
-              {social?.map((item) => (
-                <li key={item.title}>
-                  <Link
-                    href={item.url}
-                    className="flex justify-center items-center size-5"
-                    title={item.title}
-                  >
-                    <Image
-                      className="max-w-5 max-h-5"
-                      src={item.img}
-                      alt={item.title}
-                      width={20}
-                      height={20}
-                    />
-                  </Link>
-                </li>
-              ))}
-            </ul>
-            <Link href="" className="md:hidden">
-              <Image src="/enamad.png" width={100} height={150} alt="enamad" />
-            </Link>
+            <Social instaUrl={footer?.InstagramUrl} youtubeUrl={footer?.YoutubeUrl} />
+            <section className="md:hidden">
+              <EnamadBadge link={footer?.EnamadUrl} img={footer?.EnamadImageUrl} />
+            </section>
           </nav>
         </section>
       </section>

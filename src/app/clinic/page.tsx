@@ -72,9 +72,10 @@ async function DoctorsPage({ searchParams }: DoctorsPageProps) {
       >
         {doctorsList?.length > 0 ? (
           doctorsList?.map((d: ExpertType) => (
-            <>
-              <section
+            <React.Fragment 
                 key={d?.Id}
+            >
+              <section
                 className="hidden sm:flex flex-col sm:justify-center items-center gap-2 px-3 sm:px-5 md:px-7 w-full md:w-max"
               >
                 <Image
@@ -127,18 +128,10 @@ async function DoctorsPage({ searchParams }: DoctorsPageProps) {
                       {d?.SubTitle}
                     </p>
                   </div>
-                  <LinkCM
-                    href={`/clinic/${d?.Slug}`}
-                    variant="outline"
-                    color="blue"
-                    className="mt-5 !hidden sm:!flex"
-                  >
-                    مشاهده پروفایل
-                  </LinkCM>
                   <ArrowLeft2 color="var(--color-lake-blue-500)" size={24} />
                 </div>
               </Link>
-            </>
+            </React.Fragment >
           ))
         ) : (
           <section className="flex justify-center items-center flex-col ">

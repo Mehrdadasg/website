@@ -59,9 +59,9 @@ function ContactForm() {
   };
 
   return (
-    <section className="md:shadow-sm shadow-gray-200 md:border border-gray-200 rounded-[12px] px-5 md:px-10 md:py-16 mt-10 max-w-[40rem] md:max-w-4xl mx-auto ">
-      <p className="text-4xl">
-        <b>تماس با ما</b>
+    <section className="md:shadow-sm shadow-gray-200 md:border border-gray-200 bg-white rounded-[12px] px-5 md:px-10 md:py-16 max-w-[40rem] md:max-w-4xl mx-auto ">
+      <p className="text-2xl md:text-[32px]">
+        <b>فرم تماس</b>
       </p>
       <p className="text-gray-500 text-lg mt-5">
         از طریق فرم زیر می تونی پیامت رو به ما برسونی .

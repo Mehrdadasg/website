@@ -2,9 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 import React from "react";
 import { Glass2 } from "../../icons/Glass2";
-import Share2 from "@/shared/icons/Share2";
 import { Article } from "@/shared/types/type";
-import ShareBtn from "../share-btn";
 
 interface FeaturedArticleProps {
   article: Article;

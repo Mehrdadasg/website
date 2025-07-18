@@ -1,6 +1,5 @@
 "use client";
 
-import Share2 from "@/shared/icons/Share2";
 import { Messages3, Star1 } from "iconsax-react";
 import ShareBtn from "../share-btn";
 import Link from "next/link";

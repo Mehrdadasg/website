@@ -1,5 +1,4 @@
 import { ssrAppFeature } from "@/features/apiHandlers/serverHandlers/ssrAppFeature";
-import Card from "@/shared/components/card";
 import { FeaturesItem } from "@/shared/types/type";
 import { QueryClient } from "@tanstack/react-query";
 import Image from "next/image";

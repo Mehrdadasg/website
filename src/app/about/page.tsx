@@ -1,10 +1,7 @@
 import { ssrAbout } from "@/features/apiHandlers/serverHandlers/ssrAbout";
 import { getPageSeo } from "@/service/getPageSeo";
 import Breadcrumb from "@/shared/components/breadcrumb";
-import LinkCM from "@/shared/components/link";
-import Github from "@/shared/icons/Github";
-import Linkedin from "@/shared/icons/Likedin";
-import { Member } from "@/shared/types/type";
+import JsonLd from "@/shared/components/json-ld";
 import { QueryClient } from "@tanstack/react-query";
 import Image from "next/image";
 import React from "react";
@@ -117,6 +114,8 @@ export async function generateMetadata() {
 async function About() {
   const queryClient = new QueryClient();
   const { aboutData } = await ssrAbout(queryClient);
+    const { Data } = await getPageSeo("about");
+  
 
   const breadcrumbItems = [
     { label: "خانه", href: "/" },
@@ -125,6 +124,8 @@ async function About() {
 
   return (
     <>
+      <JsonLd json={Data?.JsonLd} />
+
       <section className="pt-24 md:pt-52 lg:pt-40 xl:pt-36 md:mt-0 px-3 sm:px-5 lg:px-10 xl:px-0 max-w-[1200px] mx-auto">
         <Breadcrumb
           items={breadcrumbItems}

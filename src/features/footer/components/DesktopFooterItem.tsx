@@ -1,7 +1,7 @@
-import { MenuItems, MenuType } from "@/shared/types/type";
-import Image from "next/image";
+import { MenuItems } from "@/shared/types/type";
 import Link from "next/link";
 import React from "react";
+import EnamadBadge from "./Enamad";
 
 const footerMenu = [
   { Id: 1, Url: "", Title: "مشاوره" },
@@ -17,7 +17,12 @@ const footerMenu = [
   { Id: 11, Url: "", Title: "محاسبه زمان تخمک گذاری" },
 ];
 
-function DesktopFooterItem() {
+type Props = {
+  link: string;
+  img: string;
+};
+
+function DesktopFooterItem({img,link}:Props) {
   const firstColumn = footerMenu?.slice(0, 6);
   const secondColumn = footerMenu?.slice(6);
   return (
@@ -49,9 +54,7 @@ function DesktopFooterItem() {
         </nav>
       </section>
       <section className="md:w-1/4 pt-14">
-        <Link href="" className="hidden md:block">
-          <Image src="/enamad.png" width={100} height={150} alt="enamad" />
-        </Link>
+        <EnamadBadge img={img} link={link} />
       </section>
     </section>
   );

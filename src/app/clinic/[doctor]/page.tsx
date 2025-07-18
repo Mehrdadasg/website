@@ -3,15 +3,10 @@ import RelatedExperts from "@/features/doctors/RelatedExperts";
 import { getExpertSeo } from "@/service/getExpertSeo";
 import Breadcrumb from "@/shared/components/breadcrumb";
 import Button from "@/shared/components/button";
+import JsonLd from "@/shared/components/json-ld";
 import LinkCM from "@/shared/components/link";
 import { QueryClient } from "@tanstack/react-query";
-import {
-  Facebook,
-  Instagram,
-  Location,
-  Send2,
-  Whatsapp,
-} from "iconsax-react";
+import { Facebook, Instagram, Location, Send2, Whatsapp } from "iconsax-react";
 import Image from "next/image";
 import { notFound } from "next/navigation";
 import React from "react";
@@ -127,16 +122,13 @@ export async function generateMetadata({
   }
 }
 
-async function DoctorInfo({
-  params,
-}: {
-  params: Promise<{ doctor: string }>;
-}) {
+async function DoctorInfo({ params }: { params: Promise<{ doctor: string }> }) {
   const queryClient = new QueryClient();
   const resolvedParams = await params;
   const slug = resolvedParams?.doctor;
   if (!slug) notFound();
   const { expert } = await ssrExpert({ queryClient, slug });
+  const { Data } = await getExpertSeo(slug);
 
   const breadcrumbItems = [
     { label: "خانه", href: "/" },
@@ -145,6 +137,7 @@ async function DoctorInfo({
   ];
   return (
     <>
+      <JsonLd json={Data?.JsonLd} />
       <section className="bg-gray-100 h-max pt-40 sm:pt-36 -mt-[80px] md:mt-0 pb-28 px-5 md:px-0">
         <section className="max-w-[1200px] mx-auto ">
           <Breadcrumb
@@ -209,16 +202,40 @@ async function DoctorInfo({
               </div>
 
               <section className="flex justify-center gap-5 md:shadow-sm shadow-gray-200 md:border border-gray-200 rounded-[12px] md:p-10 mt-24">
-                <LinkCM href="" aria-label="instagram" variant="contained" color="blue" size="icon">
+                <LinkCM
+                  href=""
+                  aria-label="instagram"
+                  variant="contained"
+                  color="blue"
+                  size="icon"
+                >
                   <Instagram color="#fff" size={34} variant="Bold" />
                 </LinkCM>
-                <LinkCM href="" aria-label="telegram" variant="contained" color="blue" size="icon">
+                <LinkCM
+                  href=""
+                  aria-label="telegram"
+                  variant="contained"
+                  color="blue"
+                  size="icon"
+                >
                   <Send2 color="#fff" size={34} variant="Bold" />
                 </LinkCM>
-                <LinkCM href="" aria-label="whatsapp" variant="contained" color="blue" size="icon">
+                <LinkCM
+                  href=""
+                  aria-label="whatsapp"
+                  variant="contained"
+                  color="blue"
+                  size="icon"
+                >
                   <Whatsapp color="#fff" size={34} variant="Bold" />
                 </LinkCM>
-                <LinkCM href="" aria-label="facebook" variant="contained" color="blue" size="icon">
+                <LinkCM
+                  href=""
+                  aria-label="facebook"
+                  variant="contained"
+                  color="blue"
+                  size="icon"
+                >
                   <Facebook color="#fff" size={34} variant="Bold" />
                 </LinkCM>
               </section>

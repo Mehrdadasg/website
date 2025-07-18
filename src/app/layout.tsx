@@ -7,17 +7,23 @@ import Footer from "@/features/footer";
 import FixedAppBar from "@/features/main/components/FixedAppBar";
 import { Toaster } from "react-hot-toast";
 import { getSeoData } from "@/service/getSeoData";
+import JsonLd from "@/shared/components/json-ld";
+import NextTopLoader from "nextjs-toploader";
 
 export async function generateMetadata(): Promise<Metadata> {
   try {
     const { Data } = await getSeoData();
     return {
       title: {
-        default: Data.MetaTitle || "یک زن - راهنمای بهداشت زنان، بارداری و زایمان",
+        default:
+          Data.MetaTitle || "یک زن - راهنمای بهداشت زنان، بارداری و زایمان",
         template: "%s | یک زن",
       },
-      description: Data.MetaDescription || "یک زن: راهنمای جامع بهداشت زنان از بلوغ تا بارداری، زایمان و سلامت مادران. اطلاعات کاربردی، نکات مهم و محصولات ویژه برای زنان را اینجا بخوانید و تجربه کنید!",
-      keywords: "بهداشت زنان, بارداری, زایمان, بلوغ, سلامت زنان, راهنمای زنان, محصولات زنان",
+      description:
+        Data.MetaDescription ||
+        "یک زن: راهنمای جامع بهداشت زنان از بلوغ تا بارداری، زایمان و سلامت مادران. اطلاعات کاربردی، نکات مهم و محصولات ویژه برای زنان را اینجا بخوانید و تجربه کنید!",
+      keywords:
+        "بهداشت زنان, بارداری, زایمان, بلوغ, سلامت زنان, راهنمای زنان, محصولات زنان",
       metadataBase: new URL(Data.OgUrl || "https://yeksan.com"),
       alternates: {
         canonical: Data.CanonicalUrl || "/",
@@ -31,7 +37,9 @@ export async function generateMetadata(): Promise<Metadata> {
       },
       openGraph: {
         title: Data.OgTitle || "یک زن - راهنمای بهداشت زنان",
-        description: Data.OgDescription || "یک زن: راهنمای جامع بهداشت زنان از بلوغ تا بارداری، زایمان و سلامت مادران",
+        description:
+          Data.OgDescription ||
+          "یک زن: راهنمای جامع بهداشت زنان از بلوغ تا بارداری، زایمان و سلامت مادران",
         siteName: "یک زن",
         type: "website",
         url: Data.OgUrl || "/",
@@ -53,7 +61,9 @@ export async function generateMetadata(): Promise<Metadata> {
       twitter: {
         card: "summary_large_image",
         title: Data.OgTitle || "یک زن - راهنمای بهداشت زنان",
-        description: Data.OgDescription || "یک زن، راهنمای جامع بهداشت زنان از بلوغ تا بارداری، زایمان و سلامت مادران",
+        description:
+          Data.OgDescription ||
+          "یک زن، راهنمای جامع بهداشت زنان از بلوغ تا بارداری، زایمان و سلامت مادران",
         images: [Data.OgImageUrl || "/og-img-large.png"],
         site: "@YekZan",
         creator: "@YekZanAuthor",
@@ -75,16 +85,17 @@ export async function generateMetadata(): Promise<Metadata> {
               "application/ld+json": JSON.stringify({
                 "@context": "https://schema.org",
                 "@type": "Website",
-                "name": "یک زن",
-                "url": "https://yeksan.com",
-                "description": "یک زن، راهنمای جامع بهداشت زنان از بلوغ تا بارداری و زایمان",
-                "inLanguage": "fa-IR",
-                "publisher": {
+                name: "یک زن",
+                url: "https://yeksan.com",
+                description:
+                  "یک زن، راهنمای جامع بهداشت زنان از بلوغ تا بارداری و زایمان",
+                inLanguage: "fa-IR",
+                publisher: {
                   "@type": "Organization",
-                  "name": "یک زن",
-                  "logo": {
+                  name: "یک زن",
+                  logo: {
                     "@type": "ImageObject",
-                    "url": "https://yeksan.com/logo.png",
+                    url: "https://yeksan.com/logo.png",
                   },
                 },
               }),
@@ -98,8 +109,10 @@ export async function generateMetadata(): Promise<Metadata> {
         default: "یک زن - راهنمای بهداشت زنان، بارداری و زایمان",
         template: "%s | یک زن",
       },
-      description: "یک زن: راهنمای جامع بهداشت زنان از بلوغ تا بارداری، زایمان و سلامت مادران. اطلاعات کاربردی، نکات مهم و محصولات ویژه برای زنان را اینجا بخوانید و تجربه کنید!",
-      keywords: "بهداشت زنان, بارداری, زایمان, بلوغ, سلامت زنان, راهنمای زنان, محصولات زنان",
+      description:
+        "یک زن: راهنمای جامع بهداشت زنان از بلوغ تا بارداری، زایمان و سلامت مادران. اطلاعات کاربردی، نکات مهم و محصولات ویژه برای زنان را اینجا بخوانید و تجربه کنید!",
+      keywords:
+        "بهداشت زنان, بارداری, زایمان, بلوغ, سلامت زنان, راهنمای زنان, محصولات زنان",
       metadataBase: new URL("https://yeksan.com"),
       alternates: {
         canonical: "/",
@@ -113,7 +126,8 @@ export async function generateMetadata(): Promise<Metadata> {
       },
       openGraph: {
         title: "یک زن - راهنمای بهداشت زنان",
-        description: "یک زن: راهنمای جامع بهداشت زنان از بلوغ تا بارداری، زایمان و سلامت مادران",
+        description:
+          "یک زن: راهنمای جامع بهداشت زنان از بلوغ تا بارداری، زایمان و سلامت مادران",
         siteName: "یک زن",
         type: "website",
         url: "/",
@@ -135,7 +149,8 @@ export async function generateMetadata(): Promise<Metadata> {
       twitter: {
         card: "summary_large_image",
         title: "یک زن - راهنمای بهداشت زنان",
-        description: "یک زن، راهنمای جامع بهداشت زنان از بلوغ تا بارداری، زایمان و سلامت مادران",
+        description:
+          "یک زن، راهنمای جامع بهداشت زنان از بلوغ تا بارداری، زایمان و سلامت مادران",
         images: ["/og-img-large.png"],
         site: "@YekZan",
         creator: "@YekZanAuthor",
@@ -154,16 +169,17 @@ export async function generateMetadata(): Promise<Metadata> {
         "application/ld+json": JSON.stringify({
           "@context": "https://schema.org",
           "@type": "Website",
-          "name": "یک زن",
-          "url": "https://yeksan.com",
-          "description": "یک زن، راهنمای جامع بهداشت زنان از بلوغ تا بارداری و زایمان",
-          "inLanguage": "fa-IR",
-          "publisher": {
+          name: "یک زن",
+          url: "https://yeksan.com",
+          description:
+            "یک زن، راهنمای جامع بهداشت زنان از بلوغ تا بارداری و زایمان",
+          inLanguage: "fa-IR",
+          publisher: {
             "@type": "Organization",
-            "name": "یک زن",
-            "logo": {
+            name: "یک زن",
+            logo: {
               "@type": "ImageObject",
-              "url": "https://yeksan.com/logo.png",
+              url: "https://yeksan.com/logo.png",
             },
           },
         }),
@@ -224,21 +240,29 @@ const iranSans = localFont({
   display: "swap",
 });
 
-export default function RootLayout({
+export default async function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  const { Data } = await getSeoData();
   return (
     <html lang={"fa"} dir={"rtl"}>
       <body className={`${iranSans.className} antialiased`}>
+        <JsonLd json={Data?.JsonLd} />
         <ReactQueryProvider>
+          <NextTopLoader color={"#ff5a7c"} showSpinner={false} />
           <Header />
           {children}
-          <Footer/>
-          <FixedAppBar/>
+          <Footer />
+          <FixedAppBar />
         </ReactQueryProvider>
-        <Toaster position="top-center" toastOptions={{ style: { fontFamily: `${iranSans.className}`, direction: "rtl" } }} />
+        <Toaster
+          position="top-center"
+          toastOptions={{
+            style: { fontFamily: `${iranSans.className}`, direction: "rtl" },
+          }}
+        />
       </body>
     </html>
   );

@@ -1,7 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
 import React from "react";
-import Share2 from "@/shared/icons/Share2";
 import { HorizontalArticle } from "@/shared/types/type";
 import ShareBtn from "../share-btn";
 

@@ -2,6 +2,7 @@ import { ssrAuthor } from "@/features/apiHandlers/serverHandlers/ssrAuthor";
 import AuthorPost from "@/features/author/AuthorPost";
 import { getAuthorSeo } from "@/service/getAuthorSeo";
 import Breadcrumb from "@/shared/components/breadcrumb";
+import JsonLd from "@/shared/components/json-ld";
 import { QueryClient } from "@tanstack/react-query";
 import Image from "next/image";
 import { notFound } from "next/navigation";
@@ -132,6 +133,7 @@ async function Author({
   const currentPage = Number(resolvedSearchParams.page) || 1;
   const queryClient = new QueryClient();
   const { author } = await ssrAuthor({ queryClient, slug: authorSlug });
+  const { Data } = await getAuthorSeo(authorSlug);
 
   const breadcrumbItems = [
     { label: "خانه", href: "/" },
@@ -140,48 +142,52 @@ async function Author({
   ];
 
   return (
-    <main className="w-full px-5 xl:px-0 max-w-7xl 2xl:max-w-[1366px] mx-auto py-24 md:py-40">
-      <Breadcrumb
-        items={breadcrumbItems}
-        separator="/"
-        linkClassName="text-lake-blue-600 text-xs"
-        textClassName="text-gray-400 text-xs"
-        seperatorClassName="text-gray-200"
-      />
-      <section className="flex gap-10 items-center my-10">
-        <section className="size-[110px] md:size-60 rounded-full">
-          <Image
-            src={author?.Content?.MainImageUrl ?? "/user2.png"}
-            className="size-[110px] md:size-60 rounded-full object-cover"
-            alt={author?.Content?.MainImageUrl ?? "تصویر نویسنده"}
-            width={240}
-            height={240}
-          />
-        </section>
-        <section>
-          <h1 className="text-[22px] xl:text-5xl">
-            <b>{author?.Content?.Title}</b>
-          </h1>
-          <h2 className="text-lg mt-5">کارشناس تغذیه</h2>
-        </section>
-      </section>
+    <>
+      <JsonLd json={Data?.JsonLd} />
 
-      <section className="flex items-center gap-3 mt-16">
-        <span className="hidden sm:flex size-[44px] bg-orange-50 rounded-full justify-center items-center">
-          <Image
-            src="/fire.png"
-            className="w-[19px] h-[23px]"
-            width={19}
-            height={23}
-            alt="آخرین های مجله"
-          />
-        </span>
-        <p className="text-[22px] sm:text-2xl font-semibold sm:font-bold">
-          خواندنی‌های نویسنده
-        </p>
-      </section>
-      <AuthorPost slug={authorSlug} currentPage={currentPage} />
-    </main>
+      <main className="w-full px-5 xl:px-0 max-w-7xl 2xl:max-w-[1366px] mx-auto py-24 md:py-40">
+        <Breadcrumb
+          items={breadcrumbItems}
+          separator="/"
+          linkClassName="text-lake-blue-600 text-xs"
+          textClassName="text-gray-400 text-xs"
+          seperatorClassName="text-gray-200"
+        />
+        <section className="flex gap-10 items-center my-10">
+          <section className="size-[110px] md:size-60 rounded-full">
+            <Image
+              src={author?.Content?.MainImageUrl ?? "/user2.png"}
+              className="size-[110px] md:size-60 rounded-full object-cover"
+              alt={author?.Content?.MainImageUrl ?? "تصویر نویسنده"}
+              width={240}
+              height={240}
+            />
+          </section>
+          <section>
+            <h1 className="text-[22px] xl:text-5xl">
+              <b>{author?.Content?.Title}</b>
+            </h1>
+            <h2 className="text-lg mt-5">کارشناس تغذیه</h2>
+          </section>
+        </section>
+
+        <section className="flex items-center gap-3 mt-16">
+          <span className="hidden sm:flex size-[44px] bg-orange-50 rounded-full justify-center items-center">
+            <Image
+              src="/fire.png"
+              className="w-[19px] h-[23px]"
+              width={19}
+              height={23}
+              alt="آخرین های مجله"
+            />
+          </span>
+          <p className="text-[22px] sm:text-2xl font-semibold sm:font-bold">
+            خواندنی‌های نویسنده
+          </p>
+        </section>
+        <AuthorPost slug={authorSlug} currentPage={currentPage} />
+      </main>
+    </>
   );
 }
 

@@ -3,8 +3,8 @@ import BlogContent from "@/features/blog/components/BlogDetails/BlogContent";
 import BlogHero from "@/features/blog/components/BlogDetails/BlogHero";
 import OtherBlog from "@/features/blog/components/BlogDetails/OtherBlog";
 import RelatedBlog from "@/features/blog/components/BlogDetails/RelatedBlog";
-import JsonLd from "@/features/blog/components/BlogDetails/StructuredData";
 import { getBlogSeo } from "@/service/getBlogSeo";
+import JsonLd from "@/shared/components/json-ld";
 import { QueryClient } from "@tanstack/react-query";
 import { notFound } from "next/navigation";
 import React from "react";
@@ -132,32 +132,9 @@ async function BlogDetails({
   const { blog } = await ssrBlog({ queryClient, slug: blogSlug });
   const { Data } = await getBlogSeo(blogSlug);
 
-  //JSON-LD
-  const jsonLdData = {
-    "@context": "https://schema.org",
-    "@type": "Article",
-    headline: Data?.JsonLd?.headline,
-    description: Data?.JsonLd?.description,
-    image: Data?.JsonLd?.image,
-    author: {
-      "@type": "Person",
-      name: Data?.JsonLd?.author?.name || "یک زن",
-    },
-    publisher: {
-      "@type": "Organization",
-      name: "یک زن",
-      logo: {
-        "@type": "ImageObject",
-        url: "https://yekzan.com/logo.png",
-      },
-    },
-    datePublished: Data?.JsonLd?.datePublished,
-    mainEntityOfPage: `https://yekzan.com/articles/${blogSlug}`,
-  };
-
   return (
     <>
-      <JsonLd json={jsonLdData} />
+      <JsonLd json={Data?.JsonLd} />
       <main className="w-full px-5 xl:px-0 max-w-7xl 2xl:max-w-[1366px] mx-auto py-24 md:py-28 lg:py-36 xl:py-40">
         <BlogHero blogHeroData={blog?.Content} />
         <BlogContent blog={blog} />

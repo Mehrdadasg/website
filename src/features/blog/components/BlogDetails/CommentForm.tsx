@@ -50,16 +50,16 @@ function CommentForm() {
     }
   };
 
-const handleFocus = (e: React.FocusEvent<HTMLInputElement>) => {
-  const element = e.target;
-  const rect = element.getBoundingClientRect();
-  setTimeout(() => {
-    window.scrollTo({
-      top: rect.top + window.scrollY - 100,
-      behavior: "smooth",
-    });
-  }, 500);
-};
+  const handleFocus = (e: React.FocusEvent<HTMLInputElement>) => {
+    const element = e.target;
+    const rect = element.getBoundingClientRect();
+    setTimeout(() => {
+      window.scrollTo({
+        top: rect.top + window.scrollY - 100,
+        behavior: "smooth",
+      });
+    }, 500);
+  };
 
   return (
     <form
