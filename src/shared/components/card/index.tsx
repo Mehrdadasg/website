@@ -21,7 +21,7 @@ const Card: React.FC<CardProps> = ({
   descriptionClass,
 }) => {
   return (
-    <Link href={linkHref}>
+    <Link href={linkHref} title={cardItems?.Title}>
       <article className={`${cardClass ?? ""}`}>
         <Image
           src={cardItems?.ImageUrl}

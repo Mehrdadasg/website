@@ -34,6 +34,7 @@ const Breadcrumb: React.FC<BreadcrumbProps> = ({
             {item?.href ? (
               <Link
                 href={item?.href}
+                title={item?.label}
                 className={`breadcrumb-link ${linkClassName}`}
               >
                 {item?.label}

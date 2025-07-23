@@ -72,24 +72,24 @@ async function DoctorsPage({ searchParams }: DoctorsPageProps) {
       >
         {doctorsList?.length > 0 ? (
           doctorsList?.map((d: ExpertType) => (
-            <React.Fragment 
-                key={d?.Id}
-            >
-              <section
-                className="hidden sm:flex flex-col sm:justify-center items-center gap-2 px-3 sm:px-5 md:px-7 w-full md:w-max"
-              >
-                <Image
-                  src={d?.Avatar || "/user2.png"}
-                  alt={d?.Title}
-                  width={150}
-                  height={150}
-                  className="rounded-full size-[90px] sm:size-[150px] object-cover"
-                />
+            <React.Fragment key={d?.Id}>
+              <section className="hidden sm:flex flex-col sm:justify-center items-center gap-2 px-3 sm:px-5 md:px-7 w-full md:w-max">
+                <Link href={`/clinic/${d?.Slug}`} title={d?.Title}>
+                  <Image
+                    src={d?.Avatar || "/user2.png"}
+                    alt={d?.Title}
+                    width={150}
+                    height={150}
+                    className="rounded-full size-[90px] sm:size-[150px] object-cover"
+                  />
+                </Link>
                 <div className="flex items-center flex-1 justify-between sm:block sm:w-full">
                   <div className="sm:text-center">
-                    <h4 className="font-semibold sm:mt-5 md:text-center">
-                      {d?.Title}
-                    </h4>
+                    <Link href={`/clinic/${d?.Slug}`} title={d?.Title}>
+                      <h4 className="font-semibold sm:mt-5 md:text-center">
+                        {d?.Title}
+                      </h4>
+                    </Link>
                     <p className="text-gray-500 text-xs mt-2 md:text-center truncate max-w-44">
                       {d?.SubTitle}
                     </p>
@@ -99,16 +99,18 @@ async function DoctorsPage({ searchParams }: DoctorsPageProps) {
                     variant="outline"
                     color="blue"
                     className="mt-5 !hidden sm:!flex"
+                    title={d?.Title}
                   >
                     مشاهده پروفایل
                   </LinkCM>
-                  <Link href={`/clinic/${d?.Slug}`} className="sm:hidden">
+                  <Link href={`/clinic/${d?.Slug}`} className="sm:hidden" title={d?.Title}>
                     <ArrowLeft2 color="var(--color-lake-blue-500)" size={24} />
                   </Link>
                 </div>
               </section>
               <Link
                 href={`/clinic/${d?.Slug}`}
+                title={d?.Title}
                 key={d?.Id}
                 className="flex sm:hidden items-center gap-2 px-3 w-full"
               >
@@ -131,7 +133,7 @@ async function DoctorsPage({ searchParams }: DoctorsPageProps) {
                   <ArrowLeft2 color="var(--color-lake-blue-500)" size={24} />
                 </div>
               </Link>
-            </React.Fragment >
+            </React.Fragment>
           ))
         ) : (
           <section className="flex justify-center items-center flex-col ">

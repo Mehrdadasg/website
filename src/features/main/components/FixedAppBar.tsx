@@ -20,6 +20,7 @@ async function FixedAppBar() {
         className="text-[13px]"
         variant="contained"
         color="white"
+        title="دریافت اپلیکیشن یک زن"
       >
         <ArrowCircleDown2 size={25} color="var(--color-pink-500)" />
         دریافت اپلیکیشن یک زن

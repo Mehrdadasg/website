@@ -11,7 +11,7 @@ async function RelatedBlog({ slug }: { slug: string }) {
 
   return (
     <>
-      <div className="flex gap-3 items-center">
+      <div className="flex gap-3 items-center mt-20">
         <span className="size-11 hidden sm:flex justify-center items-center bg-blue-50 rounded-full">
           <Related width={24} height={24} />
         </span>

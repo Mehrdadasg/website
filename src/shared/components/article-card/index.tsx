@@ -19,12 +19,13 @@ const ArticleCard: React.FC<FeaturedArticleProps> = ({
     <article
       className={`${view === "horizontal" ? "flex gap-2 sm:block" : "block"}`}
     >
-      <Link href={`/${article?.Slug}`} className="block">
+      <Link href={`/${article?.Slug}`} title={article?.Title ?? "تصویر پست"} className="block">
         <Image
           src={article?.ImageUrl ?? "/post.png"}
           width={342}
           height={240}
           alt={article?.Title ?? "تصویر پست"}
+          quality={90}
           className={`rounded-[12px] object-cover ${
             view === "horizontal"
               ? "h-[71px] sm:h-[240px] w-[102px] sm:w-full"
@@ -45,7 +46,7 @@ const ArticleCard: React.FC<FeaturedArticleProps> = ({
             <Glass2 height={8} width={23} />
           </div>
         </div>
-        <Link href={`/${article?.Slug}`} className="block">
+        <Link href={`/${article?.Slug}`} title={article?.Title??""} className="block">
           {seoTag === "h2" ? (
             <h2 className="text-lg font-semibold h-14 mt-3 line-clamp-2">
               {article?.Title}
@@ -62,7 +63,7 @@ const ArticleCard: React.FC<FeaturedArticleProps> = ({
       </section>
       <section className="md:hidden">
         <div className="flex items-center gap-1 mt-3">
-          <Link href={`/${article?.Slug}`} className="block flex-grow">
+          <Link href={`/${article?.Slug}`} title={article?.Title??""} className="block flex-grow">
             {seoTag === "h2" ? (
               <h2
                 className={`text-[13px] font-bold  ${

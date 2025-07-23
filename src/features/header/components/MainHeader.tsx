@@ -61,6 +61,7 @@ function MainHeader({ headerData }: { headerData: HeaderDataType }) {
             href="/"
             aria-label="صفحه اصلی - یک زن"
             className="w-max inline-block"
+            title="صفحه اصلی - یک زن"
           >
             <Image
               className="h-6 sm:h-8 w-auto"
@@ -105,6 +106,7 @@ function MainHeader({ headerData }: { headerData: HeaderDataType }) {
             target="_blank"
             aria-label="دریافت اپلیکیشن یک زن"
             className="text-[13px] !hidden lg:!flex"
+            title="دریافت اپلیکیشن یک زن"
           >
             دریافت اپلیکیشن یک زن
           </LinkCM>

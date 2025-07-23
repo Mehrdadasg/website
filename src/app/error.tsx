@@ -20,7 +20,7 @@ function ErrorPage() {
         </p>
         <div className="flex justify-center md:justify-start gap-5 mt-10">
 
-            <LinkCM href="/"
+            <LinkCM href="/" title="صفحه اصلی"
             >
               <Home size={20} color="#fff" />
               صفحه اصلی

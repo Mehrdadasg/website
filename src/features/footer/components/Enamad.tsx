@@ -15,6 +15,7 @@ const EnamadBadge = ({link,img}:Props) => {
       rel="noopener noreferrer"
       referrerPolicy="origin"
       className="w-40 h-56 flex rounded-xl overflow-hidden bg-transparent"
+      title="نماد اعتماد الکترونیکی"
     >
       <Image
         src={img ??""}

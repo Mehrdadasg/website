@@ -30,8 +30,9 @@ async function LastedArticles() {
         </div>
 
         <Link
-          href=""
+          href="/blog"
           className="hidden sm:flex h-[48px] rounded-[50px] border-pink-500 text-pink-500"
+          title="مجله"
         >
           <span className="font-bold text-[13px]">یه سر به مجله بزن</span>
           <ArrowLeft2 size={20} color="var(--color-pink-500)" />
@@ -51,6 +52,7 @@ async function LastedArticles() {
           href="/blog"
           variant="outline"
           className="sm:hidden h-[48px] rounded-[50px] border-pink-500 text-pink-500 px-10"
+          title="بیشتر"
         >
           <span className="font-bold text-[13px]">
             {lastedArticles?.SeeMoreText}

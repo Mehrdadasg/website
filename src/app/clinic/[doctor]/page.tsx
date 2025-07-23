@@ -208,6 +208,7 @@ async function DoctorInfo({ params }: { params: Promise<{ doctor: string }> }) {
                   variant="contained"
                   color="blue"
                   size="icon"
+                  title="instagram"
                 >
                   <Instagram color="#fff" size={34} variant="Bold" />
                 </LinkCM>
@@ -217,6 +218,7 @@ async function DoctorInfo({ params }: { params: Promise<{ doctor: string }> }) {
                   variant="contained"
                   color="blue"
                   size="icon"
+                  title="telegram"
                 >
                   <Send2 color="#fff" size={34} variant="Bold" />
                 </LinkCM>
@@ -226,6 +228,7 @@ async function DoctorInfo({ params }: { params: Promise<{ doctor: string }> }) {
                   variant="contained"
                   color="blue"
                   size="icon"
+                  title="whatsapp"
                 >
                   <Whatsapp color="#fff" size={34} variant="Bold" />
                 </LinkCM>
@@ -235,6 +238,7 @@ async function DoctorInfo({ params }: { params: Promise<{ doctor: string }> }) {
                   variant="contained"
                   color="blue"
                   size="icon"
+                  title="facebook"
                 >
                   <Facebook color="#fff" size={34} variant="Bold" />
                 </LinkCM>

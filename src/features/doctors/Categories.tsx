@@ -21,6 +21,7 @@ function Categories({ expertCategories, selectedCategoryId }: Props) {
           variant={selectedCategoryId === 0 ? "contained" : "text"}
           color="blue"
           className={`${selectedCategoryId===0? "":"!bg-transparent !border-transparent" } w-24 text-sm`}
+          title="همه"
         >
           همه
         </LinkCM>
@@ -30,6 +31,7 @@ function Categories({ expertCategories, selectedCategoryId }: Props) {
             href={`?categoryId=${c?.Id}`}
             variant={selectedCategoryId === c?.Id ? "contained" : "text"}
             color="blue"
+            title={c?.Title}
             className={`${selectedCategoryId===c?.Id ? "":"!bg-transparent !border-transparent" } w-max px-5 text-sm`}
           >
             {c?.Title}

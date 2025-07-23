@@ -37,7 +37,7 @@ function MobileFooterItems() {
                 <ul className="text-skin-800 text-sm mt-2 space-y-3">
                   {item?.links?.map((link) => (
                     <li key={link.label}>
-                      <Link href={link?.href}>{link?.label}</Link>
+                      <Link href={link?.href} title={link?.label}>{link?.label}</Link>
                     </li>
                   ))}
                 </ul>

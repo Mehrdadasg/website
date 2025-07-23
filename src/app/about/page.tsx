@@ -142,9 +142,9 @@ async function About() {
             <p className="md:text-right mt-5 sm:mt-10 mb-8 text-[38px] md:text-5xl xl:text-[64px]">
               <b>پرطرفــــدار تریــــــــــــن</b>
             </p>
-            <p className="md:text-right mt-2 mb-10 md:mb-16 text-[38px] md:text-5xl xl:text-5xl text-pink-500">
+            <h1 className="md:text-right mt-2 mb-10 md:mb-16 text-[38px] md:text-5xl xl:text-5xl text-pink-500">
               <b>اپلیکیشن سلامت زنان ایرانی</b>
-            </p>
+            </h1>
             <h2 className="md:text-right text-[13px] md:text-base xl:text-lg text-gray-600">
               {aboutData?.Content?.Text}
             </h2>

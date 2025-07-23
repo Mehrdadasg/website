@@ -10,6 +10,7 @@ type BlogHeroProps = {
   Title: string;
   ImageUrl: string;
   CategoryTitle: string;
+  CategorySlug: string;
   ReadTime: string;
   Slug: string;
   PublishDate: string;
@@ -17,13 +18,16 @@ type BlogHeroProps = {
   AuthorAvatar: string;
   AuthorSlug: string;
   VisitedCount: number;
+  CommentCount:number;
+  Rate:number
 };
 
 function BlogHero({ blogHeroData }: {blogHeroData:BlogHeroProps}) {
   const breadcrumbItems = [
     { label: "خانه", href: "/" },
     { label: "مجله", href: "/blog" },
-    { label: blogHeroData?.CategoryTitle },
+    { label: blogHeroData?.CategoryTitle ,href:`/blog/category/${blogHeroData?.CategorySlug}` },
+    { label: blogHeroData?.Title  },
   ];
   return (
     <section className="flex gap-5 flex-col sm:flex-row">
@@ -45,17 +49,17 @@ function BlogHero({ blogHeroData }: {blogHeroData:BlogHeroProps}) {
         </div>
         <section className="hidden md:flex gap-3 lg:gap-5 text-xs lg:text-sm text-gray-600 my-8">
           <div className="flex items-center gap-2">
-            <Link href={`/blog/${blogHeroData?.Slug}/${blogHeroData?.AuthorSlug}`}>
+            <Link href={`/author/${blogHeroData?.AuthorSlug}`} title={blogHeroData?.AuthorName}>
               <Image
                 src={blogHeroData?.AuthorAvatar}
-                className="rounded-full size-[52px]"
+                className="rounded-full object-cover size-[52px]"
                 width={52}
                 height={52}
                 alt="نویسنده بلاگ"
               />
             </Link>
             <p>
-              نویسنده: <Link href={`/author/${blogHeroData?.AuthorSlug}`}>{blogHeroData?.AuthorName}</Link>
+              نویسنده: <Link href={`/author/${blogHeroData?.AuthorSlug}`} title={blogHeroData?.AuthorName}>{blogHeroData?.AuthorName}</Link>
             </p>
           </div>
           <div className="flex gap-2 items-center">
@@ -68,8 +72,8 @@ function BlogHero({ blogHeroData }: {blogHeroData:BlogHeroProps}) {
           </div>
         </section>
         <ShareBox
-          commentCount={37}
-          starCount={527}
+          commentCount={blogHeroData?.CommentCount}
+          starCount={blogHeroData?.Rate}
           title={blogHeroData?.Title}
           url={`https://yekzan.com/blog/${blogHeroData?.Slug}`}
           text={blogHeroData?.Title}

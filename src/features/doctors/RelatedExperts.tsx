@@ -42,6 +42,7 @@ async function RelatedExperts({ slug }: { slug: string }) {
                 variant="outline"
                 color="blue"
                 className="mt-5 !hidden sm:!flex"
+                title={e?.Title}
               >
                 مشاهده پروفایل
               </LinkCM>
@@ -50,6 +51,7 @@ async function RelatedExperts({ slug }: { slug: string }) {
                 variant="text"
                 color="blue"
                 className="mt-5 sm:!hidden"
+                title={e?.Title}
               >
                 <ArrowLeft2 color="var(--color-lake-blue-500)" size={24} />
               </LinkCM>

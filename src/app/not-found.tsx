@@ -17,12 +17,12 @@ function NotFoundPage(): React.ReactElement {
           داریم.
         </p>
         <div className="flex justify-center md:justify-start gap-5 mt-10">
-          <LinkCM href="/blog" className="!text-[13px] font-bold">
+          <LinkCM href="/blog" className="!text-[13px] font-bold" title="مجله">
             <Book1 size={20} color="#fff" />
             بریم مجله
           </LinkCM>
 
-          <LinkCM href="/" variant="outline" color="default" className="!text-[13px] font-bold">صفحه اصلی</LinkCM>
+          <LinkCM href="/" title="صفحه اصلی" variant="outline" color="default" className="!text-[13px] font-bold">صفحه اصلی</LinkCM>
         </div>
       </section>
       <section className="mx-auto md:w-[40%] pb-20 md:pb-0">

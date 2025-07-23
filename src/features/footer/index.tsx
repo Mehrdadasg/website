@@ -37,7 +37,7 @@ async function Footer() {
               {footer?.Text}
             </p>
           </section>
-          <DesktopFooterItem link={footer?.EnamadUrl} img={footer?.EnamadImageUrl} />
+          <DesktopFooterItem link={footer?.EnamadUrl} img={footer?.EnamadImageUrl} menu={footer?.MenuItems} />
         </section>
         <MobileFooterItems />
         <div className="w-full h-0.5 bg-skin-100 mt-10 mb-5"></div>
@@ -45,7 +45,7 @@ async function Footer() {
           <p className="text-[10px] md:text-sm text-skin-400">
             کپی رایت © 1397 - 1404 متعلق به{" "}
             <mark className="bg-transparent text-skin-500">
-              <Link href="/">اپلیکیشن یک زن</Link>
+              <Link href="/" title="اپلیکیشن یک زن">اپلیکیشن یک زن</Link>
             </mark>
           </p>
           <nav className="flex items-center w-full sm:w-max sm:gap-10">

@@ -15,7 +15,7 @@ const HorizontalCard: React.FC<FeaturedArticleProps> = ({
 }) => {
   return (
     <article className="flex gap-2">
-      <Link href={`/blog/${article?.Slug}`} className="block">
+      <Link href={`/${article?.Slug}`} className="block" title={article?.Title??""}>
         <Image
           src={article?.ImageUrl ?? "/post.png"}
           width={126}
@@ -26,7 +26,7 @@ const HorizontalCard: React.FC<FeaturedArticleProps> = ({
       </Link>
       <section className="flex-1">
         <div className="flex items-center gap-1 mt-3">
-          <Link href={`/blog/${article?.Slug}`} className="block">
+          <Link href={`/${article?.Slug}`} title={article?.Title??""} className="block">
             {seoTag === "h2" ? (
               <h2 className={`text-[13px] font-bold flex-grow line-clamp-2`}>
                 {article?.Title}
@@ -40,7 +40,7 @@ const HorizontalCard: React.FC<FeaturedArticleProps> = ({
           <ShareBtn
             text={article?.Text ?? ""}
             title={article?.Title ?? ""}
-            url={`https://yekzan.com/blog/${article?.Slug}`}
+            url={`https://yekzan.com/${article?.Slug}`}
           />
         </div>
         <p className="text-gray-400 text-xs font-normal mt-1 hidden sm:block">

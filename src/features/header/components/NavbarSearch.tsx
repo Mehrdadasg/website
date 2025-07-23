@@ -79,6 +79,7 @@ function NavbarSearch({ onClose }: { onClose: () => void }) {
                   href={`/blog/${blog?.Slug}`}
                   onClick={onClose}
                   className="flex gap-3 items-center text-sm"
+                  title={blog?.Title ??""}
                 >
                   <SearchNormal1 size={18} color="var(--color-gray-400)" />
                   {blog?.Title}
@@ -89,6 +90,7 @@ function NavbarSearch({ onClose }: { onClose: () => void }) {
               <Link
                 href={`/search?searchKey=${searchKey}`}
                 onClick={onClose}
+                title=" مشاهده نتایج بیشتر"
                 className="flex justify-center text-lake-blue-600 pt-4 pb-1"
               >
                 مشاهده نتایج بیشتر

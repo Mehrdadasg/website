@@ -48,7 +48,7 @@ async function TherapyClinic() {
           <ol className="flex flex-wrap my-8 justify-center md:justify-baseline gap-2">
             {expertList.map((expert:ExpertType) => (
               <li key={expert.Id}>
-                <Link href={`/clinic/${expert.Slug}`}>
+                <Link href={`/clinic/${expert.Slug}`} title={expert.Title}>
                   <Image
                     src={expert.Avatar}
                     className="rounded-full size-[61px] object-cover border-1 border-white"

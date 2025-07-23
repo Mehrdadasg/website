@@ -22,6 +22,7 @@ async function AppDownload() {
           <Link
             key={app?.Id}
             href={app?.Url}
+            title={app?.ImageAlt}
             className="h-10 !bg-[#202937] w-full rounded-[50px] p-0 flex justify-center"
           >
             <Image
