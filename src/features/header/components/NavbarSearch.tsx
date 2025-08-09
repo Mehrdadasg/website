@@ -28,8 +28,16 @@ function NavbarSearch({ onClose }: { onClose: () => void }) {
           page: 1,
           searchKey: debouncedSearchKey,
         });
-        if (response?.Data?.Items?.length > 0) {
+        if (
+          response?.Data?.Items?.length > 0 &&
+          response?.Data?.Items?.length >= 5
+        ) {
           setBlogList(response?.Data?.Items?.splice(5));
+        } else if (
+          response?.Data?.Items?.length > 0 &&
+          response?.Data?.Items?.length < 5
+        ) {
+          setBlogList(response?.Data?.Items);
         } else {
           setBlogList([]);
         }
@@ -72,30 +80,32 @@ function NavbarSearch({ onClose }: { onClose: () => void }) {
           <p className="font-semibold">بیشترین جستجو های ماه</p>
         </div> */}
         {blogList?.length > 0 ? (
-          <ul className="space-y-4 mt-4">
+          <ul className={`space-y-4 mt-4 ${blogList?.length > 5 ? "":"pb-4"}`}>
             {blogList?.map((blog) => (
               <li key={blog?.Id}>
                 <Link
-                  href={`/blog/${blog?.Slug}`}
+                  href={`/${blog?.Slug}`}
                   onClick={onClose}
                   className="flex gap-3 items-center text-sm"
-                  title={blog?.Title ??""}
+                  title={blog?.Title ?? ""}
                 >
                   <SearchNormal1 size={18} color="var(--color-gray-400)" />
                   {blog?.Title}
                 </Link>
               </li>
             ))}
-            <li className="border-t text-sm">
-              <Link
-                href={`/search?searchKey=${searchKey}`}
-                onClick={onClose}
-                title=" مشاهده نتایج بیشتر"
-                className="flex justify-center text-lake-blue-600 pt-4 pb-1"
-              >
-                مشاهده نتایج بیشتر
-              </Link>
-            </li>
+            {blogList?.length > 5 && (
+              <li className="border-t text-sm">
+                <Link
+                  href={`/search?searchKey=${searchKey}`}
+                  onClick={onClose}
+                  title=" مشاهده نتایج بیشتر"
+                  className="flex justify-center text-lake-blue-600 pt-4 pb-1"
+                >
+                  مشاهده نتایج بیشتر
+                </Link>
+              </li>
+            )}
           </ul>
         ) : searchKey ? (
           <section className="flex justify-center items-center flex-col">

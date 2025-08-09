@@ -177,7 +177,6 @@ function SearchContent() {
           <Pagination
             totalCount={totalCount}
             pageSize={pageSize}
-            siblingCount={1}
             currentPage={currentPage}
           />
         </section>

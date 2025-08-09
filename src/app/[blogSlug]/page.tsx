@@ -129,17 +129,29 @@ async function BlogDetails({
   const blogSlug = resolvedParams?.blogSlug;
   if (!blogSlug) notFound();
   const queryClient = new QueryClient();
-  const { blog } = await ssrBlog({ queryClient, slug: blogSlug });
-  const { Data } = await getBlogSeo(blogSlug);
+  let blog;
+  let seoData;
+
+  try {
+    const blogResponse = await ssrBlog({ queryClient, slug: blogSlug });
+    blog = blogResponse?.blog;
+
+    if (!blog) notFound();
+
+    seoData = await getBlogSeo(blogSlug);
+  } catch (error) {
+    console.error("Error fetching blog or SEO data:", error);
+    notFound();
+  }
 
   return (
     <>
-      <JsonLd json={Data?.JsonLd} />
+      <JsonLd json={seoData?.JsonLd} />
       <main className="w-full px-5 xl:px-0 max-w-7xl 2xl:max-w-[1366px] mx-auto py-24 md:py-28 lg:py-36 xl:py-40">
         <BlogHero blogHeroData={blog?.Content} />
         <BlogContent blog={blog} />
         <RelatedBlog slug={blogSlug} />
-        <OtherBlog slug={blogSlug} />
+        {/* <OtherBlog slug={blogSlug} /> */}
       </main>
     </>
   );

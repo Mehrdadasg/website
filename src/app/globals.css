@@ -115,8 +115,9 @@
   --color-skin-900: #2b1912;
   --color-skin-950: #160c09;
 
-  --shadow-sm:0 5px;
-  --shadow-md: rgba(17, 17, 26, 0.1) 0px 4px 16px, rgba(17, 17, 26, 0.05) 0px 8px 32px;
+  --shadow-sm: 0 5px;
+  --shadow-md: rgba(17, 17, 26, 0.1) 0px 4px 16px,
+    rgba(17, 17, 26, 0.05) 0px 8px 32px;
 }
 
 @theme inline {
@@ -254,7 +255,7 @@ body {
   }
 }
 
-.contact{
+.contact {
   width: 100%;
   background: url("/contact.png") no-repeat;
   background-size: 100% 100%;
@@ -359,27 +360,27 @@ body {
   color: var(--color-lake-blue-600) !important;
 }
 
-.leaf{
+.leaf {
   position: relative;
 }
 
-.leaf::before{
+.leaf::before {
   position: absolute;
   content: "";
-  right:0px;
-  top:0;
-  background: url('/r-leaf.png') no-repeat;
+  right: 0px;
+  top: 0;
+  background: url("/r-leaf.png") no-repeat;
   background-size: cover;
   width: 39px;
   height: 80px;
 }
 
-.leaf::after{
+.leaf::after {
   position: absolute;
   content: "";
-  left:0px;
-  top:0;
-  background: url('/l-leaf.png') no-repeat;
+  left: 0px;
+  top: 0;
+  background: url("/l-leaf.png") no-repeat;
   background-size: cover;
   width: 39px;
   height: 80px;
@@ -389,6 +390,18 @@ body {
   scroll-margin-top: 150px;
 }
 
-.ltr{
+.ltr {
   direction: ltr;
+}
+
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+.no-scrollbar::-webkit-scrollbar,
+.no-scrollbar::-webkit-scrollbar-button,
+.no-scrollbar::-webkit-scrollbar-track,
+.no-scrollbar::-webkit-scrollbar-thumb {
+  width: 0;
+  height: 0;
 }

@@ -50,6 +50,7 @@ export type BlogListResponse = {
     Items: Blog[];
     RecordeCount: number;
     PageCount: number;
+    PageSize:number
   };
 };
 

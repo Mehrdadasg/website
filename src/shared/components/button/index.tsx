@@ -40,7 +40,8 @@ function Button({
         : variant === "text" ? "bg-white text-lake-blue-600 border-white" : "bg-white underline text-lake-blue-600 border-white",
     "light-success": "bg-green-100 text-green-900 hover:bg-green-200",
     success: "bg-green-500 text-white hover:bg-green-600",
-    blue: "bg-lake-blue-500 text-white hover:bg-lake-blue-600",
+    blue: variant === "contained"
+        ? "bg-lake-blue-500 text-white hover:bg-lake-blue-600" :"bg-white text-lake-blue-500 hover:bg-lake-blue-500-600 border-lake-blue-500",
     "light-warning": "bg-yellow-100 text-yellow-900 hover:bg-yellow-200",
   };
 

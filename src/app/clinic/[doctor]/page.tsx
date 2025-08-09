@@ -167,14 +167,14 @@ async function DoctorInfo({ params }: { params: Promise<{ doctor: string }> }) {
                     {expert?.Content?.SubTitle}
                   </p>
                 </div>
-                <Button
+                {/* <Button
                   type="button"
                   variant="contained"
                   color="blue"
                   className="px-5 text-[13px] mt-5 sm:mt-0"
                 >
                   دریافت مشاوره
-                </Button>
+                </Button> */}
               </div>
               <div className="grid grid-cols-2 sm:grid-cols-4 gap-5 mt-16">
                 <div className="bg-gray-100 rounded-[10px] text-center py-7">

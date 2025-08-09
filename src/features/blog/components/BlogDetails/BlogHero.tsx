@@ -26,7 +26,7 @@ function BlogHero({ blogHeroData }: {blogHeroData:BlogHeroProps}) {
   const breadcrumbItems = [
     { label: "خانه", href: "/" },
     { label: "مجله", href: "/blog" },
-    { label: blogHeroData?.CategoryTitle ,href:`/blog/category/${blogHeroData?.CategorySlug}` },
+    { label: blogHeroData?.CategoryTitle ,href:`/category/${blogHeroData?.CategorySlug}` },
     { label: blogHeroData?.Title  },
   ];
   return (

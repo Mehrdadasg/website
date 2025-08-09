@@ -18,7 +18,7 @@ function ContactForm() {
     mode: "onChange",
   });
   const { mutateAsync: addCommentFunc } = useAddMessage();
-  const [saveInformation, setSaveInformation] = useState(false);
+  // const [saveInformation, setSaveInformation] = useState(false);
 
   useEffect(() => {
     const savedName = localStorage.getItem("commentName");
@@ -37,10 +37,10 @@ function ContactForm() {
       if (response?.Message?.Status === "Success") {
         toast.success(response?.Message?.Text);
         reset();
-        if (saveInformation) {
-          localStorage.setItem("commentName", values.name);
-          localStorage.setItem("commentPhone", values.phone);
-        }
+        // if (saveInformation) {
+        //   localStorage.setItem("commentName", values.name);
+        //   localStorage.setItem("commentPhone", values.phone);
+        // }
       }
     } catch (error) {
       console.log(error);
@@ -143,7 +143,7 @@ function ContactForm() {
             {errors?.comment?.message}
           </p>
         )}
-        <section className="flex gap-3 items-center my-5">
+        {/* <section className="flex gap-3 items-center my-5">
           <input
             type="checkbox"
             name=""
@@ -155,10 +155,10 @@ function ContactForm() {
           <label htmlFor="remember" className="text-xs text-gray-700">
             ذخیره نام و ایمیل برای دفعات بعد
           </label>
-        </section>
+        </section> */}
         <Button
           type="submit"
-          className="text-[13px] font-bold w-full cursor-pointer"
+          className="text-[13px] font-bold w-full cursor-pointer mt-5"
           isValid={isValid}
         >
           ارسال نظر

@@ -8,19 +8,18 @@ interface PaginationProps {
   totalCount: number;
   pageSize: number;
   currentPage: number;
-  siblingCount?: number;
 }
 
 export function Pagination({
   totalCount,
   pageSize,
   currentPage,
-  siblingCount = 2,
 }: PaginationProps) {
   const router = useRouter();
   const pathname = usePathname();
   const searchParams = useSearchParams();
-
+  const leftSiblingCount = 1;
+  const rightSiblingCount = 2;
   const totalPages = Math.ceil(totalCount / pageSize);
 
   const createPageURL = useCallback(
@@ -34,8 +33,8 @@ export function Pagination({
 
   const getPageNumbers = () => {
     const pages: (number | "ellipsis")[] = [];
-    const startPage = Math.max(1, currentPage - siblingCount);
-    const endPage = Math.min(totalPages, currentPage + siblingCount);
+    const startPage = Math.max(1, currentPage - leftSiblingCount);
+    const endPage = Math.min(totalPages, currentPage + (startPage <2 ? 4:rightSiblingCount));
 
     if (startPage > 1) {
       pages.push(1);
@@ -73,14 +72,14 @@ export function Pagination({
         aria-label="صفحه قبلی"
         type="button"
       >
-        <ArrowRight2 color="var(--color-lake-blue-500)" size={16}/>
+        <ArrowRight2 color="var(--color-lake-blue-500)" size={16} />
       </button>
 
       {getPageNumbers().map((page, index) =>
         page === "ellipsis" ? (
           <span
             key={`ellipsis-${index}`}
-            className="px-3 py-1 text-gray-500 select-none"
+            className="px-1 py-1 text-gray-500 select-none"
             aria-hidden="true"
           >
             ...
@@ -89,7 +88,7 @@ export function Pagination({
           <button
             key={page}
             onClick={() => handlePageChange(page)}
-            className={`size-10 rounded-md border cursor-pointer transition-colors ${
+            className={`size-10 rounded-md border cursor-pointer text-sm transition-colors ${
               page === currentPage
                 ? "bg-blue-500 text-white border-blue-500"
                 : "bg-white text-gray-700 hover:bg-gray-50"
@@ -111,7 +110,7 @@ export function Pagination({
         }`}
         aria-label="صفحه بعدی"
       >
-        <ArrowLeft2 color="var(--color-lake-blue-500)" size={16}/>
+        <ArrowLeft2 color="var(--color-lake-blue-500)" size={16} />
       </button>
     </nav>
   );

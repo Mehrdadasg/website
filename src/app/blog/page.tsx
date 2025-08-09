@@ -29,7 +29,7 @@ export default async function BlogMainPage({ searchParams }: BlogPageProps) {
   }
 
   const totalCount = blogList?.RecordeCount || 0;
-  const pageSize = 10;
+  const pageSize = blogList?.PageSize || 12;
   const { categories } = await ssrCategoriesList(queryClient);
 
   return (
@@ -68,7 +68,6 @@ export default async function BlogMainPage({ searchParams }: BlogPageProps) {
           <Pagination
             totalCount={totalCount}
             pageSize={pageSize}
-            siblingCount={1}
             currentPage={currentPage}
           />
         </section>

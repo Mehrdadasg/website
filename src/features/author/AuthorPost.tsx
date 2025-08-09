@@ -41,7 +41,6 @@ async function AuthorPost({ slug, currentPage }: Props) {
         <Pagination
           totalCount={totalCount}
           pageSize={pageSize}
-          siblingCount={1}
           currentPage={currentPage ?? 1}
         />
       </section>

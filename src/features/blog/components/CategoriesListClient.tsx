@@ -17,21 +17,25 @@ export default function CategoriesListClient({
   categories,
   currentCategory,
 }: CategoriesListClientProps) {
-
   return (
-    <section className="flex gap-3 my-7">
-      {categories?.map((category: CategoryType) => (
-        <LinkCM
-          color={currentCategory === category.Slug ? "primary" : "light-blue"}
-          size="sm"
-          key={category.Id}
-          href={`/category/${category.Slug}`}
-          className="rounded-[25px] text-[13px] cursor-pointer"
-          title={category.Title}
-        >
-          {category.Title}
-        </LinkCM>
-      ))}
+    <section className="my-7 w-full overflow-x-auto no-scrollbar pb-2">
+      <ul className="flex gap-3 w-max">
+        {categories?.map((category: CategoryType) => (
+          <li key={category.Id}>
+            <LinkCM
+              color={
+                currentCategory === category.Slug ? "primary" : "light-blue"
+              }
+              size="sm"
+              href={`/category/${category.Slug}`}
+              className="rounded-[25px] text-[13px] cursor-pointer"
+              title={category.Title}
+            >
+              {category.Title}
+            </LinkCM>
+          </li>
+        ))}
+      </ul>
     </section>
   );
 }

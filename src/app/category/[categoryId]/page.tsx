@@ -1,7 +1,9 @@
 import { ssrBlogList } from "@/features/apiHandlers/serverHandlers/ssrBlogList";
 import { ssrCategoriesList } from "@/features/apiHandlers/serverHandlers/ssrCategoriesList";
 import CategoriesListClient from "@/features/blog/components/CategoriesListClient";
+import { getCategorySeo } from "@/service/getCategorySeo";
 import ArticleCard from "@/shared/components/article-card";
+import JsonLd from "@/shared/components/json-ld";
 import { Pagination } from "@/shared/components/pagination";
 import { QueryClient } from "@tanstack/react-query";
 import Image from "next/image";
@@ -22,6 +24,7 @@ async function CategoryPage({ params, searchParams }: BlogPageProps) {
   const currentPage = Number(resolvedSearchParams.page) || 1;
 
   let blogList;
+  let seoData
   try {
     const result = await ssrBlogList({
       queryClient,
@@ -29,6 +32,7 @@ async function CategoryPage({ params, searchParams }: BlogPageProps) {
       category: slug,
     });
     blogList = result.blogList;
+    seoData = await getCategorySeo(slug);
   } catch (error) {
     console.error("Failed to fetch blog list:", error);
     return <div>خطا در بارگذاری مقالات. لطفاً دوباره تلاش کنید.</div>;
@@ -41,6 +45,7 @@ async function CategoryPage({ params, searchParams }: BlogPageProps) {
 
   return (
     <main className="pt-24 md:py-36 w-full px-4 lg:px-10 xl:px-0 max-w-7xl 2xl:max-w-[1366px] mx-auto">
+      <JsonLd json={seoData?.JsonLd} />
       <section className="flex gap-5 items-center">
         <span className="size-11 flex justify-center items-center bg-lake-blue-50 rounded-full">
           <Image src="/glass.png" width={24} height={24} alt="glass" />
@@ -74,7 +79,6 @@ async function CategoryPage({ params, searchParams }: BlogPageProps) {
         <Pagination
           totalCount={totalCount}
           pageSize={pageSize}
-          siblingCount={1}
           currentPage={currentPage}
         />
       </section>
