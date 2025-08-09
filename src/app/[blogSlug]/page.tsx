@@ -1,7 +1,6 @@
 import { ssrBlog } from "@/features/apiHandlers/serverHandlers/ssrBlog";
 import BlogContent from "@/features/blog/components/BlogDetails/BlogContent";
 import BlogHero from "@/features/blog/components/BlogDetails/BlogHero";
-import OtherBlog from "@/features/blog/components/BlogDetails/OtherBlog";
 import RelatedBlog from "@/features/blog/components/BlogDetails/RelatedBlog";
 import { getBlogSeo } from "@/service/getBlogSeo";
 import JsonLd from "@/shared/components/json-ld";

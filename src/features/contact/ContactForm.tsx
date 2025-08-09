@@ -2,7 +2,7 @@
 import Button from "@/shared/components/button";
 import { ContactFormProps } from "@/shared/types/type";
 import { Call, User } from "iconsax-react";
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import { useForm } from "react-hook-form";
 import { useAddMessage } from "../apiHandlers/clientHandlers/useAddMessage";
 import toast from "react-hot-toast";

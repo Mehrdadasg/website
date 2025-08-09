@@ -2,7 +2,6 @@ import { ssrExpert } from "@/features/apiHandlers/serverHandlers/ssrExpert";
 import RelatedExperts from "@/features/doctors/RelatedExperts";
 import { getExpertSeo } from "@/service/getExpertSeo";
 import Breadcrumb from "@/shared/components/breadcrumb";
-import Button from "@/shared/components/button";
 import JsonLd from "@/shared/components/json-ld";
 import LinkCM from "@/shared/components/link";
 import { QueryClient } from "@tanstack/react-query";

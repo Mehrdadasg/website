@@ -3,7 +3,6 @@ import { ssrRelatedExpert } from "../apiHandlers/serverHandlers/ssrRelatedExpert
 import { QueryClient } from "@tanstack/react-query";
 import Image from "next/image";
 import { ExpertType } from "@/shared/types/type";
-import LinkCM from "@/shared/components/link";
 import { ArrowLeft2 } from "iconsax-react";
 import Link from "next/link";
 import Button from "@/shared/components/button";
