@@ -22,10 +22,10 @@ const ArticleCard: React.FC<FeaturedArticleProps> = ({
       <Link href={`/${article?.Slug}`} title={article?.Title ?? "تصویر پست"} className="block">
         <Image
           src={article?.ImageUrl ?? "/post.png"}
-          width={342}
-          height={240}
+          width={684}
+          height={480}
           alt={article?.Title ?? "تصویر پست"}
-          quality={90}
+          quality={100}
           className={`rounded-[12px] object-cover ${
             view === "horizontal"
               ? "h-[71px] sm:h-[240px] w-[102px] sm:w-full"
@@ -48,11 +48,11 @@ const ArticleCard: React.FC<FeaturedArticleProps> = ({
         </div>
         <Link href={`/${article?.Slug}`} title={article?.Title??""} className="block">
           {seoTag === "h2" ? (
-            <h2 className="text-lg font-semibold h-14 mt-3 line-clamp-2">
+            <h2 className="text-lg font-semibold mt-3 truncate">
               {article?.Title}
             </h2>
           ) : (
-            <h3 className="text-lg font-semibold h-14 mt-3 line-clamp-2">
+            <h3 className="text-lg font-semibold mt-3 truncate">
               {article?.Title}
             </h3>
           )}

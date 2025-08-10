@@ -5,6 +5,7 @@ import { getCategorySeo } from "@/service/getCategorySeo";
 import ArticleCard from "@/shared/components/article-card";
 import JsonLd from "@/shared/components/json-ld";
 import { Pagination } from "@/shared/components/pagination";
+import { CategoryType } from "@/shared/types/type";
 import { QueryClient } from "@tanstack/react-query";
 import Image from "next/image";
 import { notFound } from "next/navigation";
@@ -42,10 +43,11 @@ async function CategoryPage({ params, searchParams }: BlogPageProps) {
   const pageSize = 10;
 
   const { categories } = await ssrCategoriesList(queryClient);
-
+  const selectedCategory = categories?.find((c:CategoryType)=> c.Slug===slug)
+  
   return (
     <main className="pt-24 md:py-36 w-full px-4 lg:px-10 xl:px-0 max-w-7xl 2xl:max-w-[1366px] mx-auto">
-      <JsonLd json={seoData?.JsonLd} />
+      <JsonLd json={seoData?.Data?.JsonLd} />
       <section className="flex gap-5 items-center">
         <span className="size-11 flex justify-center items-center bg-lake-blue-50 rounded-full">
           <Image src="/glass.png" width={24} height={24} alt="glass" />
@@ -65,9 +67,9 @@ async function CategoryPage({ params, searchParams }: BlogPageProps) {
             alt="آخرین های مجله"
           />
         </span>
-        <p className="text-[22px] sm:text-2xl font-semibold sm:font-bold">
-          تازه‌ترین هـــا
-        </p>
+        <h1 className="text-[22px] sm:text-2xl font-semibold sm:font-bold">
+          تازه‌ترین‌ترین مطالب {selectedCategory?.Title ?? ""}
+        </h1>
       </section>
 
       <section className="grid sm:grid-cols-2 lg:grid-cols-3 gap-10 mt-10">

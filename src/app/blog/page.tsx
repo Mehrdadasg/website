@@ -1,7 +1,9 @@
 import { ssrBlogList } from "@/features/apiHandlers/serverHandlers/ssrBlogList";
 import { ssrCategoriesList } from "@/features/apiHandlers/serverHandlers/ssrCategoriesList";
 import CategoriesListClient from "@/features/blog/components/CategoriesListClient";
+import { getCategorySeo } from "@/service/getCategorySeo";
 import ArticleCard from "@/shared/components/article-card";
+import JsonLd from "@/shared/components/json-ld";
 import { Pagination } from "@/shared/components/pagination";
 import { QueryClient } from "@tanstack/react-query";
 import Image from "next/image";
@@ -31,9 +33,11 @@ export default async function BlogMainPage({ searchParams }: BlogPageProps) {
   const totalCount = blogList?.RecordeCount || 0;
   const pageSize = blogList?.PageSize || 12;
   const { categories } = await ssrCategoriesList(queryClient);
+  // const seoData = await getCategorySeo();
 
   return (
     <>
+      {/* <JsonLd json={seoData?.Data?.JsonLd} /> */}
       <main className="pt-24 md:py-36 w-full px-4 lg:px-10 xl:px-0 max-w-7xl 2xl:max-w-[1366px] mx-auto">
         <section className="flex gap-5 items-center">
           <span className="size-11 flex justify-center items-center bg-lake-blue-50 rounded-full">
@@ -51,12 +55,12 @@ export default async function BlogMainPage({ searchParams }: BlogPageProps) {
               className="w-[19px] h-[23px]"
               width={19}
               height={23}
-              alt="آخرین های مجله"
+              alt="تازه‌ترین مطالب سلامت زنان"
             />
           </span>
-          <p className="text-[22px] sm:text-2xl font-semibold sm:font-bold">
-            تازه‌ترین هـــا
-          </p>
+          <h1 className="text-[22px] sm:text-2xl font-semibold sm:font-bold">
+            تازه‌ترین مطالب سلامت زنان
+          </h1>
         </section>
 
         <section className="grid sm:grid-cols-2 lg:grid-cols-3 gap-10 mt-10">

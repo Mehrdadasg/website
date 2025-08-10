@@ -348,6 +348,7 @@ body {
 
 .blog-content * {
   font-family: inherit !important;
+  line-height: 30px;
 }
 
 .blog-content h2 {

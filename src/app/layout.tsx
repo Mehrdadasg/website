@@ -246,12 +246,13 @@ export default async function RootLayout({
   children: React.ReactNode;
 }>) {
   const { Data } = await getSeoData();
+
   return (
     <html lang={"fa"} dir={"rtl"}>
       <body className={`${iranSans.className} antialiased`}>
-        <JsonLd json={Data?.JsonLd} />
         <ReactQueryProvider>
           <NextTopLoader color={"#ff5a7c"} showSpinner={false} />
+          <JsonLd json={Data?.JsonLd} />
           <Header />
           {children}
           <Footer />

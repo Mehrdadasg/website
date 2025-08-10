@@ -1,5 +1,3 @@
-import Image from "next/image";
-import Link from "next/link";
 import React from "react";
 
 type Props={
@@ -9,7 +7,7 @@ type Props={
 
 const EnamadBadge = ({link,img}:Props) => {
   return (
-    <Link
+    <a
       href={link}
       target="_blank"
       rel="noopener noreferrer"
@@ -17,14 +15,14 @@ const EnamadBadge = ({link,img}:Props) => {
       className="w-40 h-56 flex rounded-xl overflow-hidden bg-transparent"
       title="نماد اعتماد الکترونیکی"
     >
-      <Image
+      <img
         src={img ??""}
         alt="نماد اعتماد الکترونیکی"
         className="cursor-pointer size-full object-cover"
         width={160}
         height={224}
       />
-    </Link>
+    </a>
   );
 };
 

@@ -39,7 +39,7 @@ async function Footer() {
           </section>
           <DesktopFooterItem link={footer?.EnamadUrl} img={footer?.EnamadImageUrl} menu={footer?.MenuItems} />
         </section>
-        <MobileFooterItems />
+        <MobileFooterItems menu={footer?.MenuItems} />
         <div className="w-full h-0.5 bg-skin-100 mt-10 mb-5"></div>
         <section className="flex flex-col-reverse gap-5 md:flex-row justify-between items-center py-3">
           <p className="text-[10px] md:text-sm text-skin-400">

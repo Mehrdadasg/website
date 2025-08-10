@@ -86,6 +86,8 @@ function BlogHero({ blogHeroData }: {blogHeroData:BlogHeroProps}) {
           className="w-full h-auto"
           width={618}
           height={432}
+          quality={100}
+          // unoptimized
           priority
         />
       </section>

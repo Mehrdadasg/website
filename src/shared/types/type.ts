@@ -136,6 +136,8 @@ export interface Comment {
   Avatar: string;
   Id: number;
   Text: string;
+  Name:string;
+  CreateDate:string
   Childs: CommentItem[];
 }
 

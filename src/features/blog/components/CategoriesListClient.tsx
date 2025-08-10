@@ -18,8 +18,8 @@ export default function CategoriesListClient({
   currentCategory,
 }: CategoriesListClientProps) {
   return (
-    <section className="my-7 w-full overflow-x-auto no-scrollbar pb-2">
-      <ul className="flex gap-3 w-max">
+    <section className="my-7 w-full overflow-x-auto lg:overflow-hidden no-scrollbar pb-2">
+      <ul className="flex gap-3 w-max lg:w-full lg:flex-wrap">
         {categories?.map((category: CategoryType) => (
           <li key={category.Id}>
             <LinkCM

@@ -72,9 +72,9 @@ function CommentList() {
                 </section>
                 <section className="flex-1">
                   <div>
-                    <span className="text-xs md:text-base font-bold">لیلی</span>
+                    <span className="text-xs md:text-base font-bold">{comment?.Name}</span>
                     <span className="text-[10px] md:text-[11px] text-gray-400 pr-2">
-                      23 ماه پیش
+                      {comment?.CreateDate}
                     </span>
                   </div>
                   <p className="text-xs md:text-sm text-gray-800">
