@@ -8,17 +8,20 @@ import { QueryClient } from "@tanstack/react-query";
 import { Facebook, Instagram, Location, Send2, Whatsapp } from "iconsax-react";
 import Image from "next/image";
 import { notFound } from "next/navigation";
+import DOMPurify from "isomorphic-dompurify";
 import React from "react";
 
 export async function generateMetadata({
   params,
 }: {
-  params: Promise<{ doctor: string }>;
+  params: Promise<{ doctor: string }>; 
 }) {
   try {
     const resolvedParams = await params;
     const doctorSlug = resolvedParams?.doctor;
     const { Data } = await getExpertSeo(doctorSlug);
+   
+
     return {
       title: {
         default:
@@ -134,6 +137,10 @@ async function DoctorInfo({ params }: { params: Promise<{ doctor: string }> }) {
     { label: "متخصصین یک زن", href: "/clinic" },
     { label: "تماس با ما" },
   ];
+
+  const cleanHtmlText = DOMPurify.sanitize(expert?.Content?.Text);
+
+  
   return (
     <>
       <JsonLd json={Data?.JsonLd} />
@@ -195,10 +202,15 @@ async function DoctorInfo({ params }: { params: Promise<{ doctor: string }> }) {
               </div>
 
               <p className="text-lg font-semibold mt-16">سوابق و مهارت ها</p>
-              <div className="mt-5">
-                <p>{expert?.Content?.Text}</p>
-                <p>{expert?.Content?.Skills}</p>
-              </div>
+
+              <div
+                className="mt-5"
+                dangerouslySetInnerHTML={{ __html: cleanHtmlText }}
+              ></div>
+
+             
+
+       
 
               <section className="flex justify-center gap-5 md:shadow-sm shadow-gray-200 md:border border-gray-200 rounded-[12px] md:p-10 mt-24">
                 <LinkCM
