@@ -189,8 +189,10 @@ export interface ExpertContent {
   Address: string;
   Instagram: string;
   ImageUrl: string;
-  MedicalNumber: string;
+  MedicalNumber: string; 
   Skills: string;
+  Experience: string;
+  WithUs: string;
 }
 
 export interface ExpertInfo {

@@ -16,7 +16,10 @@ async function RelatedBlog({ slug }: { slug: string }) {
           <Related width={24} height={24} />
         </span>
         <p className="text-lg sm:text-2xl font-semibold sm:font-bold">
-          مطالب دیگه در دسته اقدام به بارداری
+        مطالب دیگه در دسته{" "}
+        {relatedList && relatedList.length > 0
+          ? relatedList[0]?.CategoryTitle
+          : ""}
         </p>
       </div>
       <section className="grid sm:grid-cols-3 mt-10 gap-10">

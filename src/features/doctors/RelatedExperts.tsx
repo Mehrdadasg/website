@@ -14,7 +14,7 @@ async function RelatedExperts({ slug }: { slug: string }) {
   return (
     <section className="min-h-96 py-16">
       <h2 className="text-2xl font-bold text-center">
-        این متخصص ها هم ممکنه بتونن کمکت کنن
+       سایر متخصص ها
       </h2>
       <section className="grid sm:grid-cols-3 md:grid-cols-4 gap-10 mt-20 max-w-5xl mx-auto pb-20">
         {relatedExperts?.map((e: ExpertType) => (

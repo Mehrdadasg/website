@@ -83,7 +83,7 @@ function BlogHero({ blogHeroData }: {blogHeroData:BlogHeroProps}) {
         <Image
           src={blogHeroData?.ImageUrl}
           alt={blogHeroData?.Title}
-          className="w-full h-auto"
+          className="w-full h-auto rounded-[12px]"
           width={618}
           height={432}
           quality={100}

@@ -28,14 +28,14 @@ const Breadcrumb: React.FC<BreadcrumbProps> = ({
       className={`breadcrumb-container ${containerClassName}`}
       aria-label="breadcrumb"
     >
-      <ol className="flex items-center space-x-2">
+      <ol className="flex items-center space-x-2 overflow-x-auto whitespace-nowrap scrollbar-hide">
         {items?.map((item, index) => (
           <li key={index}>
             {item?.href ? (
               <Link
                 href={item?.href}
                 title={item?.label}
-                className={`breadcrumb-link ${linkClassName}`}
+                className={`breadcrumb-link ${linkClassName}`} 
               >
                 {item?.label}
               </Link>

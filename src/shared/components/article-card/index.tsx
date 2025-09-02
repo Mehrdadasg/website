@@ -21,7 +21,7 @@ const ArticleCard: React.FC<FeaturedArticleProps> = ({
     >
       <Link href={`/${article?.Slug}`} title={article?.Title ?? "تصویر پست"} className="block">
         <Image
-          src={article?.ImageUrl ?? "/post.png"}
+          src={article?.ImageUrl ?? "/post.png"} 
           width={684}
           height={480}
           alt={article?.Title ?? "تصویر پست"}

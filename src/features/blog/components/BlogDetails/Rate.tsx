@@ -42,7 +42,10 @@ function Rate({slug}:{slug:string}) {
     } else {
       setRate(id);
       try {
-        const response = await addRateFunc({Slug:slug})
+        const response = await addRateFunc({
+          Slug: slug,
+          Rate: id,   // 👈 اینجا Rate رو هم پاس می‌دیم
+        })
         toast.success(response?.Message?.Text)        
       } catch (error) {
         console.error("خطا:", error);

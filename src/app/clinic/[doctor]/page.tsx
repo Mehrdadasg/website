@@ -5,7 +5,7 @@ import Breadcrumb from "@/shared/components/breadcrumb";
 import JsonLd from "@/shared/components/json-ld";
 import LinkCM from "@/shared/components/link";
 import { QueryClient } from "@tanstack/react-query";
-import { Facebook, Instagram, Location, Send2, Whatsapp } from "iconsax-react";
+import {  Instagram, Location } from "iconsax-react";
 import Image from "next/image";
 import { notFound } from "next/navigation";
 import DOMPurify from "isomorphic-dompurify";
@@ -188,17 +188,21 @@ async function DoctorInfo({ params }: { params: Promise<{ doctor: string }> }) {
                   <p className="text-sm text-gray-500 mt-3">کد نظام پزشکی</p>
                 </div>
                 <div className="bg-gray-100 rounded-[10px] text-center py-7">
-                  <b>16 سال</b>
+                  <b>{expert?.Content?.Experience}</b>
                   <p className="text-sm text-gray-500 mt-3">تجربه حرفه ای</p>
                 </div>
                 <div className="bg-gray-100 rounded-[10px] text-center py-7">
-                  <b>5 سال</b>
+                  <b>{expert?.Content?.WithUs}</b>
                   <p className="text-sm text-gray-500 mt-3">همراه یک زن</p>
                 </div>
-                <div className="bg-gray-100 rounded-[10px] text-center py-7">
-                  <b>۶۶۹۰۵۸۴۶</b>
-                  <p className="text-sm text-gray-500 mt-3">شماره مطب</p>
-                </div>
+
+                {expert?.Content?.Phone && (
+  <div className="bg-gray-100 rounded-[10px] text-center py-7">
+    <b>{expert.Content.Phone}</b>
+    <p className="text-sm text-gray-500 mt-3">شماره مطب</p>
+  </div>
+)}
+
               </div>
 
               <p className="text-lg font-semibold mt-16">سوابق و مهارت ها</p>
@@ -211,49 +215,26 @@ async function DoctorInfo({ params }: { params: Promise<{ doctor: string }> }) {
              
 
        
-
+            {expert?.Content?.Instagram && (
               <section className="flex justify-center gap-5 md:shadow-sm shadow-gray-200 md:border border-gray-200 rounded-[12px] md:p-10 mt-24">
+                
+             
                 <LinkCM
-                  href=""
+                  href={expert?.Content?.Instagram ? expert.Content.Instagram : '#'}
                   aria-label="instagram"
                   variant="contained"
                   color="blue"
                   size="icon"
                   title="instagram"
+                  target="_blank"
                 >
                   <Instagram color="#fff" size={34} variant="Bold" />
                 </LinkCM>
-                <LinkCM
-                  href=""
-                  aria-label="telegram"
-                  variant="contained"
-                  color="blue"
-                  size="icon"
-                  title="telegram"
-                >
-                  <Send2 color="#fff" size={34} variant="Bold" />
-                </LinkCM>
-                <LinkCM
-                  href=""
-                  aria-label="whatsapp"
-                  variant="contained"
-                  color="blue"
-                  size="icon"
-                  title="whatsapp"
-                >
-                  <Whatsapp color="#fff" size={34} variant="Bold" />
-                </LinkCM>
-                <LinkCM
-                  href=""
-                  aria-label="facebook"
-                  variant="contained"
-                  color="blue"
-                  size="icon"
-                  title="facebook"
-                >
-                  <Facebook color="#fff" size={34} variant="Bold" />
-                </LinkCM>
-              </section>
+             
+
+              </section> )}
+
+              {expert?.Content?.Address && (
               <section className="flex items-center gap-5 md:shadow-sm shadow-gray-200 md:border border-gray-200 rounded-[12px] md:p-10 mt-10">
                 <span className="flex justify-center items-center size-10">
                   <Location color="var(--color-lake-blue-500)" size={24} />
@@ -265,6 +246,9 @@ async function DoctorInfo({ params }: { params: Promise<{ doctor: string }> }) {
                   </address>
                 </div>
               </section>
+              )}
+
+
             </section>
           </section>
         </section>

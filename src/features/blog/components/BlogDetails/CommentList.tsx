@@ -72,7 +72,7 @@ function CommentList() {
                 </section>
                 <section className="flex-1">
                   <div>
-                    <span className="text-xs md:text-base font-bold">{comment?.Name}</span>
+                    <span className="text-xs md:text-base font-bold leading-tight whitespace-nowrap">{comment?.Name}</span>
                     <span className="text-[10px] md:text-[11px] text-gray-400 pr-2">
                       {comment?.CreateDate}
                     </span>

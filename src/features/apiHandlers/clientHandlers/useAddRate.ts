@@ -4,7 +4,6 @@ import { useMutation } from "@tanstack/react-query";
 export const useAddRate=()=> {
   return useMutation({
     mutationKey:['/Content/CommentAdd'],
-    mutationFn: ({Slug}:{Slug:string})=>
-        addRate({Slug})
+    mutationFn: (data: { Slug: string; Rate: number }) => addRate(data)
   });
 }
