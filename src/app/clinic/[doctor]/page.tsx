@@ -177,7 +177,7 @@ async function DoctorInfo({ params }: { params: Promise<{ doctor: string }> }) {
               </div>
               <div className="grid grid-cols-2 sm:grid-cols-4 gap-5 mt-16">
                 <div className="bg-gray-100 rounded-[10px] text-center py-7">
-                  <b>۳۰۵۵</b>
+                  <b>{expert?.Content?.MedicalNumber}</b>
                   <p className="text-sm text-gray-500 mt-3">کد نظام پزشکی</p>
                 </div>
                 <div className="bg-gray-100 rounded-[10px] text-center py-7">
