@@ -1,154 +1,126 @@
 import { ssrExpertCategories } from "@/features/apiHandlers/serverHandlers/ssrExpertCategories";
 import { ssrExpertList } from "@/features/apiHandlers/serverHandlers/ssrExpertList";
 import { ssrExpertPageData } from "@/features/apiHandlers/serverHandlers/ssrExpertPageData";
-import Categories from "@/features/doctors/Categories";
-import Breadcrumb from "@/shared/components/breadcrumb";
-import LinkCM from "@/shared/components/link";
-import { ExpertType } from "@/shared/types/type";
 import { QueryClient } from "@tanstack/react-query";
-import { ArrowLeft2 } from "iconsax-react";
-import Image from "next/image";
-import Link from "next/link";
 import React from "react";
+import DoctorsClient from "@/features/doctors/DoctorsClient";
+import { getPageSeo } from "@/service/getPageSeo";
 
-interface DoctorsPageProps {
-  searchParams: Promise<{ categoryId?: string }>;
+
+export async function generateMetadata() {
+  try {
+    const { Data } = await getPageSeo("ExpertListDashboard");
+    return {
+      title: {
+        default:
+          Data.MetaTitle || "یک زن - راهنمای بهداشت زنان، بارداری و زایمان",
+        template: "%s | یک زن",
+      },
+      description:
+        Data.MetaDescription ||
+        "یک زن: راهنمای جامع بهداشت زنان از بلوغ تا بارداری، زایمان و سلامت مادران. اطلاعات کاربردی، نکات مهم و محصولات ویژه برای زنان را اینجا بخوانید و تجربه کنید!",
+      keywords:
+        "بهداشت زنان, بارداری, زایمان, بلوغ, سلامت زنان, راهنمای زنان, محصولات زنان",
+      metadataBase: new URL(Data.OgUrl || "https://yekzan.com"), 
+      alternates: {
+        canonical: Data.CanonicalUrl || "/"
+      },
+      robots: {
+        index: true,
+        follow: true,
+      },
+      openGraph: {
+        title: Data.OgTitle || "یک زن - راهنمای بهداشت زنان",
+        description:
+          Data.OgDescription ||
+          "یک زن: راهنمای جامع بهداشت زنان از بلوغ تا بارداری، زایمان و سلامت مادران",
+        siteName: "یک زن",
+        type: "website",
+        url: Data.OgUrl || "/",
+        images: [
+          {
+            url: Data.OgImageUrl || "/og-img-large.png",
+            width: 1200,
+            height: 630,
+            alt: Data.OgTitle || "یک زن، راهنمای بهداشت زنان",
+          },
+          {
+            url: "/og-img-small.png",
+            width: 600,
+            height: 315,
+            alt: Data.OgTitle || "یک زن، راهنمای بهداشت زنان",
+          },
+        ],
+      },
+      twitter: {
+        card: "summary_large_image",
+        title: Data.OgTitle || "یک زن - راهنمای بهداشت زنان",
+        description:
+          Data.OgDescription ||
+          "یک زن، راهنمای جامع بهداشت زنان از بلوغ تا بارداری، زایمان و سلامت مادران",
+        images: [Data.OgImageUrl || "/og-img-large.png"],
+        site: "@YekZan",
+        creator: "@YekZanAuthor",
+      },
+      icons: {
+        icon: [
+          { url: "/favicon.ico" },
+          { url: "/favicon-32x32.png", sizes: "32x32" },
+          { url: "/favicon-16x16.png", sizes: "16x16" },
+        ],
+        apple: "/apple-touch-icon.png",
+      },
+      other: {
+        "theme-color": "#ffffff",
+        "msapplication-TileImage": "/ms-icon.png",
+        ...(Data.JsonLd
+          ? { "application/ld+json": JSON.stringify(Data.JsonLd) }
+          : {
+              "application/ld+json": JSON.stringify({
+                "@context": "https://schema.org",
+                "@type": "Website",
+                name: "یک زن",
+                url: "https://yekzan.com/about",
+                description:
+                  "یک زن، راهنمای جامع بهداشت زنان از بلوغ تا بارداری و زایمان",
+                inLanguage: "fa-IR",
+                publisher: {
+                  "@type": "Organization",
+                  name: "یک زن",
+                  logo: {
+                    "@type": "ImageObject",
+                    url: "https://yekzan.com/logo.png",
+                  },
+                },
+              }),
+            }),
+      },
+    };
+  } catch (error) {
+    console.error("Error fetching SEO data:", error);
+    return {
+      title: {
+        default: "یک زن - راهنمای بهداشت زنان، بارداری و زایمان",
+        template: "%s | یک زن",
+      },
+      description:
+        "یک زن: راهنمای جامع بهداشت زنان از بلوغ تا بارداری، زایمان و سلامت مادران. اطلاعات کاربردی، نکات مهم و محصولات ویژه برای زنان.",
+    };
+  }
 }
 
-async function DoctorsPage({ searchParams }: DoctorsPageProps) {
+
+export default async function DoctorsPage() {
   const queryClient = new QueryClient();
-  const resolvedCategoryId = await searchParams;
   const { expertPageData } = await ssrExpertPageData(queryClient);
   const { expertCategories } = await ssrExpertCategories(queryClient);
   const { expertList } = await ssrExpertList(queryClient);
 
-  const breadcrumbItems = [
-    { label: "خانه", href: "/" },
-    { label: "متخصصین یک زن" },
-  ];
-
-  const categoryId = resolvedCategoryId?.categoryId
-    ? parseInt(resolvedCategoryId?.categoryId)
-    : 0;
-  const doctorsList =
-    categoryId === 0
-      ? expertList
-      : expertList?.filter(
-          (doctor: ExpertType) => doctor.CategoryId === categoryId
-        ) || [];
-
   return (
-    <>
-      <section className="bg-gray-100 h-max pt-40 sm:pt-36 pb-10 -mt-[80px] md:mt-0">
-        <section className="px-3 sm:px-5 lg:px-10 xl:px-0 max-w-[1200px] mx-auto h-full">
-          <Breadcrumb
-            items={breadcrumbItems}
-            separator="/"
-            linkClassName="text-lake-blue-600 text-xs font-bold"
-            textClassName="text-gray-400 text-xs font-bold"
-            seperatorClassName="text-gray-200"
-          />
-          <p className="md:text-right mt-10 mb-8 text-[38px] md:text-5xl">
-            <b>
-              <mark className="bg-transparent">
-                {expertPageData?.Content?.Title}
-              </mark>
-            </b>
-          </p>
-          <p className="text-lg text-gray-600">
-            {expertPageData?.Content?.HtmlContent}
-          </p>
-
-          <Categories
-            expertCategories={expertCategories}
-            selectedCategoryId={categoryId}
-          />
-        </section>
-      </section>
-      <section
-        className={`grid ${
-          doctorsList?.length > 0 ? "sm:grid-cols-3 md:grid-cols-4" : ""
-        } gap-10 mt-20 max-w-5xl mx-auto pb-20`}
-      >
-        {doctorsList?.length > 0 ? (
-          doctorsList?.map((d: ExpertType) => (
-            <React.Fragment key={d?.Id}>
-              <section className="hidden sm:flex flex-col sm:justify-center items-center gap-2 px-3 sm:px-5 md:px-7 w-full md:w-max">
-                <Link href={`/clinic/${d?.Slug}`} title={d?.Title}>
-                  <Image
-                    src={d?.Avatar || "/user2.png"}
-                    alt={d?.Title}
-                    width={150}
-                    height={150}
-                    className="rounded-full size-[90px] sm:size-[150px] object-cover"
-                  />
-                </Link>
-                <div className="flex items-center flex-1 justify-between sm:block sm:w-full">
-                  <div className="sm:text-center">
-                    <Link href={`/clinic/${d?.Slug}`} title={d?.Title}>
-                      <h4 className="font-semibold sm:mt-5 md:text-center">
-                        {d?.Title}
-                      </h4>
-                    </Link>
-                    <p className="text-gray-500 text-xs mt-2 md:text-center truncate max-w-44">
-                      {d?.SubTitle}
-                    </p>
-                  </div>
-                  <LinkCM
-                    href={`/clinic/${d?.Slug}`}
-                    variant="outline"
-                    color="blue"
-                    className="mt-5 !hidden sm:!flex"
-                    title={d?.Title}
-                  >
-                    مشاهده پروفایل
-                  </LinkCM>
-                  <Link href={`/clinic/${d?.Slug}`} className="sm:hidden" title={d?.Title}>
-                    <ArrowLeft2 color="var(--color-lake-blue-500)" size={24} />
-                  </Link>
-                </div>
-              </section>
-              <Link
-                href={`/clinic/${d?.Slug}`}
-                title={d?.Title}
-                key={d?.Id}
-                className="flex sm:hidden items-center gap-2 px-3 w-full"
-              >
-                <Image
-                  src={d?.Avatar || "/user2.png"}
-                  alt={d?.Title}
-                  width={150}
-                  height={150}
-                  className="rounded-full size-[90px] sm:size-[150px] object-cover"
-                />
-                <div className="flex items-center flex-1 justify-between sm:block sm:w-full">
-                  <div className="sm:text-center">
-                    <h4 className="font-semibold sm:mt-5 md:text-center">
-                      {d?.Title}
-                    </h4>
-                    <p className="text-gray-500 text-xs mt-2 md:text-center truncate max-w-44">
-                      {d?.SubTitle}
-                    </p>
-                  </div>
-                  <ArrowLeft2 color="var(--color-lake-blue-500)" size={24} />
-                </div>
-              </Link>
-            </React.Fragment>
-          ))
-        ) : (
-          <section className="flex justify-center items-center flex-col ">
-            <Image
-              src="/illustration/404.png"
-              width={200}
-              height={200}
-              alt="یافت نشد"
-            />
-            <p className="text-sm pb-3">هیچ نتیجه‌ای یافت نشد</p>
-          </section>
-        )}
-      </section>
-    </>
+    <DoctorsClient
+      expertPageData={expertPageData}
+      expertCategories={expertCategories}
+      expertList={expertList}
+    />
   );
 }
-
-export default DoctorsPage;
