@@ -57,7 +57,7 @@ const AccordionItem: React.FC<AccordionItemProps> = ({ id, title, children,accor
 
   return (
     <section className="border rounded-lg overflow-hidden">
-      <h2>
+      
         <button
           type="button"
           onClick={() => toggleItem(id)}
@@ -75,7 +75,7 @@ const AccordionItem: React.FC<AccordionItemProps> = ({ id, title, children,accor
             <ArrowDown2 size={16} color={isOpen?"#ff5a7c ":"#6b7280"} />
           </motion.span>
         </button>
-      </h2>
+      
       <AnimatePresence>
         {isOpen && children}
       </AnimatePresence>

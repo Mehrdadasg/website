@@ -46,16 +46,8 @@ const ArticleCard: React.FC<FeaturedArticleProps> = ({
             <Glass2 height={8} width={23} />
           </div>
         </div>
-        <Link href={`/${article?.Slug}`} title={article?.Title??""} className="block">
-          {seoTag === "h2" ? (
-            <h2 className="text-lg font-semibold mt-3 truncate">
-              {article?.Title}
-            </h2>
-          ) : (
-            <h3 className="text-lg font-semibold mt-3 truncate">
-              {article?.Title}
-            </h3>
-          )}
+        <Link href={`/${article?.Slug}`} title={article?.Title??""} className="block text-lg font-semibold mt-3 truncate">
+        {article?.Title}
         </Link>
         <p className="text-gray-500 mt-2 text-sm line-clamp-2">
           {article?.Text}
@@ -73,13 +65,13 @@ const ArticleCard: React.FC<FeaturedArticleProps> = ({
                 {article?.Title}
               </h2>
             ) : (
-              <h3
+              <span
                 className={`text-[13px] font-bold  ${
                   view === "horizontal" ? "line-clamp-2" : "line-clamp-1"
                 }`}
               >
                 {article?.Title}
-              </h3>
+              </span>
             )}
           </Link>
           {/* <ShareBtn text={article?.Text ??""} title={article?.Title ?? ""} url={`https://yekzan.com/blog/${article?.Slug}`} /> */}
