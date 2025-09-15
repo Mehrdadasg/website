@@ -28,10 +28,8 @@ export async function generateMetadata() {
         "بهداشت زنان, بارداری, زایمان, بلوغ, سلامت زنان, راهنمای زنان, محصولات زنان",
       metadataBase: new URL(Data.OgUrl || "https://yeksan.com"),
       alternates: {
-        canonical: Data.CanonicalUrl || "/",
-        languages: {
-          "fa-IR": "/fa-IR",
-        },
+        canonical: Data.CanonicalUrl || "/"
+        
       },
       robots: {
         index: true,

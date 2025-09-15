@@ -28,12 +28,9 @@ export async function generateMetadata({
         "یک زن: راهنمای جامع بهداشت زنان از بلوغ تا بارداری، زایمان و سلامت مادران. اطلاعات کاربردی، نکات مهم و محصولات ویژه برای زنان را اینجا بخوانید و تجربه کنید!",
       keywords:
         "بهداشت زنان, بارداری, زایمان, بلوغ, سلامت زنان, راهنمای زنان, محصولات زنان",
-      metadataBase: new URL(Data.OgUrl || "https://yeksan.com"),
+      metadataBase: new URL(Data.OgUrl || "https://yekzan.com"),
       alternates: {
-        canonical: Data.CanonicalUrl || "/",
-        languages: {
-          "fa-IR": "/fa-IR",
-        },
+        canonical: Data.CanonicalUrl || "/"
       },
       robots: {
         index: true,
@@ -90,7 +87,7 @@ export async function generateMetadata({
                 "@context": "https://schema.org",
                 "@type": "Website",
                 name: "یک زن",
-                url: "https://yeksan.com",
+                url: "https://yekzan.com",
                 description:
                   "یک زن، راهنمای جامع بهداشت زنان از بلوغ تا بارداری و زایمان",
                 inLanguage: "fa-IR",
@@ -99,7 +96,7 @@ export async function generateMetadata({
                   name: "یک زن",
                   logo: {
                     "@type": "ImageObject",
-                    url: "https://yeksan.com/logo.png",
+                    url: "https://yekzan.com/logo.png",
                   },
                 },
               }),
